@@ -7,7 +7,7 @@ abstract class GraphicObject {
   color strokeColor = color (255);
   float strokeWeight = 1;
   
-  abstract void update(int deltaTime);
+  abstract void update(long deltaTime);
   
   abstract void display();
   

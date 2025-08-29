@@ -13,7 +13,7 @@ class Predator extends GraphicObject {
     acceleration = new PVector(0, 0);
   }
   
-  void update(int delta) {
+  void update(long delta) {
     
   }
   

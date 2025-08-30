@@ -3,8 +3,8 @@ abstract class GraphicObject {
   PVector velocity;
   PVector acceleration;
   
-  color fillColor = color (200);
-  color strokeColor = color (255);
+  color fillColor = color (0, 0, 255);
+  color strokeColor = color (0);
   float strokeWeight = 1;
   
   abstract void update(long deltaTime);

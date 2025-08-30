@@ -1,24 +1,9 @@
 long currentTime;
 long previousTime;
 long deltaTime;
-char value;
 
+boolean won = false;
 Prey prey;
-
-void keyPressed() {
-  if (value == 'w') {
-    prey.location.y -= 1; 
-  }
-  else if (value == 'a') {
-    prey.location.x -= 1;
-  }
-  else if (value == 's') {
-    prey.location.y += 1;
-  }
-  else if (value == 'd') {
-    prey.location.x += 1;
-  }
-}
 
 void setup() {
   size(800,600);
@@ -32,19 +17,18 @@ void setup() {
   previousTime = millis();
   
   prey = new Prey();
-  prey.velocity.x = 2;
-  prey.velocity.y = -1;
 }
 
 void draw () {
   timeManagement();
   update(deltaTime);
   display();
+  
+  winCondition();
 }
 
 void update(long delta) {
   // Mettre les calculs ici
-  
   
   prey.update(delta);
 }
@@ -58,13 +42,32 @@ void display () {
   rect(700,0,100,600);
   
   prey.display();
-  
-  fill (0, 0, 255);
-  ellipse (width/2, height/2 , 10, 10);
 }
 
 void timeManagement (){
   currentTime = millis();
   deltaTime = currentTime - previousTime;
   previousTime = currentTime;
+}
+
+void winCondition() {
+  if (!won && prey.location.x > 700) {
+    println("You win!");
+    won = true;
+  }
+}
+
+void keyPressed() {
+  if (key == 'w' || key == 'W') {
+    prey.location.y -= 4; 
+  }
+  else if (key == 'a' || key == 'A') {
+    prey.location.x -= 4;
+  }
+  else if (key == 's' || key == 'S') {
+    prey.location.y += 4;
+  }
+  else if (key == 'd' || key == 'D') {
+    prey.location.x += 4;
+  }
 }

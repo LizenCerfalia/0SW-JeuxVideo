@@ -3,6 +3,7 @@ abstract class GraphicObject {
   PVector velocity;
   PVector acceleration;
   
+    
   color fillColor = color (0, 0, 255);
   color strokeColor = color (0);
   float strokeWeight = 1;

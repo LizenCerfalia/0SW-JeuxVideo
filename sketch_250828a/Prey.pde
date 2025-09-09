@@ -32,7 +32,7 @@ class Prey extends GraphicObject {
   
   void update(long delta) {
     checkEdge();
-    velocity.add(acceleration); // Accélération
+    velocity.add(acceleration);
     location.add(velocity);
     velocity.x = 0;
     velocity.y = 0;

@@ -41,22 +41,39 @@ class Predator extends GraphicObject {
     }
   }
   
-  void stateManagement() {
+  void seekPlayer(PVector target) {
+    //credit: Nature of Code
+     PVector desired = PVector.sub(target, location);
      
+     desired.normalize();
+     desired.mult(movementSpeed);
+     
+     PVector steer = PVector.sub(desired, velocity);
+     
+     applyForce(steer);
+  }
+  
+  void applyForce(PVector force) {
+    //credit: Nature of Code
+    // We could add mass here if we want A = F / M
+    acceleration.add(force);
   }
   
   void update(long delta) {
-    stateManagement();
     
     if (predatorState == State.WAITING) {
       angle += rotationSpeed * delta;
     } else {
-      angle -= rotationSpeed * delta; 
+      velocity.add(acceleration);
+      velocity.limit(movementSpeed);
+      location.add(velocity);
+      acceleration.mult(0);
     }
   }
   
   void display() {
     
+    if (predatorState == State.WAITING) {
      pushMatrix();
       stroke(strokeColor);
       fill(255, 0 , 0);
@@ -76,5 +93,6 @@ class Predator extends GraphicObject {
       
       arc(0, 0, FOV, FOV, 5*PI/12, 13*PI/12);
      popMatrix();
+    }
   }
 }

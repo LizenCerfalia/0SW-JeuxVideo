@@ -92,12 +92,12 @@ void update(long delta) {
       
        prey.death();
        lost = true;
-    } else if (predators[i].location.x + predators[i].FOV < prey.location.x + prey.diameter / 2
-    && predators[i].location.x - predators[i].FOV > prey.location.x - prey.diameter / 2
-    && predators[i].location.y + predators[i].FOV < prey.location.y + prey.diameter / 2
-    && predators[i].location.y - predators[i].FOV > prey.location.y - prey.diameter / 2) {
+    } else if (prey.diameter / 2 + predators[i].FOV > PVector.dist(prey.location, predators[i].location)) {
       
       predators[i].predatorState = State.CHASING;
+    }
+    
+    if (predators[i].predatorState == State.CHASING) {
       predators[i].seekPlayer(prey.location);
     }
   }

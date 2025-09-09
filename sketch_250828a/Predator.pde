@@ -93,6 +93,26 @@ class Predator extends GraphicObject {
       
       arc(0, 0, FOV, FOV, 5*PI/12, 13*PI/12);
      popMatrix();
+    } else {
+      pushMatrix();
+      stroke(strokeColor);
+      fill(255, 0 , 0);
+      strokeWeight(strokeWeight);
+     
+      translate(location.x, location.y);
+      rotate(radians());
+      
+      triangle(triangleSize, -triangleSize * 2, triangleSize * 2, -triangleSize, 0, 0);
+     popMatrix();
+     pushMatrix();
+      noStroke();
+      fill(0, 0, 0, 50);     
+      
+      translate(location.x, location.y);
+      rotate(radians(angle));
+      
+      arc(0, 0, FOV, FOV, 5*PI/12, 13*PI/12);
+     popMatrix();
     }
   }
 }

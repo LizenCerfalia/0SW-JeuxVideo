@@ -15,7 +15,7 @@ class Predator extends GraphicObject {
     triangleSize = 10;
     FOV = normalDistribution(5, 50);
     angle = 0;
-    rotationSpeed = random(1, 2);
+    rotationSpeed = random(0.1, 0.2);
     rotationSpeed = rotationSpeed * rotationDirection; 
     movementSpeed = normalDistribution(1, 3);
     predatorState = State.WAITING;
@@ -49,9 +49,9 @@ class Predator extends GraphicObject {
     stateManagement();
     
     if (predatorState == State.WAITING) {
-      angle += rotationSpeed;
+      angle += rotationSpeed * delta;
     } else {
-      angle -= rotationSpeed; 
+      angle -= rotationSpeed * delta; 
     }
   }
   

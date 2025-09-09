@@ -1,5 +1,6 @@
 class Prey extends GraphicObject {
   int diameter = 40;
+  int opacity = 255;
 
   Prey() {
     location = new PVector(40, height/2);
@@ -11,6 +12,10 @@ class Prey extends GraphicObject {
     location = new PVector(x, y);
     velocity = new PVector(0, 0);
     acceleration = new PVector(0, 0);
+  }
+  
+  void death() {
+     opacity = 0;
   }
   
   void checkEdge() {
@@ -34,8 +39,8 @@ class Prey extends GraphicObject {
   }
   
   void display() {
-    stroke(strokeColor);
-    fill(fillColor);
+    stroke(strokeColor, opacity);
+    fill(fillColor, opacity);
     strokeWeight(strokeWeight);
 
     ellipse(location.x, location.y, diameter, diameter);

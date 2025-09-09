@@ -1,6 +1,7 @@
 long currentTime;
 long previousTime;
 long deltaTime;
+long pT = 0;
 
 
 Prey prey;
@@ -9,6 +10,8 @@ Predator[] predators;
 int predatorAmount;
 float movementSpeed = 4.5;
 boolean won = false;
+boolean lost = false;
+boolean doOnce = true;
 
 void setup() {
   size(800,600);
@@ -40,6 +43,10 @@ void restart() {
   rect(0,0,100,600);
   fill(0,150,0);
   rect(700,0,100,600);
+  
+  won = false;
+  lost = false;
+  doOnce = true;
   
   predatorAmount = int(random(10, 15));
   predators = new Predator[predatorAmount];
@@ -78,6 +85,14 @@ void update(long delta) {
   prey.update(delta);
   for (int i = 0; i < predatorAmount; i++) {
     predators[i].update(delta);
+    if (predators[i].location.x < prey.location.x + prey.diameter / 2
+    && predators[i].location.x > prey.location.x - prey.diameter / 2
+    && predators[i].location.y < prey.location.y + prey.diameter / 2
+    && predators[i].location.y > prey.location.y - prey.diameter / 2) {
+      
+       prey.death();
+       lost = true;
+    }
   }
 }
 
@@ -102,9 +117,24 @@ void timeManagement (){
 }
 
 void winCondition() {
-  if (!won && prey.location.x > 700) {
+  
+  if (!won && !lost && prey.location.x > 700) {
     println("You win!");
     won = true;
+  }
+  
+  if (lost) {
+     long cT = millis();
+     
+     if (doOnce) {
+        pT = cT;
+        doOnce = false;
+     }
+     
+     if ((cT - pT) > 2000) {
+        println("You lost.");
+        restart(); 
+     }
   }
 }
 

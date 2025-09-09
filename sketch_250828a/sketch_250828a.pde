@@ -130,7 +130,7 @@ void winCondition() {
     won = true;
   }
   
-  if (lost) {
+  if (lost && !won) {
      long cT = millis();
      
      if (doOnce) {

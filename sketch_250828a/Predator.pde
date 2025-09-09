@@ -100,7 +100,7 @@ class Predator extends GraphicObject {
       strokeWeight(strokeWeight);
      
       translate(location.x, location.y);
-      rotate(radians());
+      rotate(radians(angle));
       
       triangle(triangleSize, -triangleSize * 2, triangleSize * 2, -triangleSize, 0, 0);
      popMatrix();

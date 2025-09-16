@@ -1,6 +1,6 @@
 enum State
 {
-   WAITING, CHASING
+  WAITING, CHASING
 };
 
 class Predator extends GraphicObject {
@@ -15,54 +15,57 @@ class Predator extends GraphicObject {
     triangleSize = 10;
     FOV = normalDistribution(5, 50);
     angle = 0;
-    rotationSpeed = random(0.1, 0.2);
-    rotationSpeed = rotationSpeed * rotationDirection; 
+    rotationSpeed = random(0.25, 0.5) * 2 * PI;
+    rotationSpeed = rotationSpeed * rotationDirection;
+    println(degrees(rotationSpeed));
     movementSpeed = normalDistribution(1, 3);
-    predatorState = State.WAITING;
     
-    location = new PVector(random(100,700), random(0, 600));
+    predatorState = State.WAITING;
+
+    location = new PVector(random(100, 700), random(0, 600));
     velocity = new PVector(0, 0);
     acceleration = new PVector(0, 0);
   }
-  
+
   int normalDistribution (float standardDeviation, float mean) {
-     return  int(standardDeviation * randomGaussian() + mean);
+    return  int(standardDeviation * randomGaussian() + mean);
   }
-  
+
   void checkEdge() {
     var tempLoc = location.copy().add(velocity);
-    
+
     if (tempLoc.x +  triangleSize / 2 > width - 100 || tempLoc.x - triangleSize / 2 < 100) {
       velocity.x *= 0;
     }
-    
+
     if (tempLoc.y +  triangleSize / 2 > height || tempLoc.y - triangleSize / 2 < 0) {
       velocity.y *= 0;
     }
   }
-  
+
   void seekPlayer(PVector target) {
     //credit: Nature of Code
-     PVector desired = PVector.sub(target, location);
-     
-     desired.normalize();
-     desired.mult(movementSpeed);
-     
-     PVector steer = PVector.sub(desired, velocity);
-     
-     applyForce(steer);
+    PVector desired = PVector.sub(target, location);
+
+    desired.normalize();
+    desired.mult(movementSpeed);
+
+    PVector steer = PVector.sub(desired, velocity);
+
+    applyForce(steer);
   }
-  
+
   void applyForce(PVector force) {
     //credit: Nature of Code
     // We could add mass here if we want A = F / M
     acceleration.add(force);
   }
-  
+
   void update(long delta) {
-    
+    float dt = delta * 1.0/1000;
     if (predatorState == State.WAITING) {
-      angle += rotationSpeed * delta;
+      //println(dt);
+      angle += rotationSpeed * dt;
     } else {
       velocity.add(acceleration);
       velocity.limit(movementSpeed);
@@ -70,49 +73,29 @@ class Predator extends GraphicObject {
       acceleration.mult(0);
     }
   }
-  
+
   void display() {
-    
+
     if (predatorState == State.WAITING) {
-     pushMatrix();
-      stroke(strokeColor);
-      fill(255, 0 , 0);
-      strokeWeight(strokeWeight);
-     
-      translate(location.x, location.y);
-      rotate(radians(angle));
-      
-      triangle(triangleSize, -triangleSize * 2, triangleSize * 2, -triangleSize, 0, 0);
-     popMatrix();
-     pushMatrix();
-      noStroke();
-      fill(0, 0, 0, 50);     
-      
-      translate(location.x, location.y);
-      rotate(radians(angle));
-      
-      arc(0, 0, FOV, FOV, 5*PI/12, 13*PI/12);
-     popMatrix();
-    } else {
       pushMatrix();
       stroke(strokeColor);
-      fill(255, 0 , 0);
+      fill(255, 0, 0);
       strokeWeight(strokeWeight);
-     
+
       translate(location.x, location.y);
-      rotate(radians(angle));
-      
+      rotate(angle);
+
       triangle(triangleSize, -triangleSize * 2, triangleSize * 2, -triangleSize, 0, 0);
-     popMatrix();
-     pushMatrix();
+      popMatrix();
+      pushMatrix();
       noStroke();
-      fill(0, 0, 0, 50);     
-      
+      fill(0, 0, 0, 50);
+
       translate(location.x, location.y);
-      rotate(radians(angle));
-      
+      rotate(angle);
+
       arc(0, 0, FOV, FOV, 5*PI/12, 13*PI/12);
-     popMatrix();
-    }
+      popMatrix();
+    } 
   }
 }

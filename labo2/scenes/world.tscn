@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://0p136svn5jst"]
+
+[ext_resource type="PackedScene" uid="uid://b5xyvghj5yswa" path="res://scenes/player.tscn" id="1_xq8rq"]
+[ext_resource type="Texture2D" uid="uid://cjksf1jr3n7st" path="res://assets/rail.png" id="2_4wloy"]
+[ext_resource type="Texture2D" uid="uid://cf1v3hojj28wr" path="res://assets/desert_texture.png" id="2_gxphj"]
+
+[node name="World" type="Node2D"]
+
+[node name="desert" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(616, 235)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_gxphj")
+region_enabled = true
+region_rect = Rect2(-4, -10, 5000, 5000)
+
+[node name="rails" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(573, 582)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_4wloy")
+region_enabled = true
+region_rect = Rect2(0.094, 5.027, 500, 23.337)
+
+[node name="Player" parent="." instance=ExtResource("1_xq8rq")]
+position = Vector2(575, 575)

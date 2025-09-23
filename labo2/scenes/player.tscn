@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5xyvghj5yswa"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_ycady"]
+[ext_resource type="Texture2D" uid="uid://d0drdqjku22oe" path="res://assets/canon.png" id="2_xbdpu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rawkn"]
+size = Vector2(64, 47)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_ycady")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.63798e-12, 3.63798e-12)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_xbdpu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_rawkn")
+debug_color = Color(0, 0.648543, 0.177273, 0.42)

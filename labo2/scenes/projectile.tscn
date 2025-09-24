@@ -1,21 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bohtbx566o3g4"]
 
 [ext_resource type="Script" path="res://scenes/projectile.gd" id="1_qfx3b"]
-[ext_resource type="Texture2D" uid="uid://lrjuvb7scovn" path="res://assets/laserRed01.png" id="1_vucnt"]
+[ext_resource type="Texture2D" uid="uid://d2lwmmg2un8q3" path="res://assets/fireball.png" id="2_g0fs0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oosfu"]
-radius = 5.0
-height = 54.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cdbi"]
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource("1_qfx3b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_vucnt")
+texture = ExtResource("2_g0fs0")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
-shape = SubResource("CapsuleShape2D_oosfu")
+shape = SubResource("CircleShape2D_5cdbi")
 debug_color = Color(1, 0, 0, 0.313726)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7hvm8aumn5k0"]
+
+[ext_resource type="PackedScene" uid="uid://bohtbx566o3g4" path="res://scenes/projectile.tscn" id="2_0u66o"]
+
+[sub_resource type="GDScript" id="GDScript_dqkch"]
+script/source = "extends Node
+class_name ProjectilePool
+
+@export var projectile_scene : PackedScene  # Scène du projectile
+@export var pool_size : int = 20  # Taille du pool
+
+var projectile_pool : Array = []
+var available_projectiles : Array = []
+
+func _ready():
+	# Créer le pool de projectiles
+	for i in range(pool_size):
+		var projectile = projectile_scene.instantiate() as Projectile
+		projectile.projectile_out_of_screen.connect(_on_projectile_out_of_screen.bind(projectile))
+		add_child(projectile)
+		projectile.visible = false  # Masquer le projectile au début
+		projectile_pool.append(projectile)
+		available_projectiles.append(projectile)	
+
+# Fonction pour récupérer un projectile du pool
+func get_projectile() -> Projectile:
+	if available_projectiles.size() > 0:
+		var projectile = available_projectiles.pop_back()
+		projectile.visible = true  # Rendre le projectile visible lorsqu'il est tiré
+		return projectile
+	else:
+		return null  # Si aucun projectile n'est disponible, retourner null
+
+# Réinitialiser le projectile lorsqu'il est hors de l'écran
+func _on_projectile_out_of_screen(projectile):
+	projectile.visible = false  # Masquer le projectile
+	available_projectiles.append(projectile)  # Réintégrer le projectile dans le pool
+"
+
+[node name="ProjectilePool" type="Node"]
+script = SubResource("GDScript_dqkch")
+projectile_scene = ExtResource("2_0u66o")
+pool_size = 10

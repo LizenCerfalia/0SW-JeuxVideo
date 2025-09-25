@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://tdwdwu3ouj4n"]
+
+[ext_resource type="Texture2D" uid="uid://bjl23u70jwhgx" path="res://assets/OVNI.png" id="1_j8sv5"]
+[ext_resource type="Script" uid="uid://bw5g0ajduqyjd" path="res://scenes/boid.gd" id="1_voynh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyvh0"]
+radius = 30.0167
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61yd7"]
+radius = 30.0
+
+[node name="Boid" type="Node2D"]
+script = ExtResource("1_voynh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_j8sv5")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["mobs"]]
+
+[node name="Hurtbox" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_dyvh0")
+debug_color = Color(0.65427, 0.517664, 7.70092e-07, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_61yd7")
+debug_color = Color(0.788713, 0.0446997, 7.70092e-07, 0.42)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

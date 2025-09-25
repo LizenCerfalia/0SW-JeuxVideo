@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://0p136svn5jst"]
+[gd_scene load_steps=6 format=3 uid="uid://0p136svn5jst"]
 
-[ext_resource type="Script" uid="uid://dkin1epye0wl4" path="res://scenes/world.gd" id="1_gyjjn"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_gyjjn"]
 [ext_resource type="PackedScene" uid="uid://b5xyvghj5yswa" path="res://scenes/player.tscn" id="1_xq8rq"]
 [ext_resource type="Texture2D" uid="uid://cjksf1jr3n7st" path="res://assets/rail.png" id="2_4wloy"]
 [ext_resource type="Texture2D" uid="uid://cf1v3hojj28wr" path="res://assets/desert_texture.png" id="2_gxphj"]
+[ext_resource type="PackedScene" uid="uid://cqd5nvcrgc7x1" path="res://scenes/boid.tscn" id="4_dnew6"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_gyjjn")
-enable_separation = true
 
 [node name="desert" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -27,3 +27,5 @@ region_rect = Rect2(0.094, 5.027, 500, 23.337)
 
 [node name="Player" parent="." instance=ExtResource("1_xq8rq")]
 position = Vector2(575, 575)
+
+[node name="Boid" parent="." instance=ExtResource("4_dnew6")]

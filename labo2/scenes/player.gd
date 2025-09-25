@@ -6,12 +6,12 @@ var screen_size
 @export var speed : int = 400
 @export var acceleration : float = 10.0
 @export var friction : float = 10.0
-@export var bullet_scene : PackedScene
+@export var projectile_scene : PackedScene
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
-func get_input(delta: float):
+func get_input(_delta: float):
 	
 	var dir = Input.get_axis("left", "right")
 	if (dir < 0):
@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	get_input(delta)
 	move_and_slide()
 
-func shoot() -> void :
-	var b : Projectile = bullet_scene.instantiate()
-	get_parent().add_child(b)
-	b.global_transform = $Muzzle.global_transform
+func shoot():
+	var p = projectile_scene.instantiate()
+	get_parent().add_child(p)
+	p.global_transform = $Muzzle.global_transform

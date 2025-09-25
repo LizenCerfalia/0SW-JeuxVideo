@@ -1,19 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://bohtbx566o3g4"]
 
-[ext_resource type="Script" path="res://scenes/projectile.gd" id="1_qfx3b"]
+[ext_resource type="Script" uid="uid://bqiif1b85hwr1" path="res://scenes/projectile.gd" id="1_qfx3b"]
 [ext_resource type="Texture2D" uid="uid://d2lwmmg2un8q3" path="res://assets/fireball.png" id="2_g0fs0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cdbi"]
+radius = 6.0
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource("1_qfx3b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_g0fs0")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["mobs"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
+position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_5cdbi")
 debug_color = Color(1, 0, 0, 0.313726)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Projectile_body_entered"]

@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5xyvghj5yswa"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_ycady"]
-[ext_resource type="PackedScene" uid="uid://bohtbx566o3g4" path="res://scenes/projectile.tscn" id="2_pjwik"]
+[ext_resource type="Script" uid="uid://djaj8ka8qtyq3" path="res://scenes/player.gd" id="1_ycady"]
+[ext_resource type="PackedScene" uid="uid://bohtbx566o3g4" path="res://scenes/projectile.tscn" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://d0drdqjku22oe" path="res://assets/canon.png" id="2_xbdpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rawkn"]
 size = Vector2(64, 47)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_ycady")
-bullet_scene = ExtResource("2_pjwik")
+projectile_scene = ExtResource("2_qhqgy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.63798e-12, 3.63798e-12)

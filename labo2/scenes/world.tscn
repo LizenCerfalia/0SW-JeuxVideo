@@ -8,6 +8,8 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_gyjjn")
 enable_separation = true
+enable_alignment = true
+enable_cohesion = true
 
 [node name="desert" type="Sprite2D" parent="."]
 texture_repeat = 2

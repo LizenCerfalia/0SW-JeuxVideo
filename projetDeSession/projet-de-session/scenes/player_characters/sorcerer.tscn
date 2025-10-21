@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://g1qg1yei3o5w"]
+
+[ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/sorcerer_sprite.png" id="1_yptoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yptoi"]
+size = Vector2(30, 8)
+
+[node name="Sorcerer" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_yptoi")
+hframes = 5
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 24)
+shape = SubResource("RectangleShape2D_yptoi")

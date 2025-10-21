@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://r4igy24pkqhg"]
+
+[ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/templar_sprite.png" id="1_162nj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc3va"]
+size = Vector2(30, 6.75)
+
+[node name="Templar" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_162nj")
+hframes = 5
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 24.375)
+shape = SubResource("RectangleShape2D_nc3va")

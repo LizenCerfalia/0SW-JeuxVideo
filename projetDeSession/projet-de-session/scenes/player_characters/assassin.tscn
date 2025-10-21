@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwqbjwi187fpk"]
+
+[ext_resource type="Texture2D" uid="uid://ccssg64e6pdap" path="res://assets/assassin_sprite.png" id="1_vqc6k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqc6k"]
+size = Vector2(30, 7)
+
+[node name="Assassin" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_vqc6k")
+hframes = 5
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 24.5)
+shape = SubResource("RectangleShape2D_vqc6k")

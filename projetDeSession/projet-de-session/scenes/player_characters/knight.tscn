@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdf5x2r2olqwk"]
 
-[ext_resource type="Texture2D" uid="uid://br06y6b1472sa" path="res://assets/knight_sprite.png" id="1_h1k15"]
+[ext_resource type="Texture2D" uid="uid://br06y6b1472sa" path="res://assets/player_assets/knight_sprite.png" id="1_h1k15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1k15"]
 size = Vector2(30.5, 9)

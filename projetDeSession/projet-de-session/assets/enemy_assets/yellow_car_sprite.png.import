@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccssg64e6pdap"
-path="res://.godot/imported/assassin_sprite.png-f34219717d17eb54b65632d5fd436d1f.ctex"
+uid="uid://ccbplocimn8hg"
+path="res://.godot/imported/yellow_car_sprite.png-7f3a24abc0a16b11d1f989875c267c51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assassin_sprite.png"
-dest_files=["res://.godot/imported/assassin_sprite.png-f34219717d17eb54b65632d5fd436d1f.ctex"]
+source_file="res://assets/enemy_assets/yellow_car_sprite.png"
+dest_files=["res://.godot/imported/yellow_car_sprite.png-7f3a24abc0a16b11d1f989875c267c51.ctex"]
 
 [params]
 

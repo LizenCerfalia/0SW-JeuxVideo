@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2uwprvvr32n5"
-path="res://.godot/imported/templar_sprite.png-a15e3b6197ea45d808f79bd7c660a27f.ctex"
+uid="uid://bppt3mladk50n"
+path="res://.godot/imported/green_car_sprite.png-ba12cfdc8fe5a0c917d2a8e55dc2d964.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/templar_sprite.png"
-dest_files=["res://.godot/imported/templar_sprite.png-a15e3b6197ea45d808f79bd7c660a27f.ctex"]
+source_file="res://assets/enemy_assets/green_car_sprite.png"
+dest_files=["res://.godot/imported/green_car_sprite.png-ba12cfdc8fe5a0c917d2a8e55dc2d964.ctex"]
 
 [params]
 

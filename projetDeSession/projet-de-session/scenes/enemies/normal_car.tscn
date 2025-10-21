@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh3fxwa1n7arc"]
+
+[ext_resource type="Texture2D" uid="uid://jw1cqhvpmb6u" path="res://assets/enemy_assets/blue_car_sprite.png" id="1_uoyfc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t20bp"]
+size = Vector2(21, 5.5)
+
+[node name="NormalCar" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uoyfc")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.25)
+shape = SubResource("RectangleShape2D_t20bp")

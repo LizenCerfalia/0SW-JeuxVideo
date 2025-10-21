@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://r4igy24pkqhg"]
 
-[ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/templar_sprite.png" id="1_162nj"]
+[ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/player_assets/templar_sprite.png" id="1_162nj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc3va"]
 size = Vector2(30, 6.75)

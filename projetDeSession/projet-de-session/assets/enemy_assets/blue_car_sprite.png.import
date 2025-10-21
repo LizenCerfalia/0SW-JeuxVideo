@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br06y6b1472sa"
-path="res://.godot/imported/knight_sprite.png-1e5c54723d0ff6a096cfd67f5291a11e.ctex"
+uid="uid://jw1cqhvpmb6u"
+path="res://.godot/imported/blue_car_sprite.png-70b2935776302c177da092472c47dfdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knight_sprite.png"
-dest_files=["res://.godot/imported/knight_sprite.png-1e5c54723d0ff6a096cfd67f5291a11e.ctex"]
+source_file="res://assets/enemy_assets/blue_car_sprite.png"
+dest_files=["res://.godot/imported/blue_car_sprite.png-70b2935776302c177da092472c47dfdf.ctex"]
 
 [params]
 

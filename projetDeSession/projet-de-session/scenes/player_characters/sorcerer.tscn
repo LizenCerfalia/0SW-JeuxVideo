@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://g1qg1yei3o5w"]
 
-[ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/sorcerer_sprite.png" id="1_yptoi"]
+[ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/player_assets/sorcerer_sprite.png" id="1_yptoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yptoi"]
 size = Vector2(30, 8)

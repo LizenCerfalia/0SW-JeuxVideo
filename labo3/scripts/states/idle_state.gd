@@ -17,7 +17,7 @@ func manage_input() -> void:
 func enter():
 	animationTree = player.get_animation_tree()	
 	
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	if not animationTree :
 		animationTree = player.get_animation_tree()
 	manage_input()

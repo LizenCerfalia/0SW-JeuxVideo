@@ -1,7 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://co806t5p15df4"]
+[gd_scene load_steps=34 format=3 uid="uid://co806t5p15df4"]
 
 [ext_resource type="Texture2D" uid="uid://dn2ir0xnhk6k5" path="res://assets/sprites/knight.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bj1d2pskcd3ep" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://37d2vm01qhr6" path="res://scenes/state_machine.tscn" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://d3w5ahn16v4y4" path="res://scripts/states/idle_state.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://bw64bp4wyw4lm" path="res://scripts/states/run_state.gd" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://c28x0qrqld2el" path="res://scripts/states/attack_state.gd" id="6_smehm"]
+[ext_resource type="Script" uid="uid://b88luna1sohl1" path="res://scripts/states/jump_state.gd" id="7_ur7pv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(9, 14.25)
@@ -154,6 +159,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_smehm"]
 resource_name = "run_left"
 length = 1.6
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -183,6 +189,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_dqkch"]
 resource_name = "run_right"
 length = 1.6
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -326,3 +333,22 @@ parameters/conditions/is_moving = false
 parameters/Attack/blend_position = -0.094029844
 parameters/Idle/blend_position = 0.1910448
 parameters/Run/blend_position = 0.0
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_qhqgy")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_dqkch")
+player = NodePath("../..")
+
+[node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("5_fjrip")
+player = NodePath("../..")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_smehm")
+player = NodePath("../..")
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_ur7pv")
+player = NodePath("../..")

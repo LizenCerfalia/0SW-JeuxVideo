@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdwqikcnyna5i"]
+
+[ext_resource type="Texture2D" uid="uid://b5yayc7a2fhyl" path="res://assets/enemy_assets/monster_truck_phase_2_wheel.png" id="1_2rhet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5ajo"]
+size = Vector2(50, 108)
+
+[node name="BossPhase2LeftRight" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2rhet")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_k5ajo")

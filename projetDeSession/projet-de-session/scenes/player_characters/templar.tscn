@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://r4igy24pkqhg"]
+[gd_scene load_steps=4 format=3 uid="uid://r4igy24pkqhg"]
 
 [ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/player_assets/templar_sprite.png" id="1_162nj"]
+[ext_resource type="Script" uid="uid://cntp4tnv6ifci" path="res://scripts/player_characters/templar.gd" id="1_nc3va"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc3va"]
 size = Vector2(30, 6.75)
 
 [node name="Templar" type="CharacterBody2D"]
+script = ExtResource("1_nc3va")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -16,3 +18,5 @@ vframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 24.375)
 shape = SubResource("RectangleShape2D_nc3va")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

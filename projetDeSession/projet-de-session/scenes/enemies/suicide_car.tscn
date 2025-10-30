@@ -1,9 +1,86 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxmgpn1plmknb"]
+[gd_scene load_steps=8 format=3 uid="uid://cxmgpn1plmknb"]
 
 [ext_resource type="Texture2D" uid="uid://c3u3ud2y1pm6w" path="res://assets/enemy_assets/red_car_sprite.png" id="1_eqeyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmdco"]
 size = Vector2(21, 5.5)
+
+[sub_resource type="Animation" id="Animation_nq7qq"]
+resource_name = "Drive_Side"
+length = 0.3
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_3cqv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kmf6y"]
+resource_name = "Drive_Up"
+length = 0.3
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ull0r"]
+resource_name = "Drive_Down"
+length = 0.3
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3cqv3"]
+_data = {
+&"Drive_Down": SubResource("Animation_ull0r"),
+&"Drive_Side": SubResource("Animation_nq7qq"),
+&"Drive_Up": SubResource("Animation_kmf6y"),
+&"RESET": SubResource("Animation_3cqv3")
+}
 
 [node name="SuicideCar" type="CharacterBody2D"]
 
@@ -15,3 +92,8 @@ vframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8.25)
 shape = SubResource("RectangleShape2D_hmdco")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3cqv3")
+}

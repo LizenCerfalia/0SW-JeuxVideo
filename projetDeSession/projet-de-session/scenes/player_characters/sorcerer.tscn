@@ -1,100 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://g1qg1yei3o5w"]
+[gd_scene load_steps=5 format=3 uid="uid://g1qg1yei3o5w"]
 
-[ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/player_assets/sorcerer_sprite.png" id="1_yptoi"]
+[ext_resource type="Script" uid="uid://bxomtxxdwh50c" path="res://scripts/player_characters/sorcerer.gd" id="1_efsps"]
+[ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="1_yptoi"]
+[ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/player_assets/sorcerer_sprite.png" id="2_2r4nx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yptoi"]
-size = Vector2(30, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r4nx"]
+size = Vector2(30, 6.5)
 
-[sub_resource type="Animation" id="Animation_nc3va"]
-resource_name = "Walk_Side"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
+[node name="Sorcerer" type="Node2D"]
+script = ExtResource("1_efsps")
 
-[sub_resource type="Animation" id="Animation_pk0av"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[node name="GenericPlayer" parent="." instance=ExtResource("1_yptoi")]
 
-[sub_resource type="Animation" id="Animation_7px53"]
-resource_name = "Walk_Up"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_pdbn3"]
-resource_name = "Walk_Down"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pk0av"]
-_data = {
-&"RESET": SubResource("Animation_pk0av"),
-&"Walk_Down": SubResource("Animation_pdbn3"),
-&"Walk_Side": SubResource("Animation_nc3va"),
-&"Walk_Up": SubResource("Animation_7px53")
-}
-
-[node name="Sorcerer" type="CharacterBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="GenericPlayer" index="0"]
 scale = Vector2(2, 2)
-texture = ExtResource("1_yptoi")
-hframes = 5
-vframes = 4
+texture = ExtResource("2_2r4nx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 24)
-shape = SubResource("RectangleShape2D_yptoi")
+[node name="CollisionShape2D" parent="GenericPlayer" index="1"]
+position = Vector2(3, 24.25)
+shape = SubResource("RectangleShape2D_2r4nx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pk0av")
-}
+[editable path="GenericPlayer"]

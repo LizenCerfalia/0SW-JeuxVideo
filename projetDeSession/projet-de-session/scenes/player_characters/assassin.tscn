@@ -1,100 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwqbjwi187fpk"]
+[gd_scene load_steps=5 format=3 uid="uid://dwqbjwi187fpk"]
 
-[ext_resource type="Texture2D" uid="uid://ccssg64e6pdap" path="res://assets/player_assets/assassin_sprite.png" id="1_vqc6k"]
+[ext_resource type="Script" uid="uid://647dlp6bshqt" path="res://scripts/player_characters/assassin.gd" id="1_624ax"]
+[ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="1_vqc6k"]
+[ext_resource type="Texture2D" uid="uid://ccssg64e6pdap" path="res://assets/player_assets/assassin_sprite.png" id="2_nnqu8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqc6k"]
-size = Vector2(30, 7)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnqu8"]
+size = Vector2(30, 8)
 
-[sub_resource type="Animation" id="Animation_nc3va"]
-resource_name = "Walk_Side"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
+[node name="Assassin" type="Node2D"]
+script = ExtResource("1_624ax")
 
-[sub_resource type="Animation" id="Animation_pk0av"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[node name="GenericPlayer" parent="." instance=ExtResource("1_vqc6k")]
 
-[sub_resource type="Animation" id="Animation_7px53"]
-resource_name = "Walk_Up"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_pdbn3"]
-resource_name = "Walk_Down"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pk0av"]
-_data = {
-&"RESET": SubResource("Animation_pk0av"),
-&"Walk_Down": SubResource("Animation_pdbn3"),
-&"Walk_Side": SubResource("Animation_nc3va"),
-&"Walk_Up": SubResource("Animation_7px53")
-}
-
-[node name="Assassin" type="CharacterBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="GenericPlayer" index="0"]
 scale = Vector2(2, 2)
-texture = ExtResource("1_vqc6k")
-hframes = 5
-vframes = 4
+texture = ExtResource("2_nnqu8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 24.5)
-shape = SubResource("RectangleShape2D_vqc6k")
+[node name="CollisionShape2D" parent="GenericPlayer" index="1"]
+position = Vector2(3, 24)
+shape = SubResource("RectangleShape2D_nnqu8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pk0av")
-}
+[editable path="GenericPlayer"]

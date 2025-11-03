@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://chwxxfq5hefih"]
+[gd_scene load_steps=4 format=3 uid="uid://chwxxfq5hefih"]
+
+[ext_resource type="PackedScene" uid="uid://djkmqdmysykl4" path="res://scenes/enemies/boss_phase_2_head.tscn" id="1_bfehm"]
+[ext_resource type="PackedScene" uid="uid://cdwqikcnyna5i" path="res://scenes/enemies/boss_phase_2_left_right.tscn" id="2_vbmn6"]
+[ext_resource type="PackedScene" uid="uid://cy1cbcapvrv3k" path="res://scenes/enemies/boss_phase_2_left_wheel.tscn" id="3_ubuui"]
 
 [node name="Phase2" type="Node2D"]
+
+[node name="BossPhase2Head" parent="." instance=ExtResource("1_bfehm")]
+position = Vector2(527, 107)
+
+[node name="BossPhase2LeftRight" parent="." instance=ExtResource("2_vbmn6")]
+position = Vector2(379, 219)
+
+[node name="BossPhase2LeftWheel" parent="." instance=ExtResource("3_ubuui")]
+position = Vector2(685, 226)

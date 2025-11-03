@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://crrv80xiau6o3" path="res://assets/world_assets/ground.png" id="1_7tglt"]
 [ext_resource type="PackedScene" uid="uid://r4igy24pkqhg" path="res://scenes/player_characters/templar.tscn" id="2_qbr34"]
 [ext_resource type="PackedScene" uid="uid://cdf5x2r2olqwk" path="res://scenes/player_characters/knight.tscn" id="3_stt04"]
-[ext_resource type="Script" uid="uid://c3cm8rn5y0ym4" path="res://scripts/player_characters/knight.gd" id="4_g6jn6"]
 [ext_resource type="PackedScene" uid="uid://dwqbjwi187fpk" path="res://scenes/player_characters/assassin.tscn" id="4_npexo"]
 [ext_resource type="PackedScene" uid="uid://g1qg1yei3o5w" path="res://scenes/player_characters/sorcerer.tscn" id="5_g6jn6"]
 [ext_resource type="PackedScene" uid="uid://cbnd8a3jw0e6p" path="res://scenes/enemies/boss_phase_1.tscn" id="7_g6jn6"]
+[ext_resource type="PackedScene" uid="uid://b4ul37cifj5u6" path="res://scenes/misc/GUI.tscn" id="7_xhgtv"]
 
 [node name="Phase1" type="Node2D"]
 
@@ -22,7 +22,6 @@ position = Vector2(465, 317)
 
 [node name="Knight" parent="." instance=ExtResource("3_stt04")]
 position = Vector2(650, 315)
-script = ExtResource("4_g6jn6")
 
 [node name="Assassin" parent="." instance=ExtResource("4_npexo")]
 position = Vector2(556, 406)
@@ -32,3 +31,5 @@ position = Vector2(553, 234)
 
 [node name="BossPhase1" parent="." instance=ExtResource("7_g6jn6")]
 position = Vector2(774, 175)
+
+[node name="Node" parent="." instance=ExtResource("7_xhgtv")]

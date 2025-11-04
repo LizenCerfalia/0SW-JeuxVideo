@@ -52,5 +52,6 @@ texture_progress = ExtResource("6_bqdva")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+value = 100.0
 texture_under = ExtResource("7_dysnk")
 texture_progress = ExtResource("8_wajqr")

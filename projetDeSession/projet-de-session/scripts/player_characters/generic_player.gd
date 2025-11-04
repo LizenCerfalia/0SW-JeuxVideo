@@ -12,7 +12,8 @@ var speed: float
 var hp: int
 var controlled_by: String
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var animationTree: AnimationTree = $AnimationTree
+@onready var playback = animationTree.get("parameters/playback")
 
 func get_movement_input():
 	match controlled_by:
@@ -31,16 +32,13 @@ func player_controls():
 		dir = Input.get_vector("P1_Left", "P1_Right","P1_Up","P1_Down").normalized()
 	else:
 		dir = Input.get_vector("P2_Left", "P2_Right","P2_Up","P2_Down").normalized()
-	
+		
 	if (dir != Vector2.ZERO):
-		animationPlayer.play("Walk_Side")
+		playback.travel("Walk")
+		animationTree.set("parameters/Walk/blend_position", dir)
+		animationTree.set("parameters/Idle/blend_position", dir)
 	else:
-		animationPlayer.stop()
-	
-	if (dir.x < 0.0):
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+		playback.travel("Idle")
 	
 	velocity = dir * speed
 	move_and_slide()
@@ -49,14 +47,11 @@ func ai_controls():
 	current_time = Time.get_ticks_msec()
 	
 	if (current_direction != 0):
-		animationPlayer.play("Walk_Side")
+		playback.travel("Walk")
+		var vector = Vector2(current_direction, 0)
+		animationTree.set("parameters/Walk/blend_position", vector)
 	else:
-		animationPlayer.stop()
-	
-	if (current_direction < 0.0):
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+		playback.travel("Idle")
 	
 	velocity.x = current_direction * speed
 	move_and_slide()

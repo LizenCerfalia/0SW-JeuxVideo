@@ -20,4 +20,7 @@ texture = ExtResource("2_25a4l")
 position = Vector2(3, 24)
 shape = SubResource("RectangleShape2D_3504c")
 
+[node name="AnimationTree" parent="GenericPlayer" index="3"]
+parameters/Walk/blend_position = Vector2(-0.02870816, -0.94618833)
+
 [editable path="GenericPlayer"]

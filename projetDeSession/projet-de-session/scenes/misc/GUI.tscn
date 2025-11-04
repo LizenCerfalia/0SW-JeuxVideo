@@ -9,44 +9,48 @@
 [ext_resource type="Texture2D" uid="uid://dcphycv3aet06" path="res://assets/GUI/hp_gauge_sorcerer.png" id="7_dysnk"]
 [ext_resource type="Texture2D" uid="uid://dqo3eiedhadwi" path="res://assets/GUI/hp_gauge_full_3.png" id="8_wajqr"]
 
-[node name="Node" type="Node2D"]
+[node name="GUI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1610.0
+offset_bottom = -1006.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="TemplarBar" type="TextureProgressBar" parent="."]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 305.0
-offset_bottom = 69.0
-scale = Vector2(1.2, 1.2)
+layout_mode = 2
+size_flags_horizontal = 0
 value = 100.0
 texture_under = ExtResource("1_3rdxh")
 texture_progress = ExtResource("2_bjggx")
 
 [node name="AssassinBar" type="TextureProgressBar" parent="."]
-offset_left = 785.0
-offset_top = 5.0
-offset_right = 1085.0
-offset_bottom = 69.0
-scale = Vector2(1.2, 1.2)
-value = 75.0
+layout_mode = 2
+size_flags_horizontal = 8
+max_value = 120.0
+value = 120.0
 fill_mode = 1
 texture_under = ExtResource("3_bi4q8")
 texture_progress = ExtResource("4_sgkjq")
 
 [node name="KnightBar" type="TextureProgressBar" parent="."]
-offset_left = 5.0
-offset_top = 565.0
-offset_right = 305.0
-offset_bottom = 629.0
-scale = Vector2(1.2, 1.2)
-value = 50.0
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 200.0
+value = 200.0
 texture_under = ExtResource("5_yrf3e")
 texture_progress = ExtResource("6_bqdva")
 
 [node name="SorcererBar" type="TextureProgressBar" parent="."]
-offset_left = 785.0
-offset_top = 565.0
-offset_right = 1085.0
-offset_bottom = 629.0
-scale = Vector2(1.2, 1.2)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 texture_under = ExtResource("7_dysnk")
 texture_progress = ExtResource("8_wajqr")

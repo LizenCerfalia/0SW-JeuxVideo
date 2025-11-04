@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r4nx"]
 size = Vector2(30, 6.5)
 
-[node name="Sorcerer" type="Node2D"]
+[node name="Sorcerer" type="Node2D" groups=["players"]]
 script = ExtResource("1_efsps")
 
 [node name="GenericPlayer" parent="." instance=ExtResource("1_yptoi")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://x8la1rpp8jd5"]
+[gd_scene load_steps=9 format=3 uid="uid://x8la1rpp8jd5"]
 
 [ext_resource type="Texture2D" uid="uid://crrv80xiau6o3" path="res://assets/world_assets/ground.png" id="1_7tglt"]
 [ext_resource type="Script" uid="uid://blh5sqn11adtl" path="res://scripts/worlds/phase_1.gd" id="1_xhgtv"]
@@ -9,19 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cbnd8a3jw0e6p" path="res://scenes/enemies/boss_phase_1.tscn" id="7_g6jn6"]
 [ext_resource type="PackedScene" uid="uid://b4ul37cifj5u6" path="res://scenes/misc/GUI.tscn" id="7_xhgtv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v60q7"]
-size = Vector2(20, 1090)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbude"]
-size = Vector2(10, 1117)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dclbv"]
-size = Vector2(1943, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhgtv"]
-size = Vector2(1937, 20)
-
-[node name="Phase1" type="StaticBody2D"]
+[node name="Phase1" type="Node2D"]
 script = ExtResource("1_xhgtv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -33,38 +21,22 @@ region_enabled = true
 region_rect = Rect2(1000, 1000, 2000, 2000)
 
 [node name="Templar" parent="." instance=ExtResource("2_qbr34")]
-position = Vector2(518, 608)
+position = Vector2(465, 317)
 
 [node name="Knight" parent="." instance=ExtResource("3_stt04")]
-position = Vector2(1378, 607)
+position = Vector2(650, 315)
 
 [node name="Assassin" parent="." instance=ExtResource("4_npexo")]
-position = Vector2(966, 972)
+position = Vector2(556, 406)
 
 [node name="Sorcerer" parent="." instance=ExtResource("5_g6jn6")]
-position = Vector2(954, 262)
+position = Vector2(553, 234)
 
 [node name="BossPhase1" parent="." instance=ExtResource("7_g6jn6")]
-position = Vector2(956, 581)
+position = Vector2(774, 175)
 
 [node name="GUI" parent="." instance=ExtResource("7_xhgtv")]
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 312.0
 offset_bottom = 75.0
-
-[node name="Wall1" type="CollisionShape2D" parent="."]
-position = Vector2(0, 535)
-shape = SubResource("RectangleShape2D_v60q7")
-
-[node name="Wall2" type="CollisionShape2D" parent="."]
-position = Vector2(1926, 548)
-shape = SubResource("RectangleShape2D_dbude")
-
-[node name="Wall3" type="CollisionShape2D" parent="."]
-position = Vector2(962, -9)
-shape = SubResource("RectangleShape2D_dclbv")
-
-[node name="Wall4" type="CollisionShape2D" parent="."]
-position = Vector2(965, 1090)
-shape = SubResource("RectangleShape2D_xhgtv")

@@ -5,7 +5,11 @@ var current_time
 var previous_time = 0
 var current_direction = 1
 
+signal PlayerHit(playerClass: String, value : int)
+
+var playerClass: String = ""
 var speed: float
+var hp: int
 var controlled_by: String
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer

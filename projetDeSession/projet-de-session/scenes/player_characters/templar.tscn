@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc3va"]
 size = Vector2(30, 7.375)
 
-[node name="Templar" type="Node2D"]
+[node name="Templar" type="Node2D" groups=["players"]]
 script = ExtResource("1_nc3va")
 
 [node name="GenericPlayer" parent="." instance=ExtResource("2_nc3va")]

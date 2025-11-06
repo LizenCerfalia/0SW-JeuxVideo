@@ -3,7 +3,8 @@ extends Node2D
 @onready var player: GenericPlayer = $GenericPlayer
 
 func _ready() -> void:
-	player.playerClass = "knight"
+	player.playerClass = "Knight"
+	player.highlight_type = "HighlightKnight"
 	player.speed = 300.0
 	player.hp = 200
 	player.controlled_by = "P2"

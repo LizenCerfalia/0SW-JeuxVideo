@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://x8la1rpp8jd5"]
+[gd_scene load_steps=17 format=3 uid="uid://x8la1rpp8jd5"]
 
 [ext_resource type="Texture2D" uid="uid://crrv80xiau6o3" path="res://assets/world_assets/ground.png" id="1_7tglt"]
 [ext_resource type="Script" uid="uid://blh5sqn11adtl" path="res://scripts/worlds/phase_1.gd" id="1_xhgtv"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://g1qg1yei3o5w" path="res://scenes/player_characters/sorcerer.tscn" id="5_g6jn6"]
 [ext_resource type="PackedScene" uid="uid://cbnd8a3jw0e6p" path="res://scenes/enemies/boss_phase_1.tscn" id="7_g6jn6"]
 [ext_resource type="PackedScene" uid="uid://b4ul37cifj5u6" path="res://scenes/misc/GUI.tscn" id="7_xhgtv"]
+[ext_resource type="PackedScene" uid="uid://3aa0r8iqt5wq" path="res://scenes/enemies/heavy_car.tscn" id="9_v60q7"]
+[ext_resource type="PackedScene" uid="uid://bh3fxwa1n7arc" path="res://scenes/enemies/normal_car.tscn" id="10_83txb"]
+[ext_resource type="PackedScene" uid="uid://bqyiimbe0jeb7" path="res://scenes/enemies/quick_car.tscn" id="11_0erg5"]
+[ext_resource type="PackedScene" uid="uid://cxmgpn1plmknb" path="res://scenes/enemies/suicide_car.tscn" id="12_a3who"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v60q7"]
 size = Vector2(20, 1090)
@@ -22,9 +26,11 @@ size = Vector2(1943, 20)
 size = Vector2(1937, 20)
 
 [node name="Phase1" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_xhgtv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 texture_repeat = 2
 position = Vector2(930, 462)
 scale = Vector2(1.266, 1.095)
@@ -33,21 +39,23 @@ region_enabled = true
 region_rect = Rect2(1000, 1000, 2000, 2000)
 
 [node name="Templar" parent="." instance=ExtResource("2_qbr34")]
-position = Vector2(518, 608)
+y_sort_enabled = true
+position = Vector2(-563, 66)
 
 [node name="Knight" parent="." instance=ExtResource("3_stt04")]
-position = Vector2(1378, 607)
+y_sort_enabled = true
+position = Vector2(565, 53)
 
 [node name="Assassin" parent="." instance=ExtResource("4_npexo")]
-position = Vector2(966, 972)
+y_sort_enabled = true
+position = Vector2(7, 361)
 
 [node name="Sorcerer" parent="." instance=ExtResource("5_g6jn6")]
-position = Vector2(954, 262)
-
-[node name="BossPhase1" parent="." instance=ExtResource("7_g6jn6")]
-position = Vector2(956, 581)
+y_sort_enabled = true
+position = Vector2(-1, -211)
 
 [node name="GUI" parent="." instance=ExtResource("7_xhgtv")]
+z_index = 1
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 312.0
@@ -68,3 +76,18 @@ shape = SubResource("RectangleShape2D_dclbv")
 [node name="Wall4" type="CollisionShape2D" parent="."]
 position = Vector2(965, 1090)
 shape = SubResource("RectangleShape2D_xhgtv")
+
+[node name="BossPhase1" parent="." instance=ExtResource("7_g6jn6")]
+position = Vector2(956, 581)
+
+[node name="HeavyCar" parent="." instance=ExtResource("9_v60q7")]
+position = Vector2(386, 298)
+
+[node name="NormalCar" parent="." instance=ExtResource("10_83txb")]
+position = Vector2(1363, 269)
+
+[node name="QuickCar" parent="." instance=ExtResource("11_0erg5")]
+position = Vector2(388, 830)
+
+[node name="SuicideCar" parent="." instance=ExtResource("12_a3who")]
+position = Vector2(1371, 846)

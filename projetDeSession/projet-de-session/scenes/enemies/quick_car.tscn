@@ -1,100 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqyiimbe0jeb7"]
+[gd_scene load_steps=4 format=3 uid="uid://bqyiimbe0jeb7"]
 
-[ext_resource type="Texture2D" uid="uid://ccbplocimn8hg" path="res://assets/enemy_assets/yellow_car_sprite.png" id="1_ewpbh"]
+[ext_resource type="PackedScene" uid="uid://d1i5gvmai1hju" path="res://scenes/enemies/generic_enemy.tscn" id="1_ewpbh"]
+[ext_resource type="Script" uid="uid://cwidui4lxfcys" path="res://scripts/enemies/quick_car.gd" id="1_kyh2m"]
+[ext_resource type="Texture2D" uid="uid://ccbplocimn8hg" path="res://assets/enemy_assets/yellow_car_sprite.png" id="2_6lns3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_48idc"]
-size = Vector2(21, 5.5)
+[node name="QuickCar" type="Node2D" groups=["enemies"]]
+script = ExtResource("1_kyh2m")
 
-[sub_resource type="Animation" id="Animation_nq7qq"]
-resource_name = "Drive_Side"
-length = 0.3
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
+[node name="GenericEnemy" parent="." instance=ExtResource("1_ewpbh")]
 
-[sub_resource type="Animation" id="Animation_3cqv3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[node name="Sprite2D" parent="GenericEnemy" index="0"]
+texture = ExtResource("2_6lns3")
 
-[sub_resource type="Animation" id="Animation_kmf6y"]
-resource_name = "Drive_Up"
-length = 0.3
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_ull0r"]
-resource_name = "Drive_Down"
-length = 0.3
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [4, 5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3cqv3"]
-_data = {
-&"Drive_Down": SubResource("Animation_ull0r"),
-&"Drive_Side": SubResource("Animation_nq7qq"),
-&"Drive_Up": SubResource("Animation_kmf6y"),
-&"RESET": SubResource("Animation_3cqv3")
-}
-
-[node name="QuickCar" type="CharacterBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ewpbh")
-hframes = 4
-vframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8.25)
-shape = SubResource("RectangleShape2D_48idc")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_3cqv3")
-}
-speed_scale = 1.25
+[editable path="GenericEnemy"]

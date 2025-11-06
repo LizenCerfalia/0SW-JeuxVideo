@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwqbjwi187fpk"]
+[gd_scene load_steps=6 format=3 uid="uid://dwqbjwi187fpk"]
 
 [ext_resource type="Script" uid="uid://647dlp6bshqt" path="res://scripts/player_characters/assassin.gd" id="1_624ax"]
 [ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="1_vqc6k"]
 [ext_resource type="Texture2D" uid="uid://ccssg64e6pdap" path="res://assets/player_assets/assassin_sprite.png" id="2_nnqu8"]
+[ext_resource type="Texture2D" uid="uid://bihp80n0mlvjd" path="res://assets/misc/assassin_highlight.png" id="3_v3s8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnqu8"]
 size = Vector2(30, 8)
@@ -11,13 +12,13 @@ size = Vector2(30, 8)
 script = ExtResource("1_624ax")
 
 [node name="GenericPlayer" parent="." instance=ExtResource("1_vqc6k")]
+highlight_sprite = ExtResource("3_v3s8p")
 
 [node name="Sprite2D" parent="GenericPlayer" index="0"]
 scale = Vector2(2, 2)
 texture = ExtResource("2_nnqu8")
 
 [node name="CollisionShape2D" parent="GenericPlayer" index="1"]
-position = Vector2(3, 24)
 shape = SubResource("RectangleShape2D_nnqu8")
 
 [editable path="GenericPlayer"]

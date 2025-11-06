@@ -1,0 +1,190 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1i5gvmai1hju"]
+
+[ext_resource type="Texture2D" uid="uid://bihp80n0mlvjd" path="res://assets/misc/assassin_highlight.png" id="1_ll36u"]
+[ext_resource type="Texture2D" uid="uid://77kme6qd60kl" path="res://assets/misc/knight_highlight.png" id="2_84i5r"]
+[ext_resource type="Texture2D" uid="uid://57ujq3plus2n" path="res://assets/misc/sorcerer_highlight.png" id="3_d2p3p"]
+[ext_resource type="Texture2D" uid="uid://3qtd746vsxx1" path="res://assets/misc/templar_highlight.png" id="4_w6g1y"]
+
+[sub_resource type="GDScript" id="GDScript_84i5r"]
+script/source = "extends CharacterBody2D
+
+func is_enemy() -> bool:
+	return true
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84i5r"]
+size = Vector2(22.000004, 4.9999995)
+
+[sub_resource type="Animation" id="Animation_ll36u"]
+resource_name = "Drive_Right"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_84i5r"]
+resource_name = "Drive_Left"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_d2p3p"]
+resource_name = "Drive_Up"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_w6g1y"]
+resource_name = "Drive_Down"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_u12x1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2wds"]
+_data = {
+&"Drive_Down": SubResource("Animation_w6g1y"),
+&"Drive_Left": SubResource("Animation_84i5r"),
+&"Drive_Right": SubResource("Animation_ll36u"),
+&"Drive_Up": SubResource("Animation_d2p3p"),
+&"RESET": SubResource("Animation_u12x1")
+}
+
+[node name="GenericEnemy" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+script = SubResource("GDScript_84i5r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.059905e-07, 8.499999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_84i5r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s2wds")
+}
+
+[node name="HighlightAssassin" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 6.599999)
+scale = Vector2(0.99999994, 0.5874999)
+texture = ExtResource("1_ll36u")
+
+[node name="HighlightKnight" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 6.599999)
+scale = Vector2(0.99999994, 0.5874999)
+texture = ExtResource("2_84i5r")
+
+[node name="HighlightSorcerer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 6.599999)
+scale = Vector2(0.99999994, 0.5874999)
+texture = ExtResource("3_d2p3p")
+
+[node name="HighlightTemplar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 6.599999)
+scale = Vector2(0.9999998, 0.58749986)
+texture = ExtResource("4_w6g1y")

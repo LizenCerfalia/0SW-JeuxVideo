@@ -297,7 +297,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(1920, 1677)
 
 [node name="GenericPlayer" type="CharacterBody2D"]
-position = Vector2(960, 540)
 script = ExtResource("1_f0cto")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -325,7 +324,6 @@ parameters/Walk/blend_position = Vector2(0, 0)
 [node name="TargetZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetZone"]
-position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_f0cto")
 
 [connection signal="body_entered" from="TargetZone" to="." method="_on_target_zone_body_entered"]

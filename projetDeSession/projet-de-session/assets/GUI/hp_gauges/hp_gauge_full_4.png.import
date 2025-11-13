@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq068cuwy3aq6"
-path="res://.godot/imported/hp_gauge_assassin.png-df836e328e60986a76ac2dbbb2f633ca.ctex"
+uid="uid://06lbmjyj24wy"
+path="res://.godot/imported/hp_gauge_full_4.png-88baaad550a55f5ebd4ea0c4063186e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/hp_gauge_assassin.png"
-dest_files=["res://.godot/imported/hp_gauge_assassin.png-df836e328e60986a76ac2dbbb2f633ca.ctex"]
+source_file="res://assets/GUI/hp_gauges/hp_gauge_full_4.png"
+dest_files=["res://.godot/imported/hp_gauge_full_4.png-88baaad550a55f5ebd4ea0c4063186e9.ctex"]
 
 [params]
 

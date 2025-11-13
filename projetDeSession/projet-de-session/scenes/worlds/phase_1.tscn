@@ -40,26 +40,28 @@ region_rect = Rect2(1000, 1000, 2000, 2000)
 
 [node name="Templar" parent="." instance=ExtResource("2_qbr34")]
 y_sort_enabled = true
-position = Vector2(-563, 66)
+position = Vector2(401, 585)
 
 [node name="Knight" parent="." instance=ExtResource("3_stt04")]
 y_sort_enabled = true
-position = Vector2(565, 53)
+position = Vector2(947, 296)
 
 [node name="Assassin" parent="." instance=ExtResource("4_npexo")]
 y_sort_enabled = true
-position = Vector2(7, 361)
+position = Vector2(983, 932)
 
 [node name="Sorcerer" parent="." instance=ExtResource("5_g6jn6")]
 y_sort_enabled = true
-position = Vector2(-1, -211)
+position = Vector2(1554, 565)
 
 [node name="GUI" parent="." instance=ExtResource("7_xhgtv")]
-z_index = 1
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 312.0
-offset_bottom = 75.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 310.0
+offset_bottom = 74.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Wall1" type="CollisionShape2D" parent="."]
 position = Vector2(0, 535)

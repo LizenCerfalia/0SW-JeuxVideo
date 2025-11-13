@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdon5m50lpt7j"
-path="res://.godot/imported/hp_gauge_knight.png-68a5ac24e2ea2633f23653f82d36416e.ctex"
+uid="uid://cm76xy5187vpu"
+path="res://.godot/imported/ultimatum_ability.png-1efb078e0b6578e6bff093903bed865d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/hp_gauge_knight.png"
-dest_files=["res://.godot/imported/hp_gauge_knight.png-68a5ac24e2ea2633f23653f82d36416e.ctex"]
+source_file="res://assets/GUI/abilities/ultimatum_ability.png"
+dest_files=["res://.godot/imported/ultimatum_ability.png-1efb078e0b6578e6bff093903bed865d.ctex"]
 
 [params]
 

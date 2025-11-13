@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd4hqmherjbgp"
-path="res://.godot/imported/hp_gauge_templar.png-3ebe254134c4f1760ff42e3cf0172d63.ctex"
+uid="uid://byofcgj5i2yqh"
+path="res://.godot/imported/circle_strike_ability.png-e129c2cc3619c9c0140f7a32d1d6142a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/hp_gauge_templar.png"
-dest_files=["res://.godot/imported/hp_gauge_templar.png-3ebe254134c4f1760ff42e3cf0172d63.ctex"]
+source_file="res://assets/GUI/abilities/circle_strike_ability.png"
+dest_files=["res://.godot/imported/circle_strike_ability.png-e129c2cc3619c9c0140f7a32d1d6142a.ctex"]
 
 [params]
 

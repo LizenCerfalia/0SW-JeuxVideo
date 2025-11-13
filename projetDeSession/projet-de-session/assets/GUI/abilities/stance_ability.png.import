@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqo3eiedhadwi"
-path="res://.godot/imported/hp_gauge_full_3.png-2333939a7e217cb9ad21d383a88d3fb8.ctex"
+uid="uid://cfenobargfwki"
+path="res://.godot/imported/stance_ability.png-3fcd7841afa6d8cbd496c7290535ed42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/hp_gauge_full_3.png"
-dest_files=["res://.godot/imported/hp_gauge_full_3.png-2333939a7e217cb9ad21d383a88d3fb8.ctex"]
+source_file="res://assets/GUI/abilities/stance_ability.png"
+dest_files=["res://.godot/imported/stance_ability.png-3fcd7841afa6d8cbd496c7290535ed42.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcphycv3aet06"
-path="res://.godot/imported/hp_gauge_sorcerer.png-9f098cb5c9a18a001f1db82e561d8f5e.ctex"
+uid="uid://dq068cuwy3aq6"
+path="res://.godot/imported/hp_gauge_assassin.png-4da702d1aff640f877d3a2b9c4950844.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/hp_gauge_sorcerer.png"
-dest_files=["res://.godot/imported/hp_gauge_sorcerer.png-9f098cb5c9a18a001f1db82e561d8f5e.ctex"]
+source_file="res://assets/GUI/hp_gauges/hp_gauge_assassin.png"
+dest_files=["res://.godot/imported/hp_gauge_assassin.png-4da702d1aff640f877d3a2b9c4950844.ctex"]
 
 [params]
 

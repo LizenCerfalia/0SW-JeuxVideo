@@ -7,13 +7,59 @@ extends Node2D
 @onready var knightBar = $GUI/KnightBar
 @onready var sorcererBar = $GUI/SorcererBar
 
-@onready var templar = $Templar
-@onready var assassin = $Assassin
-@onready var knight = $Knight
-@onready var sorcerer = $Sorcerer
+@onready var templarHotbar = $GUI/TemplarAbilities
+@onready var assassinHotbar = $GUI/TemplarAbilities
+@onready var knightHotbar = $GUI/TemplarAbilities
+@onready var sorcererHotbar = $GUI/TemplarAbilities
+
+@onready var templarGCD = $Templar/GCD
+@onready var assassinGCD = $Assassin/GCD
+@onready var knightGCD = $Knight/GCD
+@onready var sorcererGCD = $Sorcerer/GCD
 
 func _ready() -> void:
 	gui.size = get_viewport_rect().size / 1.5
+	
+func _process(_delta: float) -> void:
+	if templarGCD.time_left > 0:
+		var ability
+		var nodeName
+		for i in range(1,5):
+			
+			nodeName = "HBoxContainer/Ability" + str(i) + "/ProgressBar"
+			ability = templarHotbar.get_node(nodeName)
+			ability.max_value = templarGCD.wait_time
+			ability.value = templarGCD.time_left
+			
+	if assassinGCD.time_left > 0:
+		var ability
+		var nodeName
+		for i in range(1,5):
+			
+			nodeName = "HBoxContainer/Ability" + str(i) + "/ProgressBar"
+			ability = assassinHotbar.get_node(nodeName)
+			ability.max_value = assassinGCD.wait_time
+			ability.value = assassinGCD.time_left
+			
+	if knightGCD.time_left > 0:
+		var ability
+		var nodeName
+		for i in range(1,5):
+			
+			nodeName = "HBoxContainer/Ability" + str(i) + "/ProgressBar"
+			ability = knightHotbar.get_node(nodeName)
+			ability.max_value = knightGCD.wait_time
+			ability.value = knightGCD.time_left
+			
+	if sorcererGCD.time_left > 0:
+		var ability
+		var nodeName
+		for i in range(1,5):
+			
+			nodeName = "HBoxContainer/Ability" + str(i) + "/ProgressBar"
+			ability = sorcererBar.get_node(nodeName)
+			ability.max_value = sorcererGCD.wait_time
+			ability.value = sorcererGCD.time_left
 	
 func hp_update(playerClass : String, value : int):
 	match playerClass:

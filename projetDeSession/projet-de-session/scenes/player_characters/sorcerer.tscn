@@ -20,4 +20,7 @@ texture = ExtResource("2_2r4nx")
 position = Vector2(3, 24.25)
 shape = SubResource("RectangleShape2D_2r4nx")
 
+[node name="GCD" type="Timer" parent="."]
+one_shot = true
+
 [editable path="GenericPlayer"]

@@ -1,20 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4ul37cifj5u6"]
+[gd_scene load_steps=20 format=3 uid="uid://b4ul37cifj5u6"]
 
-[ext_resource type="Texture2D" uid="uid://dd4hqmherjbgp" path="res://assets/GUI/hp_gauge_templar.png" id="1_3rdxh"]
-[ext_resource type="Texture2D" uid="uid://qelx1lmquvb2" path="res://assets/GUI/hp_gauge_full.png" id="2_bjggx"]
-[ext_resource type="Texture2D" uid="uid://dq068cuwy3aq6" path="res://assets/GUI/hp_gauge_assassin.png" id="3_bi4q8"]
-[ext_resource type="Texture2D" uid="uid://uj5ukdci1fw1" path="res://assets/GUI/hp_gauge_full_2.png" id="4_sgkjq"]
-[ext_resource type="Texture2D" uid="uid://cdon5m50lpt7j" path="res://assets/GUI/hp_gauge_knight.png" id="5_yrf3e"]
-[ext_resource type="Texture2D" uid="uid://06lbmjyj24wy" path="res://assets/GUI/hp_gauge_full_4.png" id="6_bqdva"]
-[ext_resource type="Texture2D" uid="uid://dcphycv3aet06" path="res://assets/GUI/hp_gauge_sorcerer.png" id="7_dysnk"]
-[ext_resource type="Texture2D" uid="uid://dqo3eiedhadwi" path="res://assets/GUI/hp_gauge_full_3.png" id="8_wajqr"]
+[ext_resource type="Texture2D" uid="uid://dd4hqmherjbgp" path="res://assets/GUI/hp_gauges/hp_gauge_templar.png" id="1_3rdxh"]
+[ext_resource type="Texture2D" uid="uid://qelx1lmquvb2" path="res://assets/GUI/hp_gauges/hp_gauge_full.png" id="2_bjggx"]
+[ext_resource type="Texture2D" uid="uid://dq068cuwy3aq6" path="res://assets/GUI/hp_gauges/hp_gauge_assassin.png" id="3_bi4q8"]
+[ext_resource type="Texture2D" uid="uid://uj5ukdci1fw1" path="res://assets/GUI/hp_gauges/hp_gauge_full_2.png" id="4_sgkjq"]
+[ext_resource type="Texture2D" uid="uid://cdon5m50lpt7j" path="res://assets/GUI/hp_gauges/hp_gauge_knight.png" id="5_yrf3e"]
+[ext_resource type="Texture2D" uid="uid://06lbmjyj24wy" path="res://assets/GUI/hp_gauges/hp_gauge_full_4.png" id="6_bqdva"]
+[ext_resource type="Texture2D" uid="uid://dcphycv3aet06" path="res://assets/GUI/hp_gauges/hp_gauge_sorcerer.png" id="7_dysnk"]
+[ext_resource type="Texture2D" uid="uid://dqo3eiedhadwi" path="res://assets/GUI/hp_gauges/hp_gauge_full_3.png" id="8_wajqr"]
+[ext_resource type="PackedScene" uid="uid://052mvggjt1py" path="res://scenes/misc/ability.tscn" id="9_bjggx"]
+[ext_resource type="Texture2D" uid="uid://bhnp82sfwe4rn" path="res://assets/GUI/abilities/fire_ball_ability.png" id="10_bqdva"]
+[ext_resource type="Texture2D" uid="uid://c0g14kylsiavg" path="res://assets/GUI/abilities/teleport_ability.png" id="11_dysnk"]
+[ext_resource type="Texture2D" uid="uid://csqr7fa06lpdl" path="res://assets/GUI/abilities/healing_ability.png" id="12_wajqr"]
+[ext_resource type="Texture2D" uid="uid://dfra1qfngmbvn" path="res://assets/GUI/abilities/ressurection_ability.png" id="13_dqysg"]
+[ext_resource type="Texture2D" uid="uid://c7hkuhslbdo3f" path="res://assets/GUI/abilities/sword_strike_ability.png" id="14_dqysg"]
+[ext_resource type="Texture2D" uid="uid://byofcgj5i2yqh" path="res://assets/GUI/abilities/circle_strike_ability.png" id="15_v3ae1"]
+[ext_resource type="Texture2D" uid="uid://gp1lfe73tiro" path="res://assets/GUI/abilities/gapcloser_ability.png" id="16_601v4"]
+[ext_resource type="Texture2D" uid="uid://cm76xy5187vpu" path="res://assets/GUI/abilities/ultimatum_ability.png" id="17_601v4"]
+[ext_resource type="Texture2D" uid="uid://cfenobargfwki" path="res://assets/GUI/abilities/stance_ability.png" id="18_ralfp"]
+[ext_resource type="Texture2D" uid="uid://06d7rrwhp53h" path="res://assets/GUI/abilities/big_fire_ball_ability.png" id="19_ralfp"]
 
 [node name="GUI" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1610.0
-offset_bottom = -1006.0
+offset_right = -640.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
@@ -55,3 +66,166 @@ size_flags_vertical = 8
 value = 100.0
 texture_under = ExtResource("7_dysnk")
 texture_progress = ExtResource("8_wajqr")
+
+[node name="TemplarAbilities" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TemplarAbilities"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Ability1" parent="TemplarAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="TemplarAbilities/HBoxContainer/Ability1" index="0"]
+texture = ExtResource("10_bqdva")
+
+[node name="Ability2" parent="TemplarAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="TemplarAbilities/HBoxContainer/Ability2" index="0"]
+texture = ExtResource("11_dysnk")
+
+[node name="Ability3" parent="TemplarAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="TemplarAbilities/HBoxContainer/Ability3" index="0"]
+texture = ExtResource("12_wajqr")
+
+[node name="Ability4" parent="TemplarAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="TemplarAbilities/HBoxContainer/Ability4" index="0"]
+texture = ExtResource("13_dqysg")
+
+[node name="AssassinAbilities" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 120
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AssassinAbilities"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Ability1" parent="AssassinAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="AssassinAbilities/HBoxContainer/Ability1" index="0"]
+texture = ExtResource("14_dqysg")
+
+[node name="Ability2" parent="AssassinAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="AssassinAbilities/HBoxContainer/Ability2" index="0"]
+texture = ExtResource("15_v3ae1")
+
+[node name="Ability3" parent="AssassinAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="AssassinAbilities/HBoxContainer/Ability3" index="0"]
+texture = ExtResource("16_601v4")
+
+[node name="Ability4" parent="AssassinAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="AssassinAbilities/HBoxContainer/Ability4" index="0"]
+texture = ExtResource("11_dysnk")
+
+[node name="KnightAbilities" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="KnightAbilities"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Ability1" parent="KnightAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="KnightAbilities/HBoxContainer/Ability1" index="0"]
+texture = ExtResource("14_dqysg")
+
+[node name="Ability2" parent="KnightAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="KnightAbilities/HBoxContainer/Ability2" index="0"]
+texture = ExtResource("15_v3ae1")
+
+[node name="Ability3" parent="KnightAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="KnightAbilities/HBoxContainer/Ability3" index="0"]
+texture = ExtResource("17_601v4")
+
+[node name="Ability4" parent="KnightAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="KnightAbilities/HBoxContainer/Ability4" index="0"]
+texture = ExtResource("18_ralfp")
+
+[node name="SorcererAbilities" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SorcererAbilities"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Ability1" parent="SorcererAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="SorcererAbilities/HBoxContainer/Ability1" index="0"]
+texture = ExtResource("10_bqdva")
+
+[node name="Ability2" parent="SorcererAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="SorcererAbilities/HBoxContainer/Ability2" index="0"]
+texture = ExtResource("19_ralfp")
+
+[node name="Ability3" parent="SorcererAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="SorcererAbilities/HBoxContainer/Ability3" index="0"]
+texture = ExtResource("11_dysnk")
+
+[node name="Ability4" parent="SorcererAbilities/HBoxContainer" instance=ExtResource("9_bjggx")]
+layout_mode = 2
+
+[node name="Sprite2D" parent="SorcererAbilities/HBoxContainer/Ability4" index="0"]
+texture = ExtResource("12_wajqr")
+
+[editable path="TemplarAbilities/HBoxContainer/Ability1"]
+[editable path="TemplarAbilities/HBoxContainer/Ability2"]
+[editable path="TemplarAbilities/HBoxContainer/Ability3"]
+[editable path="TemplarAbilities/HBoxContainer/Ability4"]
+[editable path="AssassinAbilities/HBoxContainer/Ability1"]
+[editable path="AssassinAbilities/HBoxContainer/Ability2"]
+[editable path="AssassinAbilities/HBoxContainer/Ability3"]
+[editable path="AssassinAbilities/HBoxContainer/Ability4"]
+[editable path="KnightAbilities/HBoxContainer/Ability1"]
+[editable path="KnightAbilities/HBoxContainer/Ability2"]
+[editable path="KnightAbilities/HBoxContainer/Ability3"]
+[editable path="KnightAbilities/HBoxContainer/Ability4"]
+[editable path="SorcererAbilities/HBoxContainer/Ability1"]
+[editable path="SorcererAbilities/HBoxContainer/Ability2"]
+[editable path="SorcererAbilities/HBoxContainer/Ability3"]
+[editable path="SorcererAbilities/HBoxContainer/Ability4"]

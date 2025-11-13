@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player: GenericPlayer = $GenericPlayer
+@onready var GCD: Timer = $GCD
 
 func _ready() -> void:
 	player.playerClass = "Knight"
@@ -11,3 +12,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	player.get_movement_input()
+	if Input.is_action_just_pressed("P2_Ability_1"):
+		GCD.wait_time = 5
+		GCD.start()

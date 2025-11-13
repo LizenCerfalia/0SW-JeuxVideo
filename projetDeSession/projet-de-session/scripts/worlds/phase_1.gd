@@ -8,9 +8,9 @@ extends Node2D
 @onready var sorcererBar = $GUI/SorcererBar
 
 @onready var templarHotbar = $GUI/TemplarAbilities
-@onready var assassinHotbar = $GUI/TemplarAbilities
-@onready var knightHotbar = $GUI/TemplarAbilities
-@onready var sorcererHotbar = $GUI/TemplarAbilities
+@onready var assassinHotbar = $GUI/AssassinAbilities
+@onready var knightHotbar = $GUI/KnightAbilities
+@onready var sorcererHotbar = $GUI/SorcererAbilities
 
 @onready var templarGCD = $Templar/GCD
 @onready var assassinGCD = $Assassin/GCD

@@ -23,5 +23,6 @@ shape = SubResource("RectangleShape2D_3504c")
 parameters/Walk/blend_position = Vector2(-0.02870816, -0.94618833)
 
 [node name="GCD" type="Timer" parent="."]
+one_shot = true
 
 [editable path="GenericPlayer"]

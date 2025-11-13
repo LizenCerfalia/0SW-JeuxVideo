@@ -1,6 +1,9 @@
 class_name GenericPlayer
 extends CharacterBody2D
 
+func is_player() -> bool:
+	return true
+
 var current_time
 var previous_time = 0
 var current_direction = 1

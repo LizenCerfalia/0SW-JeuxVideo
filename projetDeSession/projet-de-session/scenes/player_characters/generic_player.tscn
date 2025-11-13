@@ -296,7 +296,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0cto"]
 size = Vector2(1920, 1677)
 
-[node name="GenericPlayer" type="CharacterBody2D"]
+[node name="GenericPlayer" type="CharacterBody2D" groups=["players"]]
 script = ExtResource("1_f0cto")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

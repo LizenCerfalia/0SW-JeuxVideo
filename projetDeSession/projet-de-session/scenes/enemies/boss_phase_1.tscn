@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbnd8a3jw0e6p"]
+[gd_scene load_steps=21 format=3 uid="uid://cbnd8a3jw0e6p"]
 
 [ext_resource type="Script" uid="uid://8fk4bxigpqy5" path="res://scripts/enemies/boss_phase_1.gd" id="1_bmiqv"]
 [ext_resource type="Texture2D" uid="uid://bihp80n0mlvjd" path="res://assets/misc/assassin_highlight.png" id="2_4og3d"]
@@ -142,6 +142,39 @@ _data = {
 &"RESET": SubResource("Animation_u12x1")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u12x1"]
+animation = &"Drive_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s2wds"]
+animation = &"Drive_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vaujb"]
+animation = &"Drive_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cxxhe"]
+animation = &"Drive_Up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_bmiqv"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_u12x1")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_s2wds")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_vaujb")
+blend_point_2/pos = Vector2(0, 1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_cxxhe")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bmiqv"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bmiqv"]
+states/Drive/node = SubResource("AnimationNodeBlendSpace2D_bmiqv")
+states/Drive/position = Vector2(439, 86)
+transitions = ["Start", "Drive", SubResource("AnimationNodeStateMachineTransition_bmiqv")]
+
 [node name="BossPhase1" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_bmiqv")
@@ -160,6 +193,11 @@ shape = SubResource("RectangleShape2D_xq2sl")
 libraries = {
 &"": SubResource("AnimationLibrary_s2wds")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_bmiqv")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Drive/blend_position = Vector2(-0.8867624, -0.036263824)
 
 [node name="HighlightAssassin" type="Sprite2D" parent="."]
 visible = false

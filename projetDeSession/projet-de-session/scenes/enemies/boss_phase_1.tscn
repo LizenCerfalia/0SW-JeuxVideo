@@ -222,3 +222,5 @@ visible = false
 position = Vector2(-1.5000029, 7)
 scale = Vector2(4.1354165, 3.6458335)
 texture = ExtResource("5_ov5dr")
+
+[node name="AutoAttackDelay" type="Timer" parent="."]

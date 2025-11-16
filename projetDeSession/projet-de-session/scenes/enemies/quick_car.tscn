@@ -12,4 +12,7 @@ script = ExtResource("1_kyh2m")
 [node name="Sprite2D" parent="GenericEnemy" index="0"]
 texture = ExtResource("2_6lns3")
 
+[node name="AutoAttackDelay" type="Timer" parent="."]
+wait_time = 0.5
+
 [editable path="GenericEnemy"]

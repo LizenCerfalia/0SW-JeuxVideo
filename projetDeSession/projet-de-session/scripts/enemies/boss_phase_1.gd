@@ -5,7 +5,9 @@ extends CharacterBody2D
 var playerEnmity = [randf(), randf(), randf(), randf()]
 var currentTarget
 
+var hp : int = 2500
 const SPEED = 100.0
+var damage = 100
 
 
 func is_enemy() -> bool:
@@ -14,7 +16,6 @@ func is_enemy() -> bool:
 func _physics_process(_delta: float) -> void:
 	get_target()
 	var direction = (currentTarget.global_position - global_position).normalized()
-	print(direction)
 	velocity = direction * SPEED
 	animationTree.set("parameters/Drive/blend_position", direction)
 	

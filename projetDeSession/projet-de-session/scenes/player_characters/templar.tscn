@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://r4igy24pkqhg"]
+[gd_scene load_steps=6 format=3 uid="uid://r4igy24pkqhg"]
 
 [ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/player_assets/templar_sprite.png" id="1_162nj"]
 [ext_resource type="Script" uid="uid://cntp4tnv6ifci" path="res://scripts/player_characters/templar.gd" id="1_nc3va"]
+[ext_resource type="PackedScene" uid="uid://bgt2axar73q50" path="res://scenes/player_attacks/fireball.tscn" id="2_7px53"]
 [ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="2_nc3va"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc3va"]
@@ -9,6 +10,7 @@ size = Vector2(30, 7.375)
 
 [node name="Templar" type="Node2D"]
 script = ExtResource("1_nc3va")
+ability_1_scene = ExtResource("2_7px53")
 
 [node name="GenericPlayer" parent="." instance=ExtResource("2_nc3va")]
 
@@ -19,6 +21,8 @@ texture = ExtResource("1_162nj")
 [node name="CollisionShape2D" parent="GenericPlayer" index="1"]
 position = Vector2(3, 24.6875)
 shape = SubResource("RectangleShape2D_nc3va")
+
+[node name="FireballDirection" type="Marker2D" parent="GenericPlayer"]
 
 [node name="GCD" type="Timer" parent="."]
 one_shot = true

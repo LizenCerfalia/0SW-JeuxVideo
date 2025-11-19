@@ -16,7 +16,18 @@ func _physics_process(_delta: float) -> void:
 	if GCD.time_left > 0:
 		return
 		
-		
 	if Input.is_action_just_pressed("P2_Ability_1"):
 		GCD.wait_time = 5
 		GCD.start()
+		
+func ability_1():
+	pass
+	
+func ability_2():
+	pass
+
+func ability_3():
+	pass
+
+func ability_4():
+	pass

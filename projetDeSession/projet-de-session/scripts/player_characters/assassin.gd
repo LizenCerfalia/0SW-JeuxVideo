@@ -11,3 +11,15 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	player.get_movement_input()
+
+func ability_1():
+	pass
+	
+func ability_2():
+	pass
+
+func ability_3():
+	pass
+
+func ability_4():
+	pass

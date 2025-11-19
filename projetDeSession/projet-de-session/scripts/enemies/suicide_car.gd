@@ -7,17 +7,13 @@ var targetsInRange = []
 
 func _ready() -> void:
 	enemy.hp = 50
-	enemy.speed = 70.0
+	enemy.speed = 300.0
 	enemy.damage = 200
-	
-func _physics_process(_delta: float) -> void:
-	if (enemy.hp <= 0 && explosionDelay.time_left > 0):
-		start_explosion()
 	
 func start_explosion():
 	explosionDelay.start()
 	explosionSprite.visible = true
-	enemy.speed = 0
+	enemy.speed = 10
 
 func _on_explosion_delay_timeout() -> void:
 	for target in targetsInRange:
@@ -33,6 +29,6 @@ func _on_explosion_body_exited(body: Node2D) -> void:
 		targetsInRange.erase(body)
 
 func _on_automatic_explosion_range_body_entered(body: Node2D) -> void:
-	if (body.has_method("is_player") && body.is_player):
+	if (body.has_method("is_player")):
 		start_explosion()
 	print("allo")

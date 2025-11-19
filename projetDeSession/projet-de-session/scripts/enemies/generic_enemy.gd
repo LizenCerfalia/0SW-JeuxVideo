@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var players = get_tree().get_nodes_in_group("players")
 @onready var animationTree : AnimationTree = $AnimationTree
-var playerEnmity = [10, 0, 0, 0]
+var playerEnmity = [0, 0, 10, 0] # templar, assassin, knight, sorcerer, selon l'order de generation dans l'arbre
 var currentTarget
 
 var hp : int
@@ -28,3 +28,17 @@ func get_target() -> void:
 		if playerEnmity[i] > playerEnmity[i - 1]:
 			currentTarget = player
 		i = i + 1
+		
+func handle_emnity(caster: String, emnity: int) -> void:
+	match caster:
+		"Templar":
+			playerEnmity[0] += emnity
+		"Assassin":
+			playerEnmity[1] += emnity
+		"Knight":
+			var knight = players[2].get_parent()
+			if (knight.has_method("stance_on") && knight.stance_on):
+				emnity *= 2
+			playerEnmity[2] += emnity
+		"Sorcerer":
+			playerEnmity[3] += emnity

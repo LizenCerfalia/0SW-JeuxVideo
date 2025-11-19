@@ -12,6 +12,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	player.get_movement_input()
+	if GCD.time_left > 0:
+		return
+	
 	if Input.is_action_just_pressed("P1_Ability_1"):
 		GCD.wait_time = 5
 		GCD.start()
+		

@@ -16,6 +16,9 @@ script = ExtResource("1_i8a44")
 
 [node name="GenericEnemy" parent="." instance=ExtResource("1_eqeyg")]
 
+[node name="Sprite2D" parent="GenericEnemy" index="0"]
+texture = ExtResource("2_osn11")
+
 [node name="Explosion" type="Area2D" parent="GenericEnemy"]
 scale = Vector2(0.19999999, 0.19999999)
 
@@ -38,9 +41,6 @@ scale = Vector2(0.19999999, 0.19999999)
 position = Vector2(0, 42)
 shape = SubResource("RectangleShape2D_8x4tk")
 debug_color = Color(0.9993159, 0, 0.116996415, 0.42)
-
-[node name="Sprite2D" parent="GenericEnemy" index="2"]
-texture = ExtResource("2_osn11")
 
 [node name="ExplosionDelay" type="Timer" parent="."]
 one_shot = true

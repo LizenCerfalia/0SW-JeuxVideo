@@ -28,3 +28,17 @@ func get_target() -> void:
 		if playerEnmity[i] > playerEnmity[i - 1]:
 			currentTarget = player
 		i = i + 1
+
+func handle_emnity(caster: String, emnity: int) -> void:
+	match caster:
+		"Templar":
+			playerEnmity[0] += emnity
+		"Assassin":
+			playerEnmity[1] += emnity
+		"Knight":
+			var knight = players[2].get_parent()
+			if (knight.has_method("stance_on") && knight.stance_on):
+				emnity *= 2
+			playerEnmity[2] += emnity
+		"Sorcerer":
+			playerEnmity[3] += emnity

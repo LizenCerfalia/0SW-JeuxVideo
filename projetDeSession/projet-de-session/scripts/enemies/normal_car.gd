@@ -4,5 +4,5 @@ extends Node2D
 
 func _ready() -> void:
 	enemy.hp = 300
-	enemy.speed = 40.0
+	enemy.speed = 100.0
 	enemy.damage = 30

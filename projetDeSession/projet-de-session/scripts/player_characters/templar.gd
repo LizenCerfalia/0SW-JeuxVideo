@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player: GenericPlayer = $GenericPlayer
 @onready var GCD: Timer = $GCD
+@onready var dashDuration: Timer = $DashDuration
 @onready var fireballDirection: = $GenericPlayer/FireballDirection
 @export var ability_1_scene : PackedScene
 @export var ability_2_scene : PackedScene
@@ -32,6 +33,14 @@ func _physics_process(_delta: float) -> void:
 		GCD.wait_time = 5
 		GCD.start()
 		ability_2()
+	if Input.is_action_just_pressed("P1_Ability_3"):
+		GCD.wait_time = 1
+		GCD.start()
+		ability_3()
+	if Input.is_action_just_pressed("P1_Ability_4"):
+		GCD.wait_time = 3
+		GCD.start()
+		ability_4()
 
 func ability_1():
 	if (player.current_target == null):
@@ -54,7 +63,11 @@ func ability_2():
 	fireball.scale = Vector2(10.0, 10.0)
 
 func ability_3():
-	pass
+	player.speed = 700
+	dashDuration.start()
 
 func ability_4():
-	pass
+	player.global_position += player.velocity + player.velocity / 3
+
+func _on_dash_duration_timeout() -> void:
+	player.speed = 250

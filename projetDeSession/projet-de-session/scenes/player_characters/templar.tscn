@@ -29,4 +29,9 @@ shape = SubResource("RectangleShape2D_nc3va")
 [node name="GCD" type="Timer" parent="."]
 one_shot = true
 
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+
 [editable path="GenericPlayer"]

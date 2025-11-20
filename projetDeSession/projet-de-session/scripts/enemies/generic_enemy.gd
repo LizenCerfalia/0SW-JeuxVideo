@@ -14,6 +14,9 @@ func is_enemy() -> bool:
 	return true
 
 func _physics_process(_delta: float) -> void:
+	if (hp < 0):
+		get_parent().queue_free()
+	
 	get_target()
 	var direction = (currentTarget.global_position - global_position).normalized()
 	velocity = direction * speed
@@ -24,9 +27,11 @@ func _physics_process(_delta: float) -> void:
 func get_target() -> void:
 	currentTarget = players[0]
 	var i = 0
+	var highestEmnityTarget = playerEnmity[0]
 	for player in players:
-		if playerEnmity[i] > playerEnmity[i - 1]:
+		if playerEnmity[i] > highestEmnityTarget:
 			currentTarget = player
+			highestEmnityTarget = playerEnmity[i]
 		i = i + 1
 		
 func handle_emnity(caster: String, emnity: int) -> void:
@@ -42,3 +47,14 @@ func handle_emnity(caster: String, emnity: int) -> void:
 			playerEnmity[2] += emnity
 		"Sorcerer":
 			playerEnmity[3] += emnity
+			
+func lose_emnity(caster: String) -> void:
+	match caster:
+		"Templar":
+			playerEnmity[0] = 0
+		"Assassin":
+			playerEnmity[1] = 0
+		"Knight":
+			playerEnmity[2] = 0
+		"Sorcerer":
+			playerEnmity[3] = 0

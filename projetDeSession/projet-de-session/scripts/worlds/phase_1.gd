@@ -2,11 +2,6 @@ extends Node2D
 
 @onready var gui = $GUI
 
-@onready var templarBar = $GUI/TemplarBar
-@onready var assassinBar = $GUI/AssassinBar
-@onready var knightBar = $GUI/KnightBar
-@onready var sorcererBar = $GUI/SorcererBar
-
 @onready var templarHotbar = $GUI/TemplarAbilities
 @onready var assassinHotbar = $GUI/AssassinAbilities
 @onready var knightHotbar = $GUI/KnightAbilities
@@ -57,19 +52,6 @@ func _process(_delta: float) -> void:
 		for i in range(1,5):
 			
 			nodeName = "HBoxContainer/Ability" + str(i) + "/ProgressBar"
-			ability = sorcererBar.get_node(nodeName)
+			ability = sorcererHotbar.get_node(nodeName)
 			ability.max_value = sorcererGCD.wait_time
 			ability.value = sorcererGCD.time_left
-	
-func hp_update(playerClass : String, value : int):
-	match playerClass:
-		"templar":
-			templarBar.value = value
-		"assassin":
-			assassinBar.value = value
-		"knight":
-			knightBar.value = value
-		"sorcerer":
-			sorcererBar.value = value
-		_:
-			return

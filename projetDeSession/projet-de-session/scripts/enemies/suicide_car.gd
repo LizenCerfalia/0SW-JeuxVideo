@@ -17,15 +17,18 @@ func start_explosion():
 
 func _on_explosion_delay_timeout() -> void:
 	for target in targetsInRange:
-		target.hp -= enemy.damage
+		if (target.has_method("is_player") && !target.is_dead()):
+			target.handle_hurt(enemy.damage)
+		if (target.has_method("is_enemy")):
+			target.hp -= enemy.damage
 	self.queue_free()
 	
 func _on_explosion_body_entered(body: Node2D) -> void:
-	if (body. has_method("is_enemy") || body.has_method("is_player")):
+	if (body.has_method("is_enemy") || body.has_method("is_player")):
 		targetsInRange.append(body)
 		
 func _on_explosion_body_exited(body: Node2D) -> void:
-	if (body. has_method("is_enemy") || body.has_method("is_player")):
+	if (body.has_method("is_enemy") || body.has_method("is_player")):
 		targetsInRange.erase(body)
 
 func _on_automatic_explosion_range_body_entered(body: Node2D) -> void:

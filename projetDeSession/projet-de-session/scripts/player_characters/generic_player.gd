@@ -1,8 +1,13 @@
 class_name GenericPlayer
 extends CharacterBody2D
 
+var dead : bool = false	
+
 func is_player() -> bool:
 	return true
+	
+func is_dead() -> bool:
+	return dead
 
 var current_time
 var previous_time = 0
@@ -13,16 +18,16 @@ var potential_targets = []
 var current_target = null
 var current_target_index = -1
 
-signal PlayerHit(playerClass: String, value : int)
-
 var playerClass: String = ""
 var highlight_type: String = ""
 var speed: float
 var hp: int
+var max_hp: int
 var controlled_by: String
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var playback = animationTree.get("parameters/playback")
+@onready var GUI = get_node("/root/Phase1/GUI")
 
 func get_movement_input():
 	match controlled_by:
@@ -36,6 +41,7 @@ func get_movement_input():
 			pass
 	
 func player_controls():
+	
 	var dir
 	if (controlled_by == "P1"):
 		dir = Input.get_vector("P1_Left", "P1_Right","P1_Up","P1_Down").normalized()
@@ -99,7 +105,25 @@ func _on_target_zone_body_entered(body: Node2D) -> void:
 	if body.has_method("is_enemy") and body.is_enemy():
 		potential_targets.append(body)
 
-
 func _on_target_zone_body_exited(body: Node2D) -> void:
 	if body in potential_targets:
 		potential_targets.erase(body)
+		
+func handle_hurt(value: int):
+	hp -= value
+	if hp > max_hp:
+		hp = max_hp
+	if hp <= 0 && !is_dead():
+		dead = true
+		sprite.rotate(90)
+		for target in potential_targets:
+			target.lose_emnity(playerClass)
+		
+	GUI.hp_update(playerClass, hp)
+	
+func get_ressed():
+	if is_dead():
+		return
+	
+	sprite.rotate(-90)
+	dead = false

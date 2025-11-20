@@ -13,9 +13,13 @@ func _ready() -> void:
 	player.highlight_type = "HighlightTemplar"
 	player.speed = 250.0
 	player.hp = 100
+	player.max_hp = 200
 	player.controlled_by = "P1"
 
 func _physics_process(_delta: float) -> void:
+	if player.is_dead():
+		return
+	
 	player.get_movement_input()
 	if GCD.time_left > 0:
 		return
@@ -24,6 +28,10 @@ func _physics_process(_delta: float) -> void:
 		GCD.wait_time = 1
 		GCD.start()
 		ability_1()
+	if Input.is_action_just_pressed("P1_Ability_2"):
+		GCD.wait_time = 5
+		GCD.start()
+		ability_2()
 
 func ability_1():
 	if (player.current_target == null):
@@ -36,7 +44,14 @@ func ability_1():
 	fireball.scale = Vector2(2.0, 2.0)
 	
 func ability_2():
-	pass
+	if (player.current_target == null):
+		return
+	fireballDirection.look_at(player.current_target.global_position)
+	var fireball = ability_2_scene.instantiate()
+	add_child(fireball)
+	fireball.global_transform = fireballDirection.global_transform
+	fireball.caster = "Templar"
+	fireball.scale = Vector2(10.0, 10.0)
 
 func ability_3():
 	pass

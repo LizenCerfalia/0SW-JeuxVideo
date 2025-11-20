@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ypl7hk80w4lb"]
+
+[ext_resource type="Script" uid="uid://cv6aemow6wfcy" path="res://scripts/player_attacks/big_fireball.gd" id="1_hq4iv"]
+[ext_resource type="Texture2D" uid="uid://14suir5xg30b" path="res://assets/player_attack_assets/fireball.png" id="2_qonts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3esw"]
+size = Vector2(6, 6)
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_hq4iv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+texture = ExtResource("2_qonts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 0)
+shape = SubResource("RectangleShape2D_e3esw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

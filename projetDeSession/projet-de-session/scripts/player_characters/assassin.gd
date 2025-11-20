@@ -7,9 +7,12 @@ func _ready() -> void:
 	player.highlight_type = "HighlightAssassin"
 	player.speed = 350.0
 	player.hp = 150
+	player.max_hp = 200
 	player.controlled_by = "AI"
 
 func _physics_process(_delta: float) -> void:
+	if player.is_dead():
+		return
 	player.get_movement_input()
 
 func ability_1():

@@ -9,9 +9,12 @@ func _ready() -> void:
 	player.highlight_type = "HighlightKnight"
 	player.speed = 300.0
 	player.hp = 200
+	player.max_hp = 400
 	player.controlled_by = "P2"
 
 func _physics_process(_delta: float) -> void:
+	if player.is_dead():
+		return
 	player.get_movement_input()
 	if GCD.time_left > 0:
 		return

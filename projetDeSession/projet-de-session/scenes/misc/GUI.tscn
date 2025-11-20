@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4ul37cifj5u6"]
+[gd_scene load_steps=21 format=3 uid="uid://b4ul37cifj5u6"]
 
 [ext_resource type="Texture2D" uid="uid://dd4hqmherjbgp" path="res://assets/GUI/hp_gauges/hp_gauge_templar.png" id="1_3rdxh"]
+[ext_resource type="Script" uid="uid://bli5he7rkihdm" path="res://scripts/misc/gui.gd" id="1_8ghn3"]
 [ext_resource type="Texture2D" uid="uid://qelx1lmquvb2" path="res://assets/GUI/hp_gauges/hp_gauge_full.png" id="2_bjggx"]
 [ext_resource type="Texture2D" uid="uid://dq068cuwy3aq6" path="res://assets/GUI/hp_gauges/hp_gauge_assassin.png" id="3_bi4q8"]
 [ext_resource type="Texture2D" uid="uid://uj5ukdci1fw1" path="res://assets/GUI/hp_gauges/hp_gauge_full_2.png" id="4_sgkjq"]
@@ -34,10 +35,12 @@ theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
+script = ExtResource("1_8ghn3")
 
 [node name="TemplarBar" type="TextureProgressBar" parent="."]
 layout_mode = 2
 size_flags_horizontal = 0
+max_value = 200.0
 value = 100.0
 texture_under = ExtResource("1_3rdxh")
 texture_progress = ExtResource("2_bjggx")
@@ -45,7 +48,7 @@ texture_progress = ExtResource("2_bjggx")
 [node name="AssassinBar" type="TextureProgressBar" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
-max_value = 120.0
+max_value = 200.0
 value = 120.0
 fill_mode = 1
 texture_under = ExtResource("3_bi4q8")
@@ -54,7 +57,7 @@ texture_progress = ExtResource("4_sgkjq")
 [node name="KnightBar" type="TextureProgressBar" parent="."]
 layout_mode = 2
 size_flags_vertical = 8
-max_value = 200.0
+max_value = 400.0
 value = 200.0
 texture_under = ExtResource("5_yrf3e")
 texture_progress = ExtResource("6_bqdva")
@@ -63,6 +66,7 @@ texture_progress = ExtResource("6_bqdva")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+max_value = 200.0
 value = 100.0
 texture_under = ExtResource("7_dysnk")
 texture_progress = ExtResource("8_wajqr")

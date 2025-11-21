@@ -6,9 +6,6 @@ extends Node2D
 @onready var ResDelay: Timer = $ResDelay
 @onready var fireballDirection: = $GenericPlayer/FireballDirection
 @export var ability_1_scene : PackedScene
-@export var ability_2_scene : PackedScene
-@export var ability_3_scene : PackedScene
-@export var ability_4_scene : PackedScene
 var potential_heal_targets = []
 
 func _ready() -> void:

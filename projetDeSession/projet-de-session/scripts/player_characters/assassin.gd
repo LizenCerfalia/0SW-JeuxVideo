@@ -4,6 +4,11 @@ extends Node2D
 var controlled_by = "AI"
 @onready var GCD: Timer = $GCD
 @onready var dashDuration: Timer = $DashDuration
+@onready var slashDirection: Marker2D = $GenericPlayer/SlashDirection
+
+
+@export var ability_1_scene : PackedScene
+@export var ability_2_scene : PackedScene
 
 func _ready() -> void:
 	player.playerClass = "Assassin"
@@ -40,6 +45,16 @@ func _physics_process(_delta: float) -> void:
 func ability_1():
 	if GCD.time_left > 0:
 		return
+	GCD.wait_time = 1
+	GCD.start()
+	if (player.current_target == null):
+		return
+	slashDirection.look_at(player.current_target.global_position)
+	var slash = ability_1_scene.instantiate()
+	add_child(slash)
+	slash.global_transform = slashDirection.global_transform
+	slash.caster = "Knight"
+	slash.scale = Vector2(2.0, 2.0)
 	
 func ability_2():
 	if GCD.time_left > 0:

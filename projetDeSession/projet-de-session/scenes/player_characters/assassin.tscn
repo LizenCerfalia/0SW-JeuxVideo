@@ -19,6 +19,8 @@ texture = ExtResource("2_nnqu8")
 [node name="CollisionShape2D" parent="GenericPlayer" index="1"]
 shape = SubResource("RectangleShape2D_nnqu8")
 
+[node name="SlashDirection" type="Marker2D" parent="GenericPlayer"]
+
 [node name="GCD" type="Timer" parent="."]
 one_shot = true
 

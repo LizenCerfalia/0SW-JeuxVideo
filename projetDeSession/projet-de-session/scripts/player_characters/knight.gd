@@ -2,8 +2,13 @@ extends Node2D
 
 @onready var player: GenericPlayer = $GenericPlayer
 @onready var GCD: Timer = $GCD
+@onready var slashDirection: Marker2D = $GenericPlayer/SlashDirection
 var stanceOn: bool = false
 var controlled_by = "P2"
+
+
+@export var ability_1_scene : PackedScene
+@export var ability_2_scene : PackedScene
 
 func _ready() -> void:
 	player.playerClass = "Knight"
@@ -39,7 +44,19 @@ func _physics_process(_delta: float) -> void:
 		
 func ability_1():
 	if GCD.time_left > 0:
-		return	
+		return
+	GCD.wait_time = 1
+	GCD.start()
+	if (player.current_target == null):
+		return
+	slashDirection.look_at(player.current_target.global_position)
+	var slash = ability_1_scene.instantiate()
+	add_child(slash)
+	slash.global_transform = slashDirection.global_transform
+	slash.caster = "Knight"
+	slash.scale = Vector2(2.0, 2.0)
+	if stanceOn:
+		slash.damage /= 2
 	
 func ability_2():
 	if GCD.time_left > 0:
@@ -48,12 +65,12 @@ func ability_2():
 func ability_3():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 5
+	GCD.wait_time = 10
 	GCD.start()
 		
 	var potential_targets = player.potential_targets
 	for target in potential_targets:
-		target.handle_emnity("Knight", 5000)
+		target.handle_emnity("Knight", 10000)
 
 func ability_4():
 	if GCD.time_left > 0:

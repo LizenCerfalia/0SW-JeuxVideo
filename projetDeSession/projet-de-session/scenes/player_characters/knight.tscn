@@ -22,6 +22,8 @@ shape = SubResource("RectangleShape2D_3504c")
 [node name="AnimationTree" parent="GenericPlayer" index="3"]
 parameters/Walk/blend_position = Vector2(-0.02870816, -0.94618833)
 
+[node name="SlashDirection" type="Marker2D" parent="GenericPlayer"]
+
 [node name="GCD" type="Timer" parent="."]
 one_shot = true
 

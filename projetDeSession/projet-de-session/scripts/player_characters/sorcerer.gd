@@ -13,14 +13,14 @@ func _ready() -> void:
 	player.speed = 200.0
 	player.hp = 100
 	player.max_hp = 200
-	player.controlled_by = "AI"
+	player.controlled_by = controlled_by
 
 func _physics_process(_delta: float) -> void:
 	if player.is_dead():
 		return
 	player.get_movement_input()
 	
-	if player.controlled_by == "P1":
+	if controlled_by == "P1":
 		if Input.is_action_just_pressed("P1_Ability_1"):
 			ability_1()
 		if Input.is_action_just_pressed("P1_Ability_2"):
@@ -29,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 			ability_3()
 		if Input.is_action_just_pressed("P1_Ability_4"):
 			ability_4()
-	if player.controlled_by == "P2":
+	if controlled_by == "P2":
 		if Input.is_action_just_pressed("P2_Ability_1"):
 			ability_1()
 		if Input.is_action_just_pressed("P2_Ability_2"):
@@ -44,6 +44,8 @@ func ability_1():
 		return
 	if (player.current_target == null):
 		return
+	GCD.wait_time = 1
+	GCD.start()
 	fireballDirection.look_at(player.current_target.global_position)
 	var fireball = ability_1_scene.instantiate()
 	add_child(fireball)
@@ -56,6 +58,8 @@ func ability_2():
 		return	
 	if (player.current_target == null):
 		return
+	GCD.wait_time = 4
+	GCD.start()		
 	fireballDirection.look_at(player.current_target.global_position)
 	var fireball = ability_2_scene.instantiate()
 	add_child(fireball)

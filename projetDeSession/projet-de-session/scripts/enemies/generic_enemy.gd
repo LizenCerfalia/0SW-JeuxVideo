@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var players = get_tree().get_nodes_in_group("players")
 @onready var animationTree : AnimationTree = $AnimationTree
-var playerEnmity = [0, 0, 10, 0] # templar, assassin, knight, sorcerer, selon l'order de generation dans l'arbre
+var playerEnmity = [10, 0, 0, 0] # templar, assassin, knight, sorcerer, selon l'order de generation dans l'arbre
 var currentTarget
 
 var hp : int

@@ -1,7 +1,7 @@
 class_name GenericPlayer
 extends CharacterBody2D
 
-var dead : bool = false	
+var dead : bool
 
 func is_player() -> bool:
 	return true
@@ -110,6 +110,10 @@ func _on_target_zone_body_exited(body: Node2D) -> void:
 		potential_targets.erase(body)
 		
 func handle_hurt(value: int):
+	if (playerClass == "Knight"):
+		var player = get_parent()
+		if player.stanceOn:
+			value /= 2
 	hp -= value
 	if hp > max_hp:
 		hp = max_hp
@@ -122,7 +126,7 @@ func handle_hurt(value: int):
 	GUI.hp_update(playerClass, hp)
 	
 func get_ressed():
-	if is_dead():
+	if !is_dead():
 		return
 	
 	sprite.rotate(-90)

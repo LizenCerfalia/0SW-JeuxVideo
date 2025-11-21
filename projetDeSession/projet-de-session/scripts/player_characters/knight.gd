@@ -4,8 +4,7 @@ extends Node2D
 @onready var GCD: Timer = $GCD
 @onready var slashDirection: Marker2D = $GenericPlayer/SlashDirection
 var stanceOn: bool = false
-var controlled_by = "P2"
-
+var controlled_by = "AI"
 
 @export var ability_1_scene : PackedScene
 @export var ability_2_scene : PackedScene
@@ -23,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	player.get_movement_input()
 		
-	if player.controlled_by == "P1":
+	if controlled_by == "P1":
 		if Input.is_action_just_pressed("P1_Ability_1"):
 			ability_1()
 		if Input.is_action_just_pressed("P1_Ability_2"):
@@ -32,7 +31,8 @@ func _physics_process(_delta: float) -> void:
 			ability_3()
 		if Input.is_action_just_pressed("P1_Ability_4"):
 			ability_4()
-	if player.controlled_by == "P2":
+		return
+	if controlled_by == "P2":
 		if Input.is_action_just_pressed("P2_Ability_1"):
 			ability_1()
 		if Input.is_action_just_pressed("P2_Ability_2"):
@@ -41,11 +41,12 @@ func _physics_process(_delta: float) -> void:
 			ability_3()
 		if Input.is_action_just_pressed("P2_Ability_4"):
 			ability_4()
+		return
 		
 func ability_1():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 1
+	GCD.wait_time = 3
 	GCD.start()
 	if (player.current_target == null):
 		return
@@ -54,13 +55,21 @@ func ability_1():
 	add_child(slash)
 	slash.global_transform = slashDirection.global_transform
 	slash.caster = "Knight"
-	slash.scale = Vector2(2.0, 2.0)
+	slash.scale = Vector2(2.0, 1.0)
 	if stanceOn:
 		slash.damage /= 2
 	
 func ability_2():
 	if GCD.time_left > 0:
-		return	
+		return
+	GCD.wait_time = 1
+	GCD.start()
+	var slash = ability_2_scene.instantiate()
+	player.add_child(slash)
+	slash.caster = "Knight"
+	slash.scale = Vector2(4.0, 4.0)
+	if stanceOn:
+		slash.damage /= 2
 
 func ability_3():
 	if GCD.time_left > 0:
@@ -78,4 +87,9 @@ func ability_4():
 	GCD.wait_time = 0.5
 	GCD.start()
 	
-	stanceOn = !stanceOn
+	if stanceOn:
+		stanceOn = false
+		$GenericPlayer/StanceIndicator.visible = false
+	else:
+		stanceOn = true
+		$GenericPlayer/StanceIndicator.visible = true

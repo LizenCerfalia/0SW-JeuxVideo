@@ -2,11 +2,12 @@ extends Node2D
 
 @onready var player: GenericPlayer = $GenericPlayer
 @onready var GCD: Timer = $GCD
-@onready var HealDelay: Timer = $HealDuration
+@onready var HealDelay: Timer = $HealDelay
 @onready var ResDelay: Timer = $ResDelay
 @onready var fireballDirection: = $GenericPlayer/FireballDirection
 @export var ability_1_scene : PackedScene
 var potential_heal_targets = []
+var controlled_by = "AI"
 
 func _ready() -> void:
 	player.playerClass = "Templar"
@@ -14,14 +15,14 @@ func _ready() -> void:
 	player.speed = 250.0
 	player.hp = 100
 	player.max_hp = 200
-	player.controlled_by = "P1"
+	player.controlled_by = controlled_by
 
 func _physics_process(_delta: float) -> void:
 	if player.is_dead():
 		return
 	
 	player.get_movement_input()
-	if player.controlled_by == "P1":
+	if controlled_by == "P1":
 		if Input.is_action_just_pressed("P1_Ability_1"):
 			ability_1()
 		if Input.is_action_just_pressed("P1_Ability_2"):
@@ -30,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 			ability_3()
 		if Input.is_action_just_pressed("P1_Ability_4"):
 			ability_4()
-	if player.controlled_by == "P2":
+	if controlled_by == "P2":
 		if Input.is_action_just_pressed("P2_Ability_1"):
 			ability_1()
 		if Input.is_action_just_pressed("P2_Ability_2"):
@@ -99,3 +100,4 @@ func _on_res_delay_timeout() -> void:
 	for target in potential_heal_targets:
 		if target.is_dead():
 			target.get_ressed()
+			target.handle_hurt(-200)

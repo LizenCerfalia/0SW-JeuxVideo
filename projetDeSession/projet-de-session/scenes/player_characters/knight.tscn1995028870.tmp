@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdf5x2r2olqwk"]
+[gd_scene load_steps=7 format=3 uid="uid://cdf5x2r2olqwk"]
 
 [ext_resource type="Script" uid="uid://c3cm8rn5y0ym4" path="res://scripts/player_characters/knight.gd" id="1_3504c"]
 [ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="1_h1k15"]
 [ext_resource type="Texture2D" uid="uid://br06y6b1472sa" path="res://assets/player_assets/knight_sprite.png" id="2_25a4l"]
 [ext_resource type="PackedScene" uid="uid://4rfi5rsn18hi" path="res://scenes/player_attacks/sword_slash.tscn" id="2_vadxa"]
 [ext_resource type="PackedScene" uid="uid://bc6kvh2lupdg" path="res://scenes/player_attacks/spinning_slash.tscn" id="3_m11wp"]
-[ext_resource type="Texture2D" uid="uid://bas13pavfctl1" path="res://assets/misc/circle_aoe.png" id="5_m11wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3504c"]
 size = Vector2(30, 8)
@@ -21,16 +20,10 @@ ability_2_scene = ExtResource("3_m11wp")
 scale = Vector2(2, 2)
 texture = ExtResource("2_25a4l")
 
-[node name="StanceIndicator" type="Sprite2D" parent="GenericPlayer"]
-visible = false
-modulate = Color(0, 0, 0, 0.5294118)
-scale = Vector2(2, 2)
-texture = ExtResource("5_m11wp")
-
-[node name="CollisionShape2D" parent="GenericPlayer" index="2"]
+[node name="CollisionShape2D" parent="GenericPlayer" index="1"]
 shape = SubResource("RectangleShape2D_3504c")
 
-[node name="AnimationTree" parent="GenericPlayer" index="4"]
+[node name="AnimationTree" parent="GenericPlayer" index="3"]
 parameters/Walk/blend_position = Vector2(-0.02870816, -0.94618833)
 
 [node name="SlashDirection" type="Marker2D" parent="GenericPlayer"]

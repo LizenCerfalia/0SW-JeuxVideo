@@ -22,4 +22,7 @@ shape = SubResource("RectangleShape2D_nnqu8")
 [node name="GCD" type="Timer" parent="."]
 one_shot = true
 
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.5
+
 [editable path="GenericPlayer"]

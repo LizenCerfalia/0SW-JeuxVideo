@@ -7,6 +7,7 @@ extends Node2D
 @export var ability_2_scene : PackedScene
 @export var ability_3_scene : PackedScene
 @export var ability_4_scene : PackedScene
+var controlled_by = "P1"
 
 func _ready() -> void:
 	player.playerClass = "Sorcerer"
@@ -20,8 +21,29 @@ func _physics_process(_delta: float) -> void:
 	if player.is_dead():
 		return
 	player.get_movement_input()
+	
+	if player.controlled_by == "P1":
+		if Input.is_action_just_pressed("P1_Ability_1"):
+			ability_1()
+		if Input.is_action_just_pressed("P1_Ability_2"):
+			ability_2()
+		if Input.is_action_just_pressed("P1_Ability_3"):
+			ability_3()
+		if Input.is_action_just_pressed("P1_Ability_4"):
+			ability_4()
+	if player.controlled_by == "P2":
+		if Input.is_action_just_pressed("P2_Ability_1"):
+			ability_1()
+		if Input.is_action_just_pressed("P2_Ability_2"):
+			ability_2()
+		if Input.is_action_just_pressed("P2_Ability_3"):
+			ability_3()
+		if Input.is_action_just_pressed("P2_Ability_4"):
+			ability_4()
 
 func ability_1():
+	if GCD.time_left > 0:
+		return
 	if (player.current_target == null):
 		return
 	fireballDirection.look_at(player.current_target.global_position)
@@ -32,6 +54,8 @@ func ability_1():
 	fireball.scale = Vector2(2.0, 2.0)
 	
 func ability_2():
+	if GCD.time_left > 0:
+		return	
 	if (player.current_target == null):
 		return
 	fireballDirection.look_at(player.current_target.global_position)
@@ -42,7 +66,16 @@ func ability_2():
 	fireball.scale = Vector2(10.0, 10.0)
 
 func ability_3():
-	pass
+	if GCD.time_left > 0:
+		return
+	GCD.wait_time = 3
+	GCD.start()
+	player.global_position += player.velocity + player.velocity / 3
 
 func ability_4():
-	pass
+	if GCD.time_left > 0:
+		return
+	GCD.wait_time = 3
+	GCD.start()
+	
+	player.handle_hurt(-25)

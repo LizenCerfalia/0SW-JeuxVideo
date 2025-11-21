@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://r4igy24pkqhg"]
+[gd_scene load_steps=9 format=3 uid="uid://r4igy24pkqhg"]
 
 [ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/player_assets/templar_sprite.png" id="1_162nj"]
 [ext_resource type="Script" uid="uid://cntp4tnv6ifci" path="res://scripts/player_characters/templar.gd" id="1_nc3va"]
 [ext_resource type="PackedScene" uid="uid://bgt2axar73q50" path="res://scenes/player_attacks/fireball.tscn" id="2_7px53"]
 [ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="2_nc3va"]
 [ext_resource type="PackedScene" uid="uid://ypl7hk80w4lb" path="res://scenes/player_attacks/big_fireball.tscn" id="3_pdbn3"]
+[ext_resource type="Texture2D" uid="uid://bas13pavfctl1" path="res://assets/misc/circle_aoe.png" id="5_1jvpy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdbn3"]
+radius = 114.1096
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc3va"]
 size = Vector2(30, 7.375)
@@ -16,11 +20,24 @@ ability_2_scene = ExtResource("3_pdbn3")
 
 [node name="GenericPlayer" parent="." instance=ExtResource("2_nc3va")]
 
-[node name="Sprite2D" parent="GenericPlayer" index="0"]
+[node name="HealRange" type="Area2D" parent="GenericPlayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="GenericPlayer/HealRange"]
+visible = false
+modulate = Color(0, 1, 0.2901961, 0.3529412)
+position = Vector2(9.536743e-07, 0.5000067)
+scale = Vector2(6.8125, 6.84375)
+texture = ExtResource("5_1jvpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GenericPlayer/HealRange"]
+shape = SubResource("CircleShape2D_pdbn3")
+debug_color = Color(0, 0.6427023, 0.3185418, 0.41960785)
+
+[node name="Sprite2D" parent="GenericPlayer" index="1"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_162nj")
 
-[node name="CollisionShape2D" parent="GenericPlayer" index="1"]
+[node name="CollisionShape2D" parent="GenericPlayer" index="2"]
 position = Vector2(3, 24.6875)
 shape = SubResource("RectangleShape2D_nc3va")
 
@@ -29,9 +46,15 @@ shape = SubResource("RectangleShape2D_nc3va")
 [node name="GCD" type="Timer" parent="."]
 one_shot = true
 
-[node name="DashDuration" type="Timer" parent="."]
+[node name="HealDelay" type="Timer" parent="."]
 wait_time = 0.5
 
-[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+[node name="ResDelay" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="GenericPlayer/HealRange" to="." method="_on_heal_range_body_entered"]
+[connection signal="body_exited" from="GenericPlayer/HealRange" to="." method="_on_heal_range_body_exited"]
+[connection signal="timeout" from="HealDelay" to="." method="_on_heal_delay_timeout"]
+[connection signal="timeout" from="ResDelay" to="." method="_on_res_delay_timeout"]
 
 [editable path="GenericPlayer"]

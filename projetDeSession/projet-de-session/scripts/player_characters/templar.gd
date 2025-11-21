@@ -2,12 +2,14 @@ extends Node2D
 
 @onready var player: GenericPlayer = $GenericPlayer
 @onready var GCD: Timer = $GCD
-@onready var dashDuration: Timer = $DashDuration
+@onready var HealDelay: Timer = $HealDuration
+@onready var ResDelay: Timer = $ResDelay
 @onready var fireballDirection: = $GenericPlayer/FireballDirection
 @export var ability_1_scene : PackedScene
 @export var ability_2_scene : PackedScene
 @export var ability_3_scene : PackedScene
 @export var ability_4_scene : PackedScene
+var potential_heal_targets = []
 
 func _ready() -> void:
 	player.playerClass = "Templar"
@@ -22,27 +24,30 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	player.get_movement_input()
-	if GCD.time_left > 0:
-		return
-	
-	if Input.is_action_just_pressed("P1_Ability_1"):
-		GCD.wait_time = 1
-		GCD.start()
-		ability_1()
-	if Input.is_action_just_pressed("P1_Ability_2"):
-		GCD.wait_time = 5
-		GCD.start()
-		ability_2()
-	if Input.is_action_just_pressed("P1_Ability_3"):
-		GCD.wait_time = 1
-		GCD.start()
-		ability_3()
-	if Input.is_action_just_pressed("P1_Ability_4"):
-		GCD.wait_time = 3
-		GCD.start()
-		ability_4()
+	if player.controlled_by == "P1":
+		if Input.is_action_just_pressed("P1_Ability_1"):
+			ability_1()
+		if Input.is_action_just_pressed("P1_Ability_2"):
+			ability_2()
+		if Input.is_action_just_pressed("P1_Ability_3"):
+			ability_3()
+		if Input.is_action_just_pressed("P1_Ability_4"):
+			ability_4()
+	if player.controlled_by == "P2":
+		if Input.is_action_just_pressed("P2_Ability_1"):
+			ability_1()
+		if Input.is_action_just_pressed("P2_Ability_2"):
+			ability_2()
+		if Input.is_action_just_pressed("P2_Ability_3"):
+			ability_3()
+		if Input.is_action_just_pressed("P2_Ability_4"):
+			ability_4()
 
 func ability_1():
+	if GCD.time_left > 0:
+		return
+	GCD.wait_time = 1
+	GCD.start()
 	if (player.current_target == null):
 		return
 	fireballDirection.look_at(player.current_target.global_position)
@@ -52,22 +57,48 @@ func ability_1():
 	fireball.caster = "Templar"
 	fireball.scale = Vector2(2.0, 2.0)
 	
-func ability_2():
-	if (player.current_target == null):
+func ability_2():	
+	if GCD.time_left > 0:
 		return
-	fireballDirection.look_at(player.current_target.global_position)
-	var fireball = ability_2_scene.instantiate()
-	add_child(fireball)
-	fireball.global_transform = fireballDirection.global_transform
-	fireball.caster = "Templar"
-	fireball.scale = Vector2(10.0, 10.0)
-
+	GCD.wait_time = 3
+	GCD.start()
+	player.global_position += player.velocity + player.velocity / 3
+	
 func ability_3():
-	player.speed = 700
-	dashDuration.start()
+	if GCD.time_left > 0:
+		return
+	GCD.wait_time = 3
+	GCD.start()
+	HealDelay.start()
+	$GenericPlayer/HealRange/Sprite2D.visible = true
+	
 
 func ability_4():
-	player.global_position += player.velocity + player.velocity / 3
+	if GCD.time_left > 0:
+		return
+	GCD.wait_time = 8
+	GCD.start()
+	ResDelay.start()
+	$GenericPlayer/HealRange/Sprite2D.visible = true
 
-func _on_dash_duration_timeout() -> void:
-	player.speed = 250
+
+func _on_heal_range_body_entered(body: Node2D) -> void:
+	if (body.has_method("is_player")):
+		potential_heal_targets.append(body)
+
+func _on_heal_range_body_exited(body: Node2D) -> void:
+	if (body.has_method("is_player")):
+		potential_heal_targets.erase(body)
+
+func _on_heal_delay_timeout() -> void:
+	$GenericPlayer/HealRange/Sprite2D.visible = false
+	
+	for target in potential_heal_targets:
+		target.handle_hurt(-50)
+
+func _on_res_delay_timeout() -> void:
+	$GenericPlayer/HealRange/Sprite2D.visible = false
+	
+	for target in potential_heal_targets:
+		if target.is_dead():
+			target.get_ressed()

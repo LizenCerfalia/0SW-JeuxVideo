@@ -29,18 +29,18 @@ var controlled_by: String
 @onready var playback = animationTree.get("parameters/playback")
 @onready var GUI = get_node("/root/Phase1/GUI")
 
-func get_movement_input():
+func get_movement_input(delta: float):
 	match controlled_by:
 		"P1":
-			player_controls()
+			player_controls(delta)
 		"P2":
-			player_controls()
+			player_controls(delta)
 		"AI":
 			ai_controls()
 		_:
 			pass
 	
-func player_controls():
+func player_controls(delta: float):
 	
 	var dir
 	if (controlled_by == "P1"):
@@ -60,7 +60,7 @@ func player_controls():
 		playback.travel("Idle")
 	
 	velocity = dir * speed
-	move_and_slide()
+	move_and_collide(velocity * delta)
 	
 func ai_controls():
 	current_time = Time.get_ticks_msec()

@@ -24,7 +24,7 @@ var damage = 100
 func is_enemy() -> bool:
 	return true
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if (hp < 0):
 		self.queue_free()
 	if enrage.time_left < 2 && !startEnrage:
@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * SPEED
 	animationTree.set("parameters/Drive/blend_position", direction)
 	
-	move_and_slide()
+	move_and_collide(velocity * delta)
 	
 func get_target() -> void:
 	currentTarget = players[0]

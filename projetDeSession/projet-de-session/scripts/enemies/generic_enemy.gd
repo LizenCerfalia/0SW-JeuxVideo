@@ -13,7 +13,7 @@ var damage : int
 func is_enemy() -> bool:
 	return true
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if (hp < 0):
 		get_parent().queue_free()
 	
@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	animationTree.set("parameters/Drive/blend_position", direction)
 	
-	move_and_slide()
+	move_and_collide(velocity * delta)
 	
 func get_target() -> void:
 	currentTarget = players[0]

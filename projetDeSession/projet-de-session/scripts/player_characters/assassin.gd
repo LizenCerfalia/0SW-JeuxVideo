@@ -17,10 +17,10 @@ func _ready() -> void:
 	player.max_hp = 100
 	player.controlled_by = controlled_by
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if player.is_dead():
 		return
-	player.get_movement_input()
+	player.get_movement_input(delta)
 	
 	if controlled_by == "P1":
 		if Input.is_action_just_pressed("P1_Ability_1"):

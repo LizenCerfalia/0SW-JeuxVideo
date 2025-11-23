@@ -15,6 +15,11 @@ run/main_scene="uid://x8la1rpp8jd5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+WorldState="*res://scripts/GOAP/world_state.gd"
+Goap="*res://scripts/GOAP/goap.gd"
+
 [display]
 
 window/size/viewport_width=1920

@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvo61q56gfuro"]
+
+[ext_resource type="Script" uid="uid://cd0nu7sqahjx0" path="res://scripts/enemies/spawner.gd" id="1_5oxug"]
+[ext_resource type="PackedScene" uid="uid://3aa0r8iqt5wq" path="res://scenes/enemies/heavy_car.tscn" id="2_0pfvh"]
+[ext_resource type="PackedScene" uid="uid://bh3fxwa1n7arc" path="res://scenes/enemies/normal_car.tscn" id="3_rfmb6"]
+[ext_resource type="PackedScene" uid="uid://bqyiimbe0jeb7" path="res://scenes/enemies/quick_car.tscn" id="4_e5muq"]
+[ext_resource type="PackedScene" uid="uid://cxmgpn1plmknb" path="res://scenes/enemies/suicide_car.tscn" id="5_rku2i"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_5oxug")
+enemy_scenes = [ExtResource("2_0pfvh"), ExtResource("3_rfmb6"), ExtResource("4_e5muq"), ExtResource("5_rku2i")]
+
+[node name="SpawnRate" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="CollisionDelay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnRate" to="." method="_on_spawn_rate_timeout"]
+[connection signal="timeout" from="CollisionDelay" to="." method="_on_collision_delay_timeout"]

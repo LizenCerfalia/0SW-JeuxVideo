@@ -12,9 +12,9 @@ var controlled_by = "AI"
 func _ready() -> void:
 	player.playerClass = "Templar"
 	player.highlight_type = "HighlightTemplar"
-	player.speed = 250.0
-	player.hp = 100
-	player.max_hp = 200
+	player.speed = 200.0
+	player.hp = 150
+	player.max_hp = 150
 	player.controlled_by = controlled_by
 
 func _physics_process(_delta: float) -> void:
@@ -44,10 +44,11 @@ func _physics_process(_delta: float) -> void:
 func ability_1():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 1
-	GCD.start()
 	if (player.current_target == null):
 		return
+	GCD.wait_time = 1
+	GCD.start()
+
 	fireballDirection.look_at(player.current_target.global_position)
 	var fireball = ability_1_scene.instantiate()
 	add_child(fireball)

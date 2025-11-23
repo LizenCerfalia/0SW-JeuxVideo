@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://x8la1rpp8jd5"]
+[gd_scene load_steps=14 format=3 uid="uid://x8la1rpp8jd5"]
 
 [ext_resource type="Texture2D" uid="uid://crrv80xiau6o3" path="res://assets/world_assets/ground.png" id="1_7tglt"]
 [ext_resource type="Script" uid="uid://blh5sqn11adtl" path="res://scripts/worlds/phase_1.gd" id="1_xhgtv"]
@@ -8,10 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://g1qg1yei3o5w" path="res://scenes/player_characters/sorcerer.tscn" id="5_g6jn6"]
 [ext_resource type="PackedScene" uid="uid://cbnd8a3jw0e6p" path="res://scenes/enemies/boss_phase_1.tscn" id="7_g6jn6"]
 [ext_resource type="PackedScene" uid="uid://b4ul37cifj5u6" path="res://scenes/misc/GUI.tscn" id="7_xhgtv"]
-[ext_resource type="PackedScene" uid="uid://3aa0r8iqt5wq" path="res://scenes/enemies/heavy_car.tscn" id="9_v60q7"]
-[ext_resource type="PackedScene" uid="uid://bh3fxwa1n7arc" path="res://scenes/enemies/normal_car.tscn" id="10_83txb"]
-[ext_resource type="PackedScene" uid="uid://bqyiimbe0jeb7" path="res://scenes/enemies/quick_car.tscn" id="11_0erg5"]
-[ext_resource type="PackedScene" uid="uid://cxmgpn1plmknb" path="res://scenes/enemies/suicide_car.tscn" id="12_a3who"]
+[ext_resource type="PackedScene" uid="uid://cvo61q56gfuro" path="res://scenes/enemies/spawner.tscn" id="9_v60q7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v60q7"]
 size = Vector2(20, 1090)
@@ -83,14 +80,4 @@ shape = SubResource("RectangleShape2D_xhgtv")
 [node name="BossPhase1" parent="." instance=ExtResource("7_g6jn6")]
 position = Vector2(956, 581)
 
-[node name="SuicideCar" parent="." instance=ExtResource("12_a3who")]
-position = Vector2(1704, 909)
-
-[node name="QuickCar" parent="." instance=ExtResource("11_0erg5")]
-position = Vector2(145, 560)
-
-[node name="HeavyCar" parent="." instance=ExtResource("9_v60q7")]
-position = Vector2(580, 265)
-
-[node name="NormalCar" parent="." instance=ExtResource("10_83txb")]
-position = Vector2(1538, 270)
+[node name="Spawner" parent="." instance=ExtResource("9_v60q7")]

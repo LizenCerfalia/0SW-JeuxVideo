@@ -1,6 +1,6 @@
 extends Area2D
 
-var damage : int = 50
+var damage : int = 70
 var speed : float = 600.0
 var caster : String = ""
 

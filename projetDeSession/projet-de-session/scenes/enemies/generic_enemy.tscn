@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1i5gvmai1hju"]
+[gd_scene load_steps=21 format=3 uid="uid://d1i5gvmai1hju"]
 
 [ext_resource type="Texture2D" uid="uid://bihp80n0mlvjd" path="res://assets/misc/assassin_highlight.png" id="1_ll36u"]
 [ext_resource type="Script" uid="uid://dsay3yvdllkpk" path="res://scripts/enemies/generic_enemy.gd" id="1_u12x1"]
@@ -174,6 +174,9 @@ states/Drive/node = SubResource("AnimationNodeBlendSpace2D_bmiqv")
 states/Drive/position = Vector2(439, 86)
 transitions = ["Start", "Drive", SubResource("AnimationNodeStateMachineTransition_u12x1")]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u12x1"]
+size = Vector2(130.00003, 54.00002)
+
 [node name="GenericEnemy" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_u12x1")
@@ -220,3 +223,17 @@ visible = false
 position = Vector2(0, 6.599999)
 scale = Vector2(0.9999998, 0.58749986)
 texture = ExtResource("4_w6g1y")
+
+[node name="AutoAttackDelay" type="Timer" parent="."]
+
+[node name="AutoAttackRange" type="Area2D" parent="."]
+scale = Vector2(0.19999999, 0.19999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAttackRange"]
+position = Vector2(-1.999997, 45.999992)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_u12x1")
+debug_color = Color(1, 0.0134694865, 0.041929327, 0.41960785)
+
+[connection signal="timeout" from="AutoAttackDelay" to="." method="_on_auto_attack_delay_timeout"]
+[connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]

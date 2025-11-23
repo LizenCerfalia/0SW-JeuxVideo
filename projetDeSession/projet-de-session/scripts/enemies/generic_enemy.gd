@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var players = get_tree().get_nodes_in_group("players")
 @onready var animationTree : AnimationTree = $AnimationTree
-var playerEnmity = [10, 0, 0, 0] # templar, assassin, knight, sorcerer, selon l'order de generation dans l'arbre
+var playerEnmity = [0, 0, 10, 0] # templar, assassin, knight, sorcerer, selon l'order de generation dans l'arbre
 var currentTarget
 
 var hp : int
@@ -58,3 +58,10 @@ func lose_emnity(caster: String) -> void:
 			playerEnmity[2] = 0
 		"Sorcerer":
 			playerEnmity[3] = 0
+			
+func _on_auto_attack_range_body_entered(body: Node2D) -> void:
+	if body.has_method("is_player") && body == currentTarget:
+		body.handle_hurt(damage)
+
+func _on_auto_attack_delay_timeout() -> void:
+	$AutoAttackRange/CollisionShape2D.disabled = !$AutoAttackRange/CollisionShape2D.disabled

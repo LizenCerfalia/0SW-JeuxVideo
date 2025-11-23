@@ -12,9 +12,9 @@ var controlled_by = "AI"
 func _ready() -> void:
 	player.playerClass = "Knight"
 	player.highlight_type = "HighlightKnight"
-	player.speed = 300.0
-	player.hp = 200
-	player.max_hp = 400
+	player.speed = 200.0
+	player.hp = 300
+	player.max_hp = 300
 	player.controlled_by = controlled_by
 
 func _physics_process(_delta: float) -> void:
@@ -46,10 +46,10 @@ func _physics_process(_delta: float) -> void:
 func ability_1():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 3
-	GCD.start()
 	if (player.current_target == null):
 		return
+	GCD.wait_time = 3
+	GCD.start()
 	slashDirection.look_at(player.current_target.global_position)
 	var slash = ability_1_scene.instantiate()
 	add_child(slash)

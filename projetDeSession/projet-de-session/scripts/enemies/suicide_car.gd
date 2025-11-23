@@ -6,7 +6,7 @@ extends Node2D
 var targetsInRange = []
 
 func _ready() -> void:
-	enemy.hp = 50
+	enemy.hp = 100
 	enemy.speed = 300.0
 	enemy.damage = 200
 	

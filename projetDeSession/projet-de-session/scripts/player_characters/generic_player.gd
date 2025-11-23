@@ -81,6 +81,7 @@ func ai_controls():
 		
 	current_direction = -current_direction
 	handle_tab_targeting()
+	get_parent().ability_1()
 		
 	previous_time = current_time
 
@@ -117,7 +118,7 @@ func handle_hurt(value: int):
 	hp -= value
 	if hp > max_hp:
 		hp = max_hp
-	if hp <= 0 && !is_dead():
+	if hp <= 0 && !dead:
 		dead = true
 		sprite.rotate(90)
 		for target in potential_targets:

@@ -3,6 +3,15 @@ extends CharacterBody2D
 @onready var players = get_tree().get_nodes_in_group("players")
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var enrage : Timer = $Enrage
+@onready var mechanicTimer : Timer = $MechanicTimer
+
+@export var mechanicScenes : Array[PackedScene] = []
+enum Mechanic {
+	SPREAD,
+	STACK
+}
+var currentMechanic : Mechanic = Mechanic.STACK
+
 var playerEnmity = [0, 0, 0, 10]
 var currentTarget
 var startEnrage = false
@@ -76,3 +85,26 @@ func _on_auto_attack_range_body_entered(body: Node2D) -> void:
 
 func _on_auto_attack_delay_timeout() -> void:
 	$AutoAttackRange/CollisionShape2D.disabled = !$AutoAttackRange/CollisionShape2D.disabled
+
+func _on_mechanic_timer_timeout() -> void:
+	match currentMechanic:
+		Mechanic.SPREAD:
+			for player in players:
+				var spread = mechanicScenes[0].instantiate()
+				player.add_child(spread)
+			currentMechanic = Mechanic.STACK
+			return
+		Mechanic.STACK:
+			var alive_players = []
+			var stack = mechanicScenes[1].instantiate()
+			
+			for player in players:
+				if player.is_dead() == false:
+					alive_players.append(player)
+			if alive_players.size() == 0:
+				return
+				
+			var player = alive_players[randi() % alive_players.size()]
+			player.add_child(stack)
+			currentMechanic = Mechanic.SPREAD
+			return

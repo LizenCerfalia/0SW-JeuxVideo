@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba1yu2hibg2fw"]
+
+[ext_resource type="Texture2D" uid="uid://sesx3rwikb3m" path="res://assets/misc/stack_marker.png" id="1_3oq3d"]
+[ext_resource type="Script" uid="uid://de77hkmryno8k" path="res://scripts/mechanics/stack.gd" id="1_umv5y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3oq3d"]
+radius = 15.005334
+
+[node name="Stack" type="Area2D"]
+scale = Vector2(12, 12)
+script = ExtResource("1_umv5y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.6372112, 1.1214179, 0, 0.6666667)
+texture = ExtResource("1_3oq3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3oq3d")
+debug_color = Color(0.99999994, 0.012738982, 0.04666631, 0.41960785)
+
+[node name="StackDelay" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="StackDelay" to="." method="_on_stack_delay_timeout"]

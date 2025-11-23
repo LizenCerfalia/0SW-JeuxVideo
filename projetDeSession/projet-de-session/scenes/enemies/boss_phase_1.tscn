@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbnd8a3jw0e6p"]
+[gd_scene load_steps=25 format=3 uid="uid://cbnd8a3jw0e6p"]
 
 [ext_resource type="Script" uid="uid://8fk4bxigpqy5" path="res://scripts/enemies/boss_phase_1.gd" id="1_bmiqv"]
 [ext_resource type="Texture2D" uid="uid://bihp80n0mlvjd" path="res://assets/misc/assassin_highlight.png" id="2_4og3d"]
 [ext_resource type="Texture2D" uid="uid://cqdh3j6271bvt" path="res://assets/enemy_assets/monster_truck.png" id="2_lcj5g"]
+[ext_resource type="PackedScene" uid="uid://i13mh4yeud4g" path="res://scenes/mechanics/spread.tscn" id="2_ov5dr"]
 [ext_resource type="Texture2D" uid="uid://77kme6qd60kl" path="res://assets/misc/knight_highlight.png" id="3_05qvs"]
+[ext_resource type="PackedScene" uid="uid://ba1yu2hibg2fw" path="res://scenes/mechanics/stack.tscn" id="3_127km"]
 [ext_resource type="Texture2D" uid="uid://3qtd746vsxx1" path="res://assets/misc/templar_highlight.png" id="4_bmiqv"]
 [ext_resource type="Texture2D" uid="uid://57ujq3plus2n" path="res://assets/misc/sorcerer_highlight.png" id="5_ov5dr"]
 
@@ -183,6 +185,7 @@ size = Vector2(511.66693, 220.00014)
 [node name="BossPhase1" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_bmiqv")
+mechanicScenes = Array[PackedScene]([ExtResource("2_ov5dr"), ExtResource("3_127km")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_lcj5g")
@@ -228,13 +231,6 @@ position = Vector2(-1.5000029, 7)
 scale = Vector2(4.1354165, 3.6458335)
 texture = ExtResource("5_ov5dr")
 
-[node name="AutoAttackDelay" type="Timer" parent="."]
-
-[node name="Enrage" type="Timer" parent="."]
-wait_time = 120.0
-one_shot = true
-autostart = true
-
 [node name="EnrageSprite" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 0.27058825, 0, 0.3647059)
@@ -251,6 +247,18 @@ scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_bmiqv")
 debug_color = Color(1, 0.0134694865, 0.041929327, 0.41960785)
 
+[node name="AutoAttackDelay" type="Timer" parent="."]
+
+[node name="Enrage" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+autostart = true
+
+[node name="MechanicTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]
 [connection signal="timeout" from="AutoAttackDelay" to="." method="_on_auto_attack_delay_timeout"]
 [connection signal="timeout" from="Enrage" to="." method="_on_enrage_timeout"]
-[connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]
+[connection signal="timeout" from="MechanicTimer" to="." method="_on_mechanic_timer_timeout"]

@@ -21,17 +21,17 @@ ability_2_scene = ExtResource("3_m11wp")
 scale = Vector2(2, 2)
 texture = ExtResource("2_25a4l")
 
+[node name="CollisionShape2D" parent="GenericPlayer" index="1"]
+shape = SubResource("RectangleShape2D_3504c")
+
+[node name="AnimationTree" parent="GenericPlayer" index="3"]
+parameters/Walk/blend_position = Vector2(-0.02870816, -0.94618833)
+
 [node name="StanceIndicator" type="Sprite2D" parent="GenericPlayer"]
 visible = false
 modulate = Color(0, 0, 0, 0.5294118)
 scale = Vector2(2, 2)
 texture = ExtResource("5_m11wp")
-
-[node name="CollisionShape2D" parent="GenericPlayer" index="2"]
-shape = SubResource("RectangleShape2D_3504c")
-
-[node name="AnimationTree" parent="GenericPlayer" index="4"]
-parameters/Walk/blend_position = Vector2(-0.02870816, -0.94618833)
 
 [node name="SlashDirection" type="Marker2D" parent="GenericPlayer"]
 

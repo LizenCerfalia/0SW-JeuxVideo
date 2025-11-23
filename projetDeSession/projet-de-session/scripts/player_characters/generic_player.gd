@@ -118,6 +118,8 @@ func handle_hurt(value: int):
 	hp -= value
 	if hp > max_hp:
 		hp = max_hp
+	if hp < 0:
+		hp = 0
 	if hp <= 0 && !dead:
 		dead = true
 		sprite.rotate(90)

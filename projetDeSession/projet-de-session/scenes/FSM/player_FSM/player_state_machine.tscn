@@ -1,0 +1,30 @@
+[gd_scene load_steps=10 format=3 uid="uid://bab5llhdyyiuq"]
+
+[ext_resource type="Script" uid="uid://ctefrrrlfq7p5" path="res://scripts/FSM/state_machine.gd" id="1_ossxj"]
+[ext_resource type="PackedScene" uid="uid://bc5fkyx1m5d2l" path="res://scenes/FSM/player_FSM/attack_state.tscn" id="2_ssjly"]
+[ext_resource type="PackedScene" uid="uid://4klrb525g2ix" path="res://scenes/FSM/player_FSM/get_closer_state.tscn" id="3_2h0af"]
+[ext_resource type="PackedScene" uid="uid://dtcosgi825b7u" path="res://scenes/FSM/player_FSM/heal_state.tscn" id="4_nw1gu"]
+[ext_resource type="Script" uid="uid://clucmshpewikd" path="res://scripts/FSM/player_FSM/heal_state.gd" id="5_2h0af"]
+[ext_resource type="PackedScene" uid="uid://dd3xcchuudvo4" path="res://scenes/FSM/player_FSM/ressurect_player_state.tscn" id="5_evsfe"]
+[ext_resource type="PackedScene" uid="uid://cf1prqi2nuhqo" path="res://scenes/FSM/player_FSM/run_away_state.tscn" id="6_c8ky4"]
+[ext_resource type="PackedScene" uid="uid://cqbvq50m2nvgm" path="res://scenes/FSM/player_FSM/spread_state.tscn" id="7_kg1md"]
+[ext_resource type="PackedScene" uid="uid://onorhy35wkb4" path="res://scenes/FSM/player_FSM/stack_state.tscn" id="8_0f7rq"]
+
+[node name="PlayerStateMachine" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_ossxj")
+initial_state = NodePath("AttackState")
+
+[node name="AttackState" parent="." instance=ExtResource("2_ssjly")]
+
+[node name="GetCloserState" parent="." instance=ExtResource("3_2h0af")]
+
+[node name="HealState" parent="." instance=ExtResource("4_nw1gu")]
+script = ExtResource("5_2h0af")
+
+[node name="RessurectPlayerState" parent="." instance=ExtResource("5_evsfe")]
+
+[node name="RunAwayState" parent="." instance=ExtResource("6_c8ky4")]
+
+[node name="SpreadState" parent="." instance=ExtResource("7_kg1md")]
+
+[node name="StackState" parent="." instance=ExtResource("8_0f7rq")]

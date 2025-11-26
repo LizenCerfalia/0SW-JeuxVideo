@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwqbjwi187fpk"]
+[gd_scene load_steps=8 format=3 uid="uid://dwqbjwi187fpk"]
 
 [ext_resource type="Script" uid="uid://647dlp6bshqt" path="res://scripts/player_characters/assassin.gd" id="1_624ax"]
 [ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="1_vqc6k"]
 [ext_resource type="PackedScene" uid="uid://4rfi5rsn18hi" path="res://scenes/player_attacks/sword_slash.tscn" id="2_2y1by"]
 [ext_resource type="Texture2D" uid="uid://ccssg64e6pdap" path="res://assets/player_assets/assassin_sprite.png" id="2_nnqu8"]
 [ext_resource type="PackedScene" uid="uid://bc6kvh2lupdg" path="res://scenes/player_attacks/spinning_slash.tscn" id="3_ct7b0"]
+[ext_resource type="PackedScene" uid="uid://bab5llhdyyiuq" path="res://scenes/FSM/player_FSM/player_state_machine.tscn" id="6_ct7b0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnqu8"]
 size = Vector2(30, 8)
@@ -31,6 +32,9 @@ one_shot = true
 [node name="DashDuration" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="PlayerStateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_ct7b0")]
+player = NodePath("../GenericPlayer")
 
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 

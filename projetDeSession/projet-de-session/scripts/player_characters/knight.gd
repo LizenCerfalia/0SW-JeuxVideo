@@ -16,6 +16,7 @@ func _ready() -> void:
 	player.hp = 300
 	player.max_hp = 300
 	player.controlled_by = controlled_by
+	
 
 func _physics_process(delta: float) -> void:
 	if player.is_dead():

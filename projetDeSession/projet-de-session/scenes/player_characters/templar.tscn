@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://r4igy24pkqhg"]
+[gd_scene load_steps=9 format=3 uid="uid://r4igy24pkqhg"]
 
 [ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/player_assets/templar_sprite.png" id="1_162nj"]
 [ext_resource type="Script" uid="uid://cntp4tnv6ifci" path="res://scripts/player_characters/templar.gd" id="1_nc3va"]
 [ext_resource type="PackedScene" uid="uid://bgt2axar73q50" path="res://scenes/player_attacks/fireball.tscn" id="2_7px53"]
 [ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="2_nc3va"]
 [ext_resource type="Texture2D" uid="uid://bas13pavfctl1" path="res://assets/misc/circle_aoe.png" id="5_1jvpy"]
+[ext_resource type="PackedScene" uid="uid://bab5llhdyyiuq" path="res://scenes/FSM/player_FSM/player_state_machine.tscn" id="6_1jvpy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc3va"]
 size = Vector2(30, 7.375)
@@ -51,6 +52,9 @@ one_shot = true
 [node name="ResDelay" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="PlayerStateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_1jvpy")]
+player = NodePath("../GenericPlayer")
 
 [connection signal="body_entered" from="GenericPlayer/HealRange" to="." method="_on_heal_range_body_entered"]
 [connection signal="body_exited" from="GenericPlayer/HealRange" to="." method="_on_heal_range_body_exited"]

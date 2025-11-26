@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqbvq50m2nvgm"]
+
+[ext_resource type="Script" uid="uid://b5vgfhwgljxm3" path="res://scripts/FSM/player_FSM/spread_state.gd" id="1_yt5pm"]
+
+[node name="SpreadState" type="Node"]
+script = ExtResource("1_yt5pm")

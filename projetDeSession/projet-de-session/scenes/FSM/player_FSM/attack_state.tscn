@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc5fkyx1m5d2l"]
+
+[ext_resource type="Script" uid="uid://dwwhbrqwa6n1n" path="res://scripts/FSM/player_FSM/attack_state.gd" id="1_xjkdx"]
+
+[node name="AttackState" type="Node"]
+script = ExtResource("1_xjkdx")

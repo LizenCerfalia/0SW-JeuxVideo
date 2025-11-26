@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4klrb525g2ix"]
+
+[ext_resource type="Script" uid="uid://et7kr0ev02ye" path="res://scripts/FSM/player_FSM/get_closer_state.gd" id="1_cyuiy"]
+
+[node name="GetCloserState" type="Node"]
+script = ExtResource("1_cyuiy")

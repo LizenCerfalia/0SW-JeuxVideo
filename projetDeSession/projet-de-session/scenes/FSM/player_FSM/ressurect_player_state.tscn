@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd3xcchuudvo4"]
+
+[ext_resource type="Script" uid="uid://ry8o8uikbwx0" path="res://scripts/FSM/player_FSM/ressurect_player_state.gd" id="1_2ao7s"]
+
+[node name="RessurectPlayerState" type="Node"]
+script = ExtResource("1_2ao7s")

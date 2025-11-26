@@ -61,7 +61,6 @@ func handle_emnity(caster: String, emnity: int) -> void:
 			playerEnmity[2] += emnity
 		"Sorcerer":
 			playerEnmity[3] += emnity
-	print(playerEnmity)
 
 func lose_emnity(caster: String) -> void:
 	match caster:

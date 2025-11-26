@@ -17,8 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-WorldState="*res://scripts/GOAP/world_state.gd"
-Goap="*res://scripts/GOAP/goap.gd"
+WorldState="*res://scripts/misc/world_state.gd"
 
 [display]
 

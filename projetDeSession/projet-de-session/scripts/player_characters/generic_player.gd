@@ -27,7 +27,7 @@ var controlled_by: String
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var playback = animationTree.get("parameters/playback")
-@onready var GUI = get_node("/root/Phase1/GUI")
+@onready var GUI = get_node("/root/Phase1/GUI")	
 
 func get_movement_input(delta: float):
 	match controlled_by:
@@ -36,7 +36,7 @@ func get_movement_input(delta: float):
 		"P2":
 			player_controls(delta)
 		"AI":
-			ai_controls()
+			ai_controls(delta)
 		_:
 			pass
 	
@@ -62,28 +62,10 @@ func player_controls(delta: float):
 	velocity = dir * speed
 	move_and_collide(velocity * delta)
 	
-func ai_controls():
-	current_time = Time.get_ticks_msec()
+func ai_controls(_delta: float):
 	
-	if (current_direction != 0):
-		playback.travel("Walk")
-		var vector = Vector2(current_direction, 0)
-		animationTree.set("parameters/Walk/blend_position", vector)
-	else:
-		playback.travel("Idle")
-	
-	velocity.x = current_direction * speed
-	move_and_slide()
-	
-	
-	if ((current_time - previous_time) < 1000):
-		return
-		
-	current_direction = -current_direction
-	handle_tab_targeting()
-	get_parent().ability_1()
-		
-	previous_time = current_time
+	print(velocity)
+	move_and_collide(velocity * _delta)
 
 func handle_tab_targeting():
 	if potential_targets.size() > 0:

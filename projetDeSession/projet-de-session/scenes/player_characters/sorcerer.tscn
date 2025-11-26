@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://g1qg1yei3o5w"]
+[gd_scene load_steps=8 format=3 uid="uid://g1qg1yei3o5w"]
 
 [ext_resource type="Script" uid="uid://bxomtxxdwh50c" path="res://scripts/player_characters/sorcerer.gd" id="1_efsps"]
 [ext_resource type="PackedScene" uid="uid://b7edkoqb1ehrc" path="res://scenes/player_characters/generic_player.tscn" id="1_yptoi"]
 [ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/player_assets/sorcerer_sprite.png" id="2_2r4nx"]
 [ext_resource type="PackedScene" uid="uid://bgt2axar73q50" path="res://scenes/player_attacks/fireball.tscn" id="2_fukjv"]
 [ext_resource type="PackedScene" uid="uid://ypl7hk80w4lb" path="res://scenes/player_attacks/big_fireball.tscn" id="3_hjq52"]
+[ext_resource type="PackedScene" uid="uid://bab5llhdyyiuq" path="res://scenes/FSM/player_FSM/player_state_machine.tscn" id="6_hjq52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r4nx"]
 size = Vector2(30, 6.5)
@@ -28,5 +29,8 @@ shape = SubResource("RectangleShape2D_2r4nx")
 
 [node name="GCD" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlayerStateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_hjq52")]
+player = NodePath("../GenericPlayer")
 
 [editable path="GenericPlayer"]

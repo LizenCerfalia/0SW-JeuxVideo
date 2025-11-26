@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf1prqi2nuhqo"]
+
+[ext_resource type="Script" uid="uid://cwg7cod6nwv3y" path="res://scripts/FSM/player_FSM/run_away_state.gd" id="1_kygrk"]
+
+[node name="RunAwayState" type="Node"]
+script = ExtResource("1_kygrk")

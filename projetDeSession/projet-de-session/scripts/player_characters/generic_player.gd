@@ -64,7 +64,6 @@ func player_controls(delta: float):
 	
 func ai_controls(_delta: float):
 	
-	print(velocity)
 	move_and_collide(velocity * _delta)
 
 func handle_tab_targeting():

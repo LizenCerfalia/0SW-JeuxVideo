@@ -13,7 +13,7 @@ func _ready() -> void:
 	player.playerClass = "Templar"
 	player.highlight_type = "HighlightTemplar"
 	player.speed = 200.0
-	player.hp = 150
+	player.hp = 300
 	player.max_hp = 150
 	player.controlled_by = controlled_by
 
@@ -93,7 +93,7 @@ func _on_heal_delay_timeout() -> void:
 	$GenericPlayer/HealRange/Sprite2D.visible = false
 	
 	for target in potential_heal_targets:
-		target.handle_hurt(-50)
+		target.handle_hurt(-100)
 
 func _on_res_delay_timeout() -> void:
 	$GenericPlayer/HealRange/Sprite2D.visible = false

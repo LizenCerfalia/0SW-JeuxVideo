@@ -10,7 +10,7 @@ func handle_inputs(input_event: InputEvent) -> void:
 	
 func update(delta: float) -> void:
 	targets = player.potential_targets
-	if (targets.size() == 0):
+	if (targets.size() == 0 || player.is_dead()):
 		return
 		
 	var closest_target
@@ -21,12 +21,15 @@ func update(delta: float) -> void:
 			closest_distance = distance
 			closest_target = target
 			
-	if closest_distance > 300:
+	if closest_distance < 400:
 		Transitioned.emit(self, "AttackState")
 			
 	player.current_target = closest_target
 	var direction_to_target = player.global_position.direction_to(closest_target.global_position)
 	player.velocity = -direction_to_target * player.speed
+	
+	player.animationTree.set("parameters/Walk/blend_position", -direction_to_target)
+	player.animationTree.set("parameters/Idle/blend_position", -direction_to_target)
 	
 	player.get_parent().ability_1()
 	
@@ -35,7 +38,7 @@ func physics_update(delta: float) -> void:
 	pass
 	
 func enter() -> void:
-	targets = player.potential_targets
+	player.playback.travel("Walk")
 	
 func exit() -> void:
 	pass

@@ -193,7 +193,7 @@ hframes = 4
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.7881393e-06, 31.666668)
+position = Vector2(-0.6666667, 12.666666)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_xq2sl")
 
@@ -242,7 +242,7 @@ texture = SubResource("CanvasTexture_bmiqv")
 scale = Vector2(0.19999999, 0.19999999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAttackRange"]
-position = Vector2(-5.8333273, 155)
+position = Vector2(-3.3333335, 71.666664)
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_bmiqv")
 debug_color = Color(1, 0.0134694865, 0.041929327, 0.41960785)

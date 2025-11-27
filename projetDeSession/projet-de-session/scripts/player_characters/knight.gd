@@ -16,6 +16,7 @@ func _ready() -> void:
 	player.hp = 300
 	player.max_hp = 300
 	player.controlled_by = controlled_by
+	ability_4()
 	
 
 func _physics_process(delta: float) -> void:

@@ -294,7 +294,7 @@ states/Walk/position = Vector2(500, 154)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_f0cto"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_p8v8j"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_j74ww")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0cto"]
-size = Vector2(1920, 1677)
+size = Vector2(8895, 5980)
 
 [node name="GenericPlayer" type="CharacterBody2D" groups=["players"]]
 platform_floor_layers = 4294967040
@@ -326,6 +326,7 @@ parameters/Walk/blend_position = Vector2(0, 0)
 [node name="TargetZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetZone"]
+position = Vector2(595.5, 41)
 shape = SubResource("RectangleShape2D_f0cto")
 
 [connection signal="body_entered" from="TargetZone" to="." method="_on_target_zone_body_entered"]

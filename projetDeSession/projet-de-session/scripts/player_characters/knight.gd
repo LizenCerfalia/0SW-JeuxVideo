@@ -6,6 +6,9 @@ extends Node2D
 var stanceOn: bool = false
 var controlled_by = "AI"
 
+func stance_on():
+	return stanceOn
+
 @export var ability_1_scene : PackedScene
 @export var ability_2_scene : PackedScene
 

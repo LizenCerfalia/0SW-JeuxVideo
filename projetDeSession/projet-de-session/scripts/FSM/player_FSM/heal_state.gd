@@ -4,11 +4,14 @@ extends BaseState
 var player
 var animationTree : AnimationTree
 var hurtPlayers = []
+var targets = []
 
 func handle_inputs(input_event: InputEvent) -> void:
 	pass
+	
 func update(delta: float) -> void:
-	if hurtPlayers.size() == 0:
+	targets = player.potential_targets
+	if (targets.size() == 0 && hurtPlayers.size() == 0 && player.is_dead()):
 		return
 		
 	var most_hurt_player
@@ -28,11 +31,14 @@ func update(delta: float) -> void:
 	player.animationTree.set("parameters/Walk/blend_position", direction_to_player)
 	player.animationTree.set("parameters/Idle/blend_position", direction_to_player)
 	
-	if (player.global_position.distance_to(most_hurt_player.global_position) < 150):
+	if (player.global_position.distance_to(most_hurt_player.global_position) < 250):
 		if most_hurt_player.is_dead():
 			player.get_parent().ability_4()
 		else:
 			player.get_parent().ability_3()
+	else:
+		player.current_target = targets[randi() % targets.size()] 
+		player.get_parent().ability_1()
 		
 	if most_hurt_player.hp == most_hurt_player.max_hp:
 		Transitioned.emit(self, "AttackState")

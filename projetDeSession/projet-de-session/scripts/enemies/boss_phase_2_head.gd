@@ -1,7 +1,8 @@
+class_name FinalBoss
 extends CharacterBody2D
 
 @onready var players = get_tree().get_nodes_in_group("players")
-@onready var animationTree : AnimationTree = $AnimationTree
+@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 @onready var enrage : Timer = $Enrage
 @onready var mechanicTimer : Timer = $MechanicTimer
 
@@ -16,25 +17,26 @@ var playerEnmity = [0, 0, 0, 0]
 var currentTarget
 var startEnrage = false
 
-var hp : int = 2500
-const SPEED = 100.0
+var hp : int = 6000
+var speed = 50.0
 var damage = 100
 
+func _ready() -> void:
+	animationPlayer.play("Eating")
 
 func is_enemy() -> bool:
 	return true
 
 func _physics_process(delta: float) -> void:
 	if (hp < 0):
-		handle_death()
+		self.queue_free()
 	if enrage.time_left < 2 && !startEnrage:
 		startEnrage = true
 		$EnrageSprite.visible = true
 		
 	get_target()
 	var direction = (currentTarget.global_position - global_position).normalized()
-	velocity = direction * SPEED
-	animationTree.set("parameters/Drive/blend_position", direction)
+	velocity = direction * speed
 	
 	move_and_collide(velocity * delta)
 	
@@ -72,10 +74,6 @@ func lose_emnity(caster: String) -> void:
 			playerEnmity[2] = 0
 		"Sorcerer":
 			playerEnmity[3] = 0
-			
-func handle_death():
-	print("allo")
-	get_tree().change_scene_to_file.call_deferred("res://scenes/worlds/phase_2.tscn")
 
 func _on_enrage_timeout() -> void:
 	for player in players:
@@ -87,7 +85,7 @@ func _on_auto_attack_range_body_entered(body: Node2D) -> void:
 		body.handle_hurt(damage)
 
 func _on_auto_attack_delay_timeout() -> void:
-	$AutoAttackRange/CollisionShape2D.disabled = !$AutoAttackRange/CollisionShape2D.disabled
+	$AutoAttackRange/CollisionShape2D.set_deferred("disabled", !$AutoAttackRange/CollisionShape2D.disabled)
 
 func _on_mechanic_timer_timeout() -> void:
 	match currentMechanic:

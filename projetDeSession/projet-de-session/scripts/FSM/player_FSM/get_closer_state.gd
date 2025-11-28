@@ -20,7 +20,7 @@ func update(delta: float) -> void:
 			closest_distance = distance
 			closest_target = target
 			
-	if closest_distance < 300:
+	if closest_distance < 600:
 		Transitioned.emit(self, "AttackState")
 			
 	player.current_target = closest_target

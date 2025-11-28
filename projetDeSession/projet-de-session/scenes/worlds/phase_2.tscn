@@ -1,16 +1,87 @@
-[gd_scene load_steps=4 format=3 uid="uid://chwxxfq5hefih"]
+[gd_scene load_steps=15 format=3 uid="uid://chwxxfq5hefih"]
 
 [ext_resource type="PackedScene" uid="uid://djkmqdmysykl4" path="res://scenes/enemies/boss_phase_2_head.tscn" id="1_bfehm"]
-[ext_resource type="PackedScene" uid="uid://cdwqikcnyna5i" path="res://scenes/enemies/boss_phase_2_left_right.tscn" id="2_vbmn6"]
-[ext_resource type="PackedScene" uid="uid://cy1cbcapvrv3k" path="res://scenes/enemies/boss_phase_2_left_wheel.tscn" id="3_ubuui"]
+[ext_resource type="Script" uid="uid://drlnksvst2ky" path="res://scripts/worlds/phase_2.gd" id="1_os7gi"]
+[ext_resource type="Texture2D" uid="uid://b1htax1cm6fhq" path="res://assets/world_assets/hell_texture.png" id="1_ubuui"]
+[ext_resource type="PackedScene" uid="uid://cy1cbcapvrv3k" path="res://scenes/enemies/boss_phase_2_right_wheel.tscn" id="3_ubuui"]
+[ext_resource type="PackedScene" uid="uid://r4igy24pkqhg" path="res://scenes/player_characters/templar.tscn" id="5_s2cfa"]
+[ext_resource type="PackedScene" uid="uid://dwqbjwi187fpk" path="res://scenes/player_characters/assassin.tscn" id="6_w6blv"]
+[ext_resource type="PackedScene" uid="uid://cdf5x2r2olqwk" path="res://scenes/player_characters/knight.tscn" id="7_rty4j"]
+[ext_resource type="PackedScene" uid="uid://g1qg1yei3o5w" path="res://scenes/player_characters/sorcerer.tscn" id="8_y3tni"]
+[ext_resource type="PackedScene" uid="uid://b4ul37cifj5u6" path="res://scenes/misc/GUI.tscn" id="9_3mw2b"]
+[ext_resource type="PackedScene" uid="uid://cdwqikcnyna5i" path="res://scenes/enemies/boss_phase_2_left_wheel.tscn" id="10_os7gi"]
 
-[node name="Phase2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubuui"]
+size = Vector2(20, 1090)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2cfa"]
+size = Vector2(10, 1117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6blv"]
+size = Vector2(1943, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rty4j"]
+size = Vector2(1937, 20)
+
+[node name="Phase2" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_os7gi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(777, 457)
+texture = ExtResource("1_ubuui")
+region_enabled = true
+region_rect = Rect2(-18, -23.5, 4000, 4000)
+
+[node name="Wall1" type="CollisionShape2D" parent="."]
+position = Vector2(0, 535)
+shape = SubResource("RectangleShape2D_ubuui")
+
+[node name="Wall2" type="CollisionShape2D" parent="."]
+position = Vector2(1926, 548)
+shape = SubResource("RectangleShape2D_s2cfa")
+
+[node name="Wall3" type="CollisionShape2D" parent="."]
+position = Vector2(962, -9)
+shape = SubResource("RectangleShape2D_w6blv")
+
+[node name="Wall4" type="CollisionShape2D" parent="."]
+position = Vector2(965, 1090)
+shape = SubResource("RectangleShape2D_rty4j")
+
+[node name="Templar" parent="." instance=ExtResource("5_s2cfa")]
+y_sort_enabled = true
+position = Vector2(576, 856)
+
+[node name="Assassin" parent="." instance=ExtResource("6_w6blv")]
+y_sort_enabled = true
+position = Vector2(910, 876)
+
+[node name="Knight" parent="." instance=ExtResource("7_rty4j")]
+y_sort_enabled = true
+position = Vector2(1343, 858)
+
+[node name="Sorcerer" parent="." instance=ExtResource("8_y3tni")]
+y_sort_enabled = true
+position = Vector2(1707, 867)
 
 [node name="BossPhase2Head" parent="." instance=ExtResource("1_bfehm")]
-position = Vector2(527, 107)
+position = Vector2(1045, 173)
 
-[node name="BossPhase2LeftRight" parent="." instance=ExtResource("2_vbmn6")]
-position = Vector2(379, 219)
+[node name="BossPhase2RightWheel" parent="." instance=ExtResource("3_ubuui")]
+position = Vector2(1328, 410)
 
-[node name="BossPhase2LeftWheel" parent="." instance=ExtResource("3_ubuui")]
-position = Vector2(685, 226)
+[node name="BossPhase2LeftWheel" parent="." instance=ExtResource("10_os7gi")]
+position = Vector2(745, 395)
+
+[node name="GUI" parent="." instance=ExtResource("9_3mw2b")]
+z_index = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 310.0
+offset_bottom = 74.0
+grow_horizontal = 1
+grow_vertical = 1

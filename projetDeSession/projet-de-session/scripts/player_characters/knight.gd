@@ -4,7 +4,7 @@ extends Node2D
 @onready var GCD: Timer = $GCD
 @onready var slashDirection: Marker2D = $GenericPlayer/SlashDirection
 var stanceOn: bool = false
-var controlled_by = "AI"
+var controlled_by = "P1"
 
 func stance_on():
 	return stanceOn
@@ -79,7 +79,7 @@ func ability_2():
 func ability_3():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 10
+	GCD.wait_time = 3
 	GCD.start()
 		
 	var potential_targets = player.potential_targets
@@ -88,7 +88,7 @@ func ability_3():
 
 func ability_4():
 	if GCD.time_left > 0:
-		return	
+		return
 	GCD.wait_time = 0.5
 	GCD.start()
 	

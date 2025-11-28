@@ -17,7 +17,7 @@ func update(delta: float) -> void:
 		if player.global_position.distance_to(target.global_position) < 250:
 			Transitioned.emit(self, "RunAwayState")
 		if (player.playerClass == "Knight" || player.playerClass == "Assassin"):
-			if player.global_position.distance_to(target.global_position) > 500:
+			if player.global_position.distance_to(target.global_position) > 800:
 				Transitioned.emit(self, "GetCloserState")
 	
 	if player.playerClass == "Templar":

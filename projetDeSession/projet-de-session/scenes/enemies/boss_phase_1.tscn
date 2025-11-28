@@ -196,6 +196,7 @@ vframes = 3
 position = Vector2(-0.6666667, 12.666666)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_xq2sl")
+one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -255,7 +256,7 @@ one_shot = true
 autostart = true
 
 [node name="MechanicTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 20.0
 autostart = true
 
 [connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]

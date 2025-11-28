@@ -27,7 +27,8 @@ var controlled_by: String
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var playback = animationTree.get("parameters/playback")
-@onready var GUI = get_node("/root/Phase1/GUI")	
+@onready var GUI = get_parent().get_parent().get_node("GUI")
+
 
 func get_movement_input(delta: float):
 	match controlled_by:

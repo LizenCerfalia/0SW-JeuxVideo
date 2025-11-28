@@ -1,6 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://djkmqdmysykl4"]
+[gd_scene load_steps=15 format=3 uid="uid://djkmqdmysykl4"]
 
 [ext_resource type="Texture2D" uid="uid://cijbo0dstcogx" path="res://assets/enemy_assets/monster_truck_phase_2_head.png" id="1_5y4bs"]
+[ext_resource type="Script" uid="uid://pfdi5v84wric" path="res://scripts/enemies/boss_phase_2_head.gd" id="1_nsji5"]
+[ext_resource type="PackedScene" uid="uid://i13mh4yeud4g" path="res://scenes/mechanics/spread.tscn" id="2_upoc2"]
+[ext_resource type="PackedScene" uid="uid://ba1yu2hibg2fw" path="res://scenes/mechanics/stack.tscn" id="3_syrwu"]
+[ext_resource type="Texture2D" uid="uid://bihp80n0mlvjd" path="res://assets/misc/assassin_highlight.png" id="5_syrwu"]
+[ext_resource type="Texture2D" uid="uid://77kme6qd60kl" path="res://assets/misc/knight_highlight.png" id="6_k5ylw"]
+[ext_resource type="Texture2D" uid="uid://3qtd746vsxx1" path="res://assets/misc/templar_highlight.png" id="7_7f8hv"]
+[ext_resource type="Texture2D" uid="uid://57ujq3plus2n" path="res://assets/misc/sorcerer_highlight.png" id="8_yngk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsji5"]
 size = Vector2(101, 52)
@@ -44,7 +51,16 @@ _data = {
 &"RESET": SubResource("Animation_nsji5")
 }
 
-[node name="BossPhase2Head" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upoc2"]
+size = Vector2(665.00037, 370.00018)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_upoc2"]
+
+[node name="BossPhase2Head" type="CharacterBody2D" groups=["enemies"]]
+y_sort_enabled = true
+scale = Vector2(2, 2)
+script = ExtResource("1_nsji5")
+mechanicScenes = Array[PackedScene]([ExtResource("2_upoc2"), ExtResource("3_syrwu")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5y4bs")
@@ -53,9 +69,66 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 9)
 shape = SubResource("RectangleShape2D_nsji5")
+one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ilkgi")
 }
-speed_scale = 1.25
+speed_scale = 0.5
+
+[node name="AutoAttackRange" type="Area2D" parent="."]
+scale = Vector2(0.19999999, 0.19999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAttackRange" groups=["enemies"]]
+position = Vector2(-4.999989, 87.500015)
+scale = Vector2(0.9999996, 0.9999996)
+shape = SubResource("RectangleShape2D_upoc2")
+debug_color = Color(1, 0.0134694865, 0.041929327, 0.41960785)
+
+[node name="AutoAttackDelay" type="Timer" parent="."]
+
+[node name="Enrage" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="MechanicTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="EnrageSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.27058825, 0, 0.3647059)
+position = Vector2(0.49987793, 4.6665497)
+scale = Vector2(3865.6667, 2418.6665)
+texture = SubResource("CanvasTexture_upoc2")
+
+[node name="HighlightAssassin" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.5000029, 7)
+scale = Vector2(4.1354165, 3.6458335)
+texture = ExtResource("5_syrwu")
+
+[node name="HighlightKnight" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.5000029, 7)
+scale = Vector2(4.1354165, 3.6458335)
+texture = ExtResource("6_k5ylw")
+
+[node name="HighlightTemplar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.5000029, 7)
+scale = Vector2(4.1354165, 3.6458335)
+texture = ExtResource("7_7f8hv")
+
+[node name="HighlightSorcerer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.5000029, 7)
+scale = Vector2(4.1354165, 3.6458335)
+texture = ExtResource("8_yngk8")
+
+[connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]
+[connection signal="timeout" from="AutoAttackDelay" to="." method="_on_auto_attack_delay_timeout"]
+[connection signal="timeout" from="Enrage" to="." method="_on_enrage_timeout"]
+[connection signal="timeout" from="MechanicTimer" to="." method="_on_mechanic_timer_timeout"]

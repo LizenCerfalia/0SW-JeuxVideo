@@ -11,7 +11,7 @@ func _ready() -> void:
 	player.playerClass = "Sorcerer"
 	player.highlight_type = "HighlightSorcerer"
 	player.speed = 200.0
-	player.hp = 150
+	player.hp = 200
 	player.max_hp = 150
 	player.controlled_by = controlled_by
 

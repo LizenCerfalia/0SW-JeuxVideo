@@ -13,7 +13,7 @@ func _ready() -> void:
 	player.playerClass = "Assassin"
 	player.highlight_type = "HighlightAssassin"
 	player.speed = 250.0
-	player.hp = 100
+	player.hp = 200
 	player.max_hp = 100
 	player.controlled_by = controlled_by
 

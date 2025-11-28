@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdwqikcnyna5i"]
+[gd_scene load_steps=12 format=3 uid="uid://cy1cbcapvrv3k"]
 
 [ext_resource type="Texture2D" uid="uid://b5yayc7a2fhyl" path="res://assets/enemy_assets/monster_truck_phase_2_wheel.png" id="1_cmy68"]
 [ext_resource type="Script" uid="uid://nge7la5pqscp" path="res://scripts/enemies/boss_phase_2_wheel.gd" id="1_didle"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://57ujq3plus2n" path="res://assets/misc/sorcerer_highlight.png" id="4_phrn3"]
 [ext_resource type="Texture2D" uid="uid://3qtd746vsxx1" path="res://assets/misc/templar_highlight.png" id="5_utbe7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5ajo"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phrn3"]
 size = Vector2(31, 86)
 
 [sub_resource type="Animation" id="Animation_cmy68"]
@@ -49,21 +49,22 @@ _data = {
 &"Spinning": SubResource("Animation_2rhet")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_351j0"]
-size = Vector2(255.0001, 560.0002)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_didle"]
+size = Vector2(262.50012, 560.0002)
 
-[node name="BossPhase2LeftWheel" type="CharacterBody2D" groups=["enemies"]]
+[node name="BossPhase2RightWheel" type="CharacterBody2D" groups=["enemies"]]
 y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("1_didle")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cmy68")
+flip_h = true
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 3.5)
-shape = SubResource("RectangleShape2D_k5ajo")
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_phrn3")
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -71,40 +72,40 @@ libraries = {
 &"": SubResource("AnimationLibrary_mt716")
 }
 
-[node name="HighlightAssassin" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-6.0000014, 3.749998)
-scale = Vector2(1.59375, 3.4531252)
-texture = ExtResource("2_h0djm")
-
-[node name="HighlightKnight" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-5.2500033, 4.000002)
-scale = Vector2(1.5781249, 3.5)
-texture = ExtResource("3_didle")
-
-[node name="HighlightSorcerer" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-5.2500005, 3.999998)
-scale = Vector2(1.578125, 3.46875)
-texture = ExtResource("4_phrn3")
-
-[node name="HighlightTemplar" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-5.2500014, 4.249998)
-scale = Vector2(1.578125, 3.4843748)
-texture = ExtResource("5_utbe7")
-
 [node name="AutoAttackDelay" type="Timer" parent="."]
 
 [node name="AutoAttackRange" type="Area2D" parent="."]
 scale = Vector2(0.19999999, 0.19999999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAttackRange"]
-position = Vector2(-27.50001, 20)
+position = Vector2(26.24998, 17.500004)
 scale = Vector2(0.99999964, 0.99999964)
-shape = SubResource("RectangleShape2D_351j0")
+shape = SubResource("RectangleShape2D_didle")
 debug_color = Color(1, 0.0134694865, 0.041929327, 0.41960785)
+
+[node name="HighlightAssassin" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8.5, 3.5)
+scale = Vector2(1.59375, 3.4531252)
+texture = ExtResource("2_h0djm")
+
+[node name="HighlightKnight" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 3.5000005)
+scale = Vector2(1.5781249, 3.5)
+texture = ExtResource("3_didle")
+
+[node name="HighlightSorcerer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8.5, 3.5)
+scale = Vector2(1.578125, 3.46875)
+texture = ExtResource("4_phrn3")
+
+[node name="HighlightTemplar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9.5, 3)
+scale = Vector2(1.578125, 3.4843748)
+texture = ExtResource("5_utbe7")
 
 [connection signal="timeout" from="AutoAttackDelay" to="." method="_on_auto_attack_delay_timeout"]
 [connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]

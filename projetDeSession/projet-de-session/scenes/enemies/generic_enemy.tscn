@@ -189,6 +189,7 @@ vframes = 4
 position = Vector2(-9.059905e-07, 8.499999)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_84i5r")
+one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -226,7 +227,7 @@ texture = ExtResource("4_w6g1y")
 
 [node name="AutoAttackDelay" type="Timer" parent="."]
 
-[node name="AutoAttackRange" type="Area2D" parent="."]
+[node name="AutoAttackRange" type="Area2D" parent="." groups=["enemies"]]
 scale = Vector2(0.19999999, 0.19999999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAttackRange"]

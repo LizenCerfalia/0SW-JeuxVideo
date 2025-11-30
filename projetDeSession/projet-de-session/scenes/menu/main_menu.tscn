@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=3 uid="uid://jisv5a0160d6"]
+
+[ext_resource type="Script" uid="uid://bhfdn2oenwx32" path="res://scripts/menu/main_menu.gd" id="1_3rkf3"]
+[ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="1_nl8w3"]
+
+[sub_resource type="Animation" id="Animation_3rkf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nl8w3"]
+resource_name = "loop"
+length = 3.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_247la"]
+_data = {
+&"RESET": SubResource("Animation_3rkf3"),
+&"loop": SubResource("Animation_nl8w3")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_nl8w3"]
+font_size = 168
+font_color = Color(0.7294118, 0, 0, 1)
+outline_size = 34
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3rkf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(3.84, 3.6)
+texture = ExtResource("1_nl8w3")
+hframes = 5
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_247la")
+}
+autoplay = "loop"
+speed_scale = 1.5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 81.0
+offset_right = 1698.0
+offset_bottom = 544.0
+text = "The Hoods
+Against The Truck"
+label_settings = SubResource("LabelSettings_nl8w3")
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 734.0
+offset_right = 749.0
+offset_bottom = 848.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Start
+"
+flat = true
+
+[node name="Options" type="Button" parent="."]
+layout_mode = 0
+offset_left = 817.0
+offset_top = 729.0
+offset_right = 1119.0
+offset_bottom = 843.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Options"
+flat = true
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1313.0
+offset_top = 730.0
+offset_right = 1482.0
+offset_bottom = 844.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Quit"
+flat = true
+
+[node name="HowToPlay" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1835.0
+offset_top = 15.0
+offset_right = 1878.0
+offset_bottom = 129.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "?"
+flat = true
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HowToPlay" to="." method="_on_how_to_play_pressed"]

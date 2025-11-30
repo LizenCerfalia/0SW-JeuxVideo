@@ -8,9 +8,10 @@ var playerToStackWith
 
 func handle_inputs(input_event: InputEvent) -> void:
 	pass
+	
 func update(delta: float) -> void:
 	targets = player.potential_targets
-	if (targets.size() == 0 || player.is_dead()):
+	if (targets.size() == 0 || player.is_dead() || playerToStackWith == null):
 		return
 	player.current_target = targets[randi() % targets.size()] 
 	

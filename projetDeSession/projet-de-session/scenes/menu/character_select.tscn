@@ -1,0 +1,258 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4apaplsmhwpw"]
+
+[ext_resource type="Script" uid="uid://dbjiut0aycjj3" path="res://scripts/menu/character_select.gd" id="1_f1rjr"]
+[ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="1_jdwp5"]
+[ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/player_assets/templar_sprite.png" id="3_nbeft"]
+[ext_resource type="Texture2D" uid="uid://ccssg64e6pdap" path="res://assets/player_assets/assassin_sprite.png" id="4_i4i37"]
+[ext_resource type="Texture2D" uid="uid://br06y6b1472sa" path="res://assets/player_assets/knight_sprite.png" id="5_m7y3p"]
+[ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/player_assets/sorcerer_sprite.png" id="6_2mxrx"]
+
+[sub_resource type="Animation" id="Animation_3rkf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nl8w3"]
+resource_name = "loop"
+length = 3.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_247la"]
+_data = {
+&"RESET": SubResource("Animation_3rkf3"),
+&"loop": SubResource("Animation_nl8w3")
+}
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f1rjr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(3.84, 3.6)
+texture = ExtResource("1_jdwp5")
+hframes = 5
+vframes = 2
+
+[node name="TemplarP2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 730.0
+offset_right = 685.0
+offset_bottom = 844.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Templar"
+flat = true
+
+[node name="AssassinP2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 734.0
+offset_right = 1111.0
+offset_bottom = 848.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Assassin"
+flat = true
+
+[node name="KnightP2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1170.0
+offset_top = 730.0
+offset_right = 1472.0
+offset_bottom = 844.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Knight"
+flat = true
+
+[node name="SorcererP2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1528.0
+offset_top = 728.0
+offset_right = 1852.0
+offset_bottom = 842.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Sorcerer"
+flat = true
+
+[node name="TemplarP1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 643.0
+offset_right = 683.0
+offset_bottom = 757.0
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Templar"
+flat = true
+
+[node name="AssassinP1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 639.0
+offset_right = 1113.0
+offset_bottom = 753.0
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Assassin"
+flat = true
+
+[node name="KnightP1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1170.0
+offset_top = 640.0
+offset_right = 1472.0
+offset_bottom = 754.0
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Knight"
+flat = true
+
+[node name="SorcererP1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1527.0
+offset_top = 638.0
+offset_right = 1851.0
+offset_bottom = 752.0
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+toggle_mode = true
+text = "Sorcerer"
+flat = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 27.0
+offset_right = 223.0
+offset_bottom = 141.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Back"
+flat = true
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 879.0
+offset_top = 885.0
+offset_right = 922.0
+offset_bottom = 999.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Start"
+flat = true
+
+[node name="Templar" type="Sprite2D" parent="."]
+position = Vector2(483, 495)
+scale = Vector2(5, 5)
+texture = ExtResource("3_nbeft")
+hframes = 5
+vframes = 4
+
+[node name="Assassin" type="Sprite2D" parent="."]
+position = Vector2(908, 491)
+scale = Vector2(5, 5)
+texture = ExtResource("4_i4i37")
+hframes = 5
+vframes = 4
+
+[node name="Knight" type="Sprite2D" parent="."]
+position = Vector2(1325.0001, 477)
+scale = Vector2(5, 5)
+texture = ExtResource("5_m7y3p")
+hframes = 5
+vframes = 4
+
+[node name="Sorcerer" type="Sprite2D" parent="."]
+position = Vector2(1688, 473.99997)
+scale = Vector2(5, 5)
+texture = ExtResource("6_2mxrx")
+hframes = 5
+vframes = 4
+
+[node name="P1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 646.0
+offset_right = 181.0
+offset_bottom = 752.0
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "P1:"
+
+[node name="P2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 738.0
+offset_right = 181.0
+offset_bottom = 844.0
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "P2:"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_247la")
+}
+autoplay = "RESET"
+speed_scale = 1.5
+
+[connection signal="toggled" from="TemplarP2" to="." method="_on_templar_p_2_toggled"]
+[connection signal="toggled" from="AssassinP2" to="." method="_on_assassin_p_2_toggled"]
+[connection signal="toggled" from="KnightP2" to="." method="_on_knight_p_2_toggled"]
+[connection signal="toggled" from="SorcererP2" to="." method="_on_sorcerer_p_2_toggled"]
+[connection signal="toggled" from="TemplarP1" to="." method="_on_templar_p_1_toggled"]
+[connection signal="toggled" from="AssassinP1" to="." method="_on_assassin_p_1_toggled"]
+[connection signal="toggled" from="KnightP1" to="." method="_on_knight_p_1_toggled"]
+[connection signal="toggled" from="SorcererP1" to="." method="_on_sorcerer_p_1_toggled"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

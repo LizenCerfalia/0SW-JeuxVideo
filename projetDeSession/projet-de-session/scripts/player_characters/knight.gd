@@ -4,7 +4,7 @@ extends Node2D
 @onready var GCD: Timer = $GCD
 @onready var slashDirection: Marker2D = $GenericPlayer/SlashDirection
 var stanceOn: bool = false
-var controlled_by = "P1"
+var controlled_by = WorldState.KnightControls
 
 func stance_on():
 	return stanceOn

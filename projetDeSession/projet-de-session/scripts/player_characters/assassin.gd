@@ -5,7 +5,7 @@ extends Node2D
 @onready var dashDuration: Timer = $DashDuration
 @onready var slashDirection: Marker2D = $GenericPlayer/SlashDirection
 
-var controlled_by = "AI"
+var controlled_by = WorldState.AssassinControls
 @export var ability_1_scene : PackedScene
 @export var ability_2_scene : PackedScene
 

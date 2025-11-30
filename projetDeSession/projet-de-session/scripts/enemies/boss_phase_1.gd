@@ -16,7 +16,7 @@ var playerEnmity = [0, 0, 0, 0]
 var currentTarget
 var startEnrage = false
 
-var hp : int = 2500
+var hp : int = 4000
 const SPEED = 100.0
 var damage = 100
 
@@ -74,7 +74,7 @@ func lose_emnity(caster: String) -> void:
 			playerEnmity[3] = 0
 			
 func handle_death():
-	print("allo")
+	GlobalMusicManager.PlayPhase2Music()
 	get_tree().change_scene_to_file.call_deferred("res://scenes/worlds/phase_2.tscn")
 
 func _on_enrage_timeout() -> void:
@@ -87,7 +87,7 @@ func _on_auto_attack_range_body_entered(body: Node2D) -> void:
 		body.handle_hurt(damage)
 
 func _on_auto_attack_delay_timeout() -> void:
-	$AutoAttackRange/CollisionShape2D.disabled = !$AutoAttackRange/CollisionShape2D.disabled
+	$AutoAttackRange/CollisionShape2D.set_deferred("disabled", !$AutoAttackRange/CollisionShape2D.disabled)
 
 func _on_mechanic_timer_timeout() -> void:
 	match currentMechanic:

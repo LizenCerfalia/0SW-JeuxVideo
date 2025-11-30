@@ -5,7 +5,7 @@ extends Node2D
 @onready var fireballDirection: = $GenericPlayer/FireballDirection
 @export var ability_1_scene : PackedScene
 @export var ability_2_scene : PackedScene
-var controlled_by = "AI"
+var controlled_by = WorldState.SorcererControls
 
 func _ready() -> void:
 	player.playerClass = "Sorcerer"

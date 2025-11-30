@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqo6o0x8xxvlu"]
+
+[ext_resource type="Script" uid="uid://wsxbbioljm3i" path="res://scripts/misc/GlobalMusicManager.gd" id="1_umpyw"]
+[ext_resource type="AudioStream" uid="uid://lvncki024uum" path="res://assets/world_assets/PerituneMaterial_Augury_loop.mp3" id="2_g13r1"]
+[ext_resource type="AudioStream" uid="uid://dsentxhg7upoe" path="res://assets/world_assets/PerituneMaterial_Crisis_loop.mp3" id="3_hb1r8"]
+[ext_resource type="AudioStream" uid="uid://b48pccjld281r" path="res://assets/world_assets/PerituneMaterial_Flap2_loop.mp3" id="4_237vt"]
+
+[node name="GlobalMusicManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_umpyw")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g13r1")
+autoplay = true
+parameters/looping = true
+
+[node name="Phase1Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hb1r8")
+parameters/looping = true
+
+[node name="Phase2Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_237vt")
+parameters/looping = true

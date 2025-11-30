@@ -73,4 +73,4 @@ func _on_auto_attack_range_body_entered(body: Node2D) -> void:
 		body.handle_hurt(damage)
 
 func _on_auto_attack_delay_timeout() -> void:
-	$AutoAttackRange/CollisionShape2D.disabled = !$AutoAttackRange/CollisionShape2D.disabled
+	$AutoAttackRange/CollisionShape2D.set_deferred("disabled", !$AutoAttackRange/CollisionShape2D.disabled)

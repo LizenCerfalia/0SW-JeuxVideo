@@ -7,7 +7,7 @@ extends Node2D
 @onready var fireballDirection: = $GenericPlayer/FireballDirection
 @export var ability_1_scene : PackedScene
 var potential_heal_targets = []
-var controlled_by = "AI"
+var controlled_by = WorldState.TemplarControls
 
 func _ready() -> void:
 	player.playerClass = "Templar"

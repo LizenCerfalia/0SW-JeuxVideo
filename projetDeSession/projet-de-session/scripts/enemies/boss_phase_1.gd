@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+const SAVE_FILE_DIR = "user://save/"
+const SAVE_FILE_NAME = "save_data.tres"
+const SAVE_FILE_PATH = SAVE_FILE_DIR + SAVE_FILE_NAME
+
 @onready var players = get_tree().get_nodes_in_group("players")
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var enrage : Timer = $Enrage
@@ -16,10 +20,29 @@ var playerEnmity = [0, 0, 0, 0]
 var currentTarget
 var startEnrage = false
 
-var hp : int = 4000
+var hp : int = 1000
 const SPEED = 100.0
 var damage = 100
 
+func save_game() -> void:
+	var save_data_res: SaveData
+
+	if ResourceLoader.exists(SAVE_FILE_PATH):
+		var loaded_resource = ResourceLoader.load(SAVE_FILE_PATH)
+		if loaded_resource is SaveData:
+			save_data_res = loaded_resource.duplicate(true)
+		else:
+			save_data_res = SaveData.new()
+	else:
+		save_data_res = SaveData.new()
+
+	save_data_res.current_phase = "phase_2"
+	save_data_res.TemplarControls = WorldState.TemplarControls
+	save_data_res.AssassinControls = WorldState.AssassinControls
+	save_data_res.KnightControls = WorldState.KnightControls
+	save_data_res.SorcererControls = WorldState.SorcererControls
+
+	ResourceSaver.save(save_data_res, SAVE_FILE_PATH)
 
 func is_enemy() -> bool:
 	return true
@@ -74,6 +97,7 @@ func lose_emnity(caster: String) -> void:
 			playerEnmity[3] = 0
 			
 func handle_death():
+	save_game()
 	GlobalMusicManager.PlayPhase2Music()
 	get_tree().change_scene_to_file.call_deferred("res://scenes/worlds/phase_2.tscn")
 

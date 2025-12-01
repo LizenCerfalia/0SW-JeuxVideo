@@ -58,41 +58,29 @@ texture = ExtResource("1_up4pf")
 hframes = 5
 vframes = 2
 
-[node name="Save1" type="Button" parent="."]
+[node name="Load" type="Button" parent="."]
 layout_mode = 0
-offset_left = 334.0
-offset_top = 734.0
-offset_right = 749.0
-offset_bottom = 848.0
+offset_left = 429.0
+offset_top = 738.0
+offset_right = 844.0
+offset_bottom = 852.0
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
-text = "Save 1
+text = "Load
 "
 flat = true
 
-[node name="Save2" type="Button" parent="."]
+[node name="NewGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 817.0
-offset_top = 729.0
-offset_right = 1119.0
-offset_bottom = 843.0
+offset_left = 1041.0
+offset_top = 741.0
+offset_right = 1456.0
+offset_bottom = 855.0
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
-text = "Save 2"
-flat = true
-
-[node name="Save3" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1313.0
-offset_top = 730.0
-offset_right = 1482.0
-offset_bottom = 844.0
-theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
-theme_override_constants/outline_size = 23
-theme_override_font_sizes/font_size = 77
-text = "Save 3"
+text = "New Game"
 flat = true
 
 [node name="Back" type="Button" parent="."]
@@ -114,7 +102,40 @@ libraries = {
 autoplay = "loop"
 speed_scale = 1.5
 
-[connection signal="pressed" from="Save1" to="." method="_on_save_1_pressed"]
-[connection signal="pressed" from="Save2" to="." method="_on_save_2_pressed"]
-[connection signal="pressed" from="Save3" to="." method="_on_save_3_pressed"]
+[node name="SaveSprite" type="Sprite2D" parent="."]
+position = Vector2(514, 322)
+scale = Vector2(0.7375, 0.705)
+
+[node name="CurrentPhase" type="Label" parent="."]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 482.0
+offset_right = 918.0
+offset_bottom = 588.0
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "No game started..."
+
+[node name="P1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 181.0
+offset_right = 1334.0
+offset_bottom = 287.0
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Player 1: "
+
+[node name="P2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 413.0
+offset_right = 1329.0
+offset_bottom = 519.0
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Player 2: "
+
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

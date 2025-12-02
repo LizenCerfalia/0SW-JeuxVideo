@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://chwxxfq5hefih"]
+[gd_scene load_steps=18 format=3 uid="uid://chwxxfq5hefih"]
 
 [ext_resource type="PackedScene" uid="uid://djkmqdmysykl4" path="res://scenes/enemies/boss_phase_2_head.tscn" id="1_bfehm"]
 [ext_resource type="Script" uid="uid://drlnksvst2ky" path="res://scripts/worlds/phase_2.gd" id="1_os7gi"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cdwqikcnyna5i" path="res://scenes/enemies/boss_phase_2_left_wheel.tscn" id="10_os7gi"]
 [ext_resource type="PackedScene" uid="uid://bqt88xwdmmrkv" path="res://scenes/misc/GameOver.tscn" id="11_4oe1o"]
 [ext_resource type="PackedScene" uid="uid://ri7icrtsif02" path="res://scenes/misc/win_screen.tscn" id="12_qcife"]
+[ext_resource type="PackedScene" uid="uid://b8ra5y1w2xxov" path="res://scenes/misc/PauseScreen.tscn" id="13_qcife"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubuui"]
 size = Vector2(20, 1090)
@@ -92,3 +93,23 @@ grow_vertical = 1
 [node name="GameOver" parent="." instance=ExtResource("11_4oe1o")]
 
 [node name="WinScreen" parent="." instance=ExtResource("12_qcife")]
+
+[node name="PauseScreen" parent="." instance=ExtResource("13_qcife")]
+
+[node name="NerdDataRAM" type="Label" parent="."]
+visible = false
+offset_left = 1066.0
+offset_top = 23.0
+offset_right = 1160.0
+offset_bottom = 46.0
+theme_override_constants/outline_size = 5
+text = "RAM usage: "
+
+[node name="NerdDataFPS" type="Label" parent="."]
+visible = false
+offset_left = 792.0
+offset_top = 23.0
+offset_right = 878.0
+offset_bottom = 46.0
+theme_override_constants/outline_size = 5
+text = "FPS usage: "

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://x8la1rpp8jd5"]
+[gd_scene load_steps=16 format=3 uid="uid://x8la1rpp8jd5"]
 
 [ext_resource type="Texture2D" uid="uid://crrv80xiau6o3" path="res://assets/world_assets/ground.png" id="1_7tglt"]
 [ext_resource type="Script" uid="uid://blh5sqn11adtl" path="res://scripts/worlds/phase_1.gd" id="1_xhgtv"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ul37cifj5u6" path="res://scenes/misc/GUI.tscn" id="7_xhgtv"]
 [ext_resource type="PackedScene" uid="uid://cvo61q56gfuro" path="res://scenes/enemies/spawner.tscn" id="9_v60q7"]
 [ext_resource type="PackedScene" uid="uid://bqt88xwdmmrkv" path="res://scenes/misc/GameOver.tscn" id="10_dbude"]
+[ext_resource type="PackedScene" uid="uid://b8ra5y1w2xxov" path="res://scenes/misc/PauseScreen.tscn" id="11_dclbv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v60q7"]
 size = Vector2(20, 1090)
@@ -84,3 +85,23 @@ position = Vector2(956, 581)
 [node name="Spawner" parent="." instance=ExtResource("9_v60q7")]
 
 [node name="GameOver" parent="." instance=ExtResource("10_dbude")]
+
+[node name="PauseScreen" parent="." instance=ExtResource("11_dclbv")]
+
+[node name="NerdDataRAM" type="Label" parent="."]
+visible = false
+offset_left = 1066.0
+offset_top = 23.0
+offset_right = 1160.0
+offset_bottom = 46.0
+theme_override_constants/outline_size = 5
+text = "RAM usage: "
+
+[node name="NerdDataFPS" type="Label" parent="."]
+visible = false
+offset_left = 792.0
+offset_top = 23.0
+offset_right = 878.0
+offset_bottom = 46.0
+theme_override_constants/outline_size = 5
+text = "FPS usage: "

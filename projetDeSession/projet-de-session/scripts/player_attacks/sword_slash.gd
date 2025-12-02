@@ -17,6 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if (body.has_method("is_enemy")):
 		body.handle_emnity(caster, damage)
 		body.hp -= damage
+		GlobalSoundManager.play_metal_impact_sfx()
 
 func _on_slash_duration_timeout() -> void:
 	self.queue_free()

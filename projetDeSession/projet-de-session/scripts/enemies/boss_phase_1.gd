@@ -100,7 +100,6 @@ func lose_emnity(caster: String) -> void:
 func handle_death():
 	save_game()
 	GlobalMusicManager.PlayPhase2Music()
-	GlobalSoundManager.play_metal_impact_sfx()
 	get_tree().change_scene_to_file.call_deferred("res://scenes/worlds/phase_2.tscn")
 
 func _on_enrage_timeout() -> void:

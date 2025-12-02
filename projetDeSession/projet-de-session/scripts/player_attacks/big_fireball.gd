@@ -12,4 +12,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if (body.has_method("is_enemy")):
 		body.handle_emnity(caster, damage)
 		body.hp -= damage
+		GlobalSoundManager.play_big_fireball_impact_sfx()
 	self.queue_free()

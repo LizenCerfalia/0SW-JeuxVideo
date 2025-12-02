@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ra5y1w2xxov"]
+
+[ext_resource type="Script" uid="uid://7agobpro3xlf" path="res://scripts/misc/pause_screen.gd" id="1_yc3b1"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+script = ExtResource("1_yc3b1")
+
+[node name="Restart" type="Button" parent="."]
+process_mode = 2
+offset_left = 830.0
+offset_top = 660.0
+offset_right = 1107.0
+offset_bottom = 774.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Restart"
+flat = true
+
+[node name="MainMenu" type="Button" parent="."]
+process_mode = 2
+offset_left = 760.0
+offset_top = 755.0
+offset_right = 1190.0
+offset_bottom = 869.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Main menu"
+flat = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 788.0
+offset_top = 312.0
+offset_right = 1331.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+
+[node name="Continue" type="Button" parent="."]
+process_mode = 2
+offset_left = 760.0
+offset_top = 466.0
+offset_right = 1190.0
+offset_bottom = 580.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Continue"
+flat = true
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

@@ -30,7 +30,6 @@ func is_enemy() -> bool:
 func _physics_process(delta: float) -> void:
 	if (hp < 0):
 		self.queue_free()
-		GlobalSoundManager.play_metal_impact_sfx()
 		get_node("../WinScreen").win_screen()
 	if enrage.time_left < 2 && !startEnrage:
 		startEnrage = true

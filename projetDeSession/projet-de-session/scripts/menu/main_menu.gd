@@ -17,7 +17,8 @@ func _ready() -> void:
 			sound_data = loaded_resource.duplicate(true)
 			BGMVolume = sound_data.BGMvolume
 			SFXVolume = sound_data.SFXVolume
-
+			WorldState.BGM = BGMVolume
+			WorldState.SFX = SFXVolume
 	update_sound()
 
 func update_sound():

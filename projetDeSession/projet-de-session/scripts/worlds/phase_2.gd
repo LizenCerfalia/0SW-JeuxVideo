@@ -12,10 +12,23 @@ extends Node2D
 @onready var knightGCD = $Knight/GCD
 @onready var sorcererGCD = $Sorcerer/GCD
 
+@onready var NerdDataRAM = $NerdDataRAM
+@onready var NerdDataFPS = $NerdDataFPS
+
 func _ready() -> void:
 	gui.size = get_viewport_rect().size / 1.5
 	
 func _process(_delta: float) -> void:
+	
+	if Input.is_action_just_pressed("Pause"):
+		$PauseScreen.pause_the_game()
+	if Input.is_action_just_pressed("NerdData"):
+		NerdDataFPS.visible = !NerdDataFPS.visible
+		NerdDataRAM.visible = !NerdDataRAM.visible
+		NerdDataFPS.text = "FPS: " + str(Engine.get_frames_per_second())
+		NerdDataRAM.text = "RAM: " + str(Performance.get_monitor(Performance.MEMORY_STATIC))
+	
+	
 	if templarGCD.time_left > 0:
 		var ability
 		var nodeName

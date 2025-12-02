@@ -1,0 +1,479 @@
+[gd_scene load_steps=25 format=3 uid="uid://bp8dxq5jhhr0p"]
+
+[ext_resource type="Script" uid="uid://dlp4muthbn80w" path="res://scripts/menu/how_to_play.gd" id="1_ye78e"]
+[ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="2_wguod"]
+[ext_resource type="Texture2D" uid="uid://bas13pavfctl1" path="res://assets/misc/circle_aoe.png" id="3_le75r"]
+[ext_resource type="Texture2D" uid="uid://sesx3rwikb3m" path="res://assets/misc/stack_marker.png" id="4_1pep8"]
+[ext_resource type="Texture2D" uid="uid://jw1cqhvpmb6u" path="res://assets/enemy_assets/blue_car_sprite.png" id="5_c4dag"]
+[ext_resource type="Texture2D" uid="uid://c3u3ud2y1pm6w" path="res://assets/enemy_assets/red_car_sprite.png" id="6_jeqsw"]
+[ext_resource type="Texture2D" uid="uid://cqdh3j6271bvt" path="res://assets/enemy_assets/monster_truck.png" id="7_pv20v"]
+[ext_resource type="Texture2D" uid="uid://dq068cuwy3aq6" path="res://assets/GUI/hp_gauges/hp_gauge_assassin.png" id="8_1pep8"]
+[ext_resource type="Texture2D" uid="uid://cdon5m50lpt7j" path="res://assets/GUI/hp_gauges/hp_gauge_knight.png" id="9_1vi2f"]
+[ext_resource type="Texture2D" uid="uid://dcphycv3aet06" path="res://assets/GUI/hp_gauges/hp_gauge_sorcerer.png" id="10_62pbe"]
+[ext_resource type="Texture2D" uid="uid://dd4hqmherjbgp" path="res://assets/GUI/hp_gauges/hp_gauge_templar.png" id="11_j730f"]
+[ext_resource type="Texture2D" uid="uid://c7hkuhslbdo3f" path="res://assets/GUI/abilities/sword_strike_ability.png" id="12_8e3ps"]
+[ext_resource type="Texture2D" uid="uid://byofcgj5i2yqh" path="res://assets/GUI/abilities/circle_strike_ability.png" id="13_xan4n"]
+[ext_resource type="Texture2D" uid="uid://cm76xy5187vpu" path="res://assets/GUI/abilities/ultimatum_ability.png" id="14_176xt"]
+[ext_resource type="Texture2D" uid="uid://cfenobargfwki" path="res://assets/GUI/abilities/stance_ability.png" id="15_62pbe"]
+[ext_resource type="Texture2D" uid="uid://gp1lfe73tiro" path="res://assets/GUI/abilities/gapcloser_ability.png" id="15_je8iw"]
+[ext_resource type="Texture2D" uid="uid://bhnp82sfwe4rn" path="res://assets/GUI/abilities/fire_ball_ability.png" id="16_176xt"]
+[ext_resource type="Texture2D" uid="uid://c0g14kylsiavg" path="res://assets/GUI/abilities/teleport_ability.png" id="16_qtlvu"]
+[ext_resource type="Texture2D" uid="uid://06d7rrwhp53h" path="res://assets/GUI/abilities/big_fire_ball_ability.png" id="17_je8iw"]
+[ext_resource type="Texture2D" uid="uid://csqr7fa06lpdl" path="res://assets/GUI/abilities/healing_ability.png" id="19_qtlvu"]
+[ext_resource type="Texture2D" uid="uid://dfra1qfngmbvn" path="res://assets/GUI/abilities/ressurection_ability.png" id="20_x5k4i"]
+
+[sub_resource type="Animation" id="Animation_3rkf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nl8w3"]
+resource_name = "loop"
+length = 3.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_247la"]
+_data = {
+&"RESET": SubResource("Animation_3rkf3"),
+&"loop": SubResource("Animation_nl8w3")
+}
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ye78e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.26028818, 0.26028818, 0.26028818, 1)
+position = Vector2(960, 540)
+scale = Vector2(3.84, 3.6)
+texture = ExtResource("2_wguod")
+hframes = 5
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_247la")
+}
+autoplay = "loop"
+speed_scale = 1.5
+
+[node name="Page1" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CircleAoe" type="Sprite2D" parent="Page1"]
+position = Vector2(452, 136.5)
+scale = Vector2(2.7500007, 2.65625)
+texture = ExtResource("3_le75r")
+
+[node name="Label" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 119.0
+offset_right = 784.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 24
+text = "GTFO, DO NOT STACK
+DÉGAGE, NE MÉLANGE PAS"
+
+[node name="StackMarker" type="Sprite2D" parent="Page1"]
+position = Vector2(454, 273)
+scale = Vector2(3.59375, 3.3125)
+texture = ExtResource("4_1pep8")
+
+[node name="Label2" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 243.0
+offset_right = 994.0
+offset_bottom = 314.0
+theme_override_font_sizes/font_size = 24
+text = "GET IN, TAKEN ALONE IT WILL KILL YOU
+RENTRE, PRIT SEUL TU  MEURRE"
+
+[node name="Label3" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 520.0
+offset_right = 396.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 39
+text = "KILL :"
+
+[node name="BlueCarSprite" type="Sprite2D" parent="Page1"]
+position = Vector2(247, 540)
+scale = Vector2(6, 5.2857137)
+texture = ExtResource("5_c4dag")
+hframes = 4
+vframes = 3
+
+[node name="Label4" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 495.0
+offset_right = 1688.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 39
+text = "< - IF NOT KILLED QUICK ENOUGH, KILLS ALL OF YOU
+< - SI PAS TUÉ ASSEZ RAPIDEMENT, VOUS TUE TOUS"
+
+[node name="Label5" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 702.0
+offset_right = 378.0
+offset_bottom = 821.0
+theme_override_font_sizes/font_size = 39
+text = "AVOID :"
+
+[node name="RedCarSprite" type="Sprite2D" parent="Page1"]
+position = Vector2(303, 709.00006)
+scale = Vector2(8.578124, 6.937497)
+texture = ExtResource("6_jeqsw")
+hframes = 4
+vframes = 4
+
+[node name="MonsterTruck" type="Sprite2D" parent="Page1"]
+position = Vector2(522, 527)
+scale = Vector2(2.53125, 2.4609375)
+texture = ExtResource("7_pv20v")
+hframes = 4
+vframes = 3
+
+[node name="Label6" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 1298.0
+offset_top = 32.0
+offset_right = 1881.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "*WARNING: TEMPLAR AND KNIGHT NOT 
+RECOMMENDED FOR AI CONTROLS
+
+*AVERTISSEMENT: TEMPLAR ET KNIGHT
+ NON RECOMMANDÉ POUR L'IA"
+
+[node name="Label7" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 668.0
+offset_right = 1804.0
+offset_bottom = 851.0
+theme_override_font_sizes/font_size = 43
+text = "Enemies will only attack the player with the highest aggro
+
+Les enemies n'attaqueront que le joueur ayant le plus d'aggro"
+
+[node name="Page2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HpGaugeAssassin" type="Sprite2D" parent="Page2"]
+position = Vector2(371.50006, 263)
+scale = Vector2(2.1033335, 2.109375)
+texture = ExtResource("8_1pep8")
+
+[node name="HpGaugeKnight" type="Sprite2D" parent="Page2"]
+position = Vector2(362, 422.99997)
+scale = Vector2(2.1733334, 2.265625)
+texture = ExtResource("9_1vi2f")
+
+[node name="HpGaugeSorcerer" type="Sprite2D" parent="Page2"]
+position = Vector2(381, 608)
+scale = Vector2(2.113333, 2.140625)
+texture = ExtResource("10_62pbe")
+
+[node name="HpGaugeTemplar" type="Sprite2D" parent="Page2"]
+position = Vector2(370, 800.00006)
+scale = Vector2(2.3266668, 2.5000002)
+texture = ExtResource("11_j730f")
+
+[node name="SwordStrikeAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(159.75, 283.75)
+scale = Vector2(2.4843748, 2.3906243)
+texture = ExtResource("12_8e3ps")
+
+[node name="SwordStrikeAbility" type="Sprite2D" parent="Page2/SwordStrikeAbility"]
+position = Vector2(26.666672, 49.46406)
+scale = Vector2(0.88998646, 0.90773076)
+texture = ExtResource("12_8e3ps")
+
+[node name="CircleStrikeAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(260.5, 284)
+scale = Vector2(2.53125, 2.4375)
+texture = ExtResource("13_xan4n")
+
+[node name="CircleStrikeAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(17.975304, 48.41025)
+scale = Vector2(0.83101887, 0.82251555)
+texture = ExtResource("13_xan4n")
+
+[node name="UltimatumAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(54.320988, 46.769226)
+texture = ExtResource("14_176xt")
+
+[node name="StanceAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(94.61729, 47.179493)
+texture = ExtResource("15_62pbe")
+
+[node name="FireBallAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(-53.530865, 124.307686)
+texture = ExtResource("16_176xt")
+
+[node name="BigFireBallAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(-13.234571, 124.71796)
+texture = ExtResource("17_je8iw")
+
+[node name="TeleportAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(24.296295, 124.307686)
+texture = ExtResource("16_qtlvu")
+
+[node name="HealingAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(65.77778, 123.48717)
+texture = ExtResource("19_qtlvu")
+
+[node name="FireBallAbility2" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(-12.444445, 219.07693)
+texture = ExtResource("16_176xt")
+
+[node name="TeleportAbility2" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(27.061726, 219.89743)
+texture = ExtResource("16_qtlvu")
+
+[node name="HealingAbility2" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(63.012352, 221.53848)
+texture = ExtResource("19_qtlvu")
+
+[node name="RessurectionAbility" type="Sprite2D" parent="Page2/CircleStrikeAbility"]
+position = Vector2(100.14815, 220.3077)
+texture = ExtResource("20_x5k4i")
+
+[node name="GapcloserAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(359, 283.00003)
+scale = Vector2(2.625, 2.5625)
+texture = ExtResource("15_je8iw")
+
+[node name="TeleportAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(474, 287)
+scale = Vector2(2.5, 2.25)
+texture = ExtResource("16_qtlvu")
+
+[node name="SwordStrikeAbility2" type="Sprite2D" parent="Page2"]
+position = Vector2(812.99994, 80.99999)
+scale = Vector2(3.2054098, 3.0643632)
+texture = ExtResource("12_8e3ps")
+
+[node name="CircleStrikeAbility2" type="Sprite2D" parent="Page2"]
+position = Vector2(815, 217)
+scale = Vector2(4.1875, 3.96875)
+texture = ExtResource("13_xan4n")
+
+[node name="BigFireBallAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(1392, 85)
+scale = Vector2(3.15625, 3)
+texture = ExtResource("17_je8iw")
+
+[node name="FireBallAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(1392, 204.00003)
+scale = Vector2(3.78125, 3.84375)
+texture = ExtResource("16_176xt")
+
+[node name="GapcloserAbility2" type="Sprite2D" parent="Page2"]
+position = Vector2(818, 382.00003)
+scale = Vector2(3.96875, 3.84375)
+texture = ExtResource("15_je8iw")
+
+[node name="TeleportAbility2" type="Sprite2D" parent="Page2"]
+position = Vector2(1410.0001, 383)
+scale = Vector2(4.218753, 3.968751)
+texture = ExtResource("16_qtlvu")
+
+[node name="StanceAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(820, 569.99994)
+scale = Vector2(4.375, 4.1875)
+texture = ExtResource("15_62pbe")
+
+[node name="UltimatumAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(1406, 548.5)
+scale = Vector2(3.8124983, 4.031251)
+texture = ExtResource("14_176xt")
+
+[node name="HealingAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(825, 737.00006)
+scale = Vector2(4.0625, 4.0625)
+texture = ExtResource("19_qtlvu")
+
+[node name="RessurectionAbility" type="Sprite2D" parent="Page2"]
+position = Vector2(1410, 734)
+scale = Vector2(4.1875, 4.1875)
+texture = ExtResource("20_x5k4i")
+
+[node name="Label" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 881.0
+offset_top = 40.0
+offset_right = 1153.0
+offset_bottom = 89.0
+text = "Targeted/Ciblé
+Slow, but hits everything in its path.
+Lent, mais touche tout sur son passage"
+
+[node name="Label2" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 889.0
+offset_top = 194.0
+offset_right = 1238.0
+offset_bottom = 243.0
+text = "Good DPS, No range, AOE around yourself
+Bon DPS, Aucune portée, AOE autour de vous"
+
+[node name="Label3" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1457.0
+offset_top = 47.0
+offset_right = 1954.0
+offset_bottom = 129.0
+text = "BIG DPS, BIG CD, disappears after hitting anything
+GROS DPS, GROS CD, disparait 
+après avoir touché quelque chose"
+
+[node name="Label4" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1476.0
+offset_top = 184.0
+offset_right = 1921.0
+offset_bottom = 207.0
+text = "Medium DPS, disappears after touching anything
+Dégat moyen
+disparait après avoir touché quelque chose"
+
+[node name="Label5" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 356.0
+offset_right = 1191.0
+offset_bottom = 405.0
+text = "Go Fast for a small amount of time
+Aller rapidement pendant un moment"
+
+[node name="Label6" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1494.0
+offset_top = 356.0
+offset_right = 1779.0
+offset_bottom = 405.0
+text = "Teleport in the current direction
+teleporter dans la direction courante"
+
+[node name="Label7" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 517.0
+offset_right = 1332.0
+offset_bottom = 618.0
+text = "Activate Stance/Active la Forme
+Stance on: half damage, half dps
+Forme active: moitié dégat, moitié DPS
+Quadruple aggro"
+
+[node name="Label8" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1490.0
+offset_top = 521.0
+offset_right = 1793.0
+offset_bottom = 570.0
+text = "Takes aggro of every enemy in the area
+Prend l'aggro de tous les enemies"
+
+[node name="Label9" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 918.0
+offset_top = 696.0
+offset_right = 1265.0
+offset_bottom = 771.0
+text = "Heal/Soigne
+Templar: AOE
+Sorcerer: only yourself/seulement toit meme"
+
+[node name="Label10" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1497.0
+offset_top = 686.0
+offset_right = 2050.0
+offset_bottom = 761.0
+text = "Ressurect targets and give back 100 HP
+Ressurecte les cibles et leur redonne 100 HP
+ (only works if target is dead/
+fonctionne suelement si la cible est morte)"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 30.0
+offset_right = 247.0
+offset_bottom = 144.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Back"
+flat = true
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1545.0
+offset_top = 881.0
+offset_right = 1714.0
+offset_bottom = 995.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Next"
+flat = true
+
+[node name="Previous" type="Button" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 884.0
+offset_right = 465.0
+offset_bottom = 998.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Previous"
+flat = true
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Previous" to="." method="_on_previous_pressed"]

@@ -80,7 +80,7 @@ func ability_3():
 func ability_4():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 3
+	GCD.wait_time = 1
 	GCD.start()
 	
 	player.handle_hurt(-25)

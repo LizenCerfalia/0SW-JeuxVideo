@@ -68,7 +68,7 @@ func ability_2():
 func ability_3():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 3
+	GCD.wait_time = 2
 	GCD.start()
 	HealDelay.start()
 	$GenericPlayer/HealRange/Sprite2D.visible = true
@@ -77,7 +77,7 @@ func ability_3():
 func ability_4():
 	if GCD.time_left > 0:
 		return
-	GCD.wait_time = 8
+	GCD.wait_time = 5
 	GCD.start()
 	ResDelay.start()
 	$GenericPlayer/HealRange/Sprite2D.visible = true

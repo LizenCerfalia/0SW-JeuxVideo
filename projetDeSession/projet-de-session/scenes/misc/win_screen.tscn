@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://ri7icrtsif02"]
+
+[ext_resource type="Script" uid="uid://cixex57o4ytm4" path="res://scripts/misc/win_screen.gd" id="1_7jp3i"]
+
+[node name="WinScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_7jp3i")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 753.0
+offset_top = 378.0
+offset_right = 1136.0
+offset_bottom = 515.0
+theme_override_colors/font_color = Color(1, 0.84705883, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 100
+text = "You win"
+
+[node name="Button" type="Button" parent="."]
+process_mode = 2
+offset_left = 729.0
+offset_top = 628.0
+offset_right = 1159.0
+offset_bottom = 742.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Main menu"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

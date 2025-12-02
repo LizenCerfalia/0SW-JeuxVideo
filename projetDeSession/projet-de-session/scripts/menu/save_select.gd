@@ -61,4 +61,8 @@ func _on_load_pressed() -> void:
 		WorldState.SorcererControls = save_data.SorcererControls
 		
 		var target_scene_path = "res://scenes/worlds/" + save_data.current_phase + ".tscn"
+		if (save_data.current_phase == "phase_1"):
+			GlobalMusicManager.PlayPhase1Music()
+		elif (save_data.current_phase == "phase_2"):
+			GlobalMusicManager.PlayPhase2Music()
 		get_tree().change_scene_to_file(target_scene_path)

@@ -54,6 +54,7 @@ func ability_1():
 	slash.global_transform = slashDirection.global_transform
 	slash.caster = "Assassin"
 	slash.scale = Vector2(2.0, 1.0)
+	GlobalSoundManager.play_air_slash_sfx()
 	
 func ability_2():
 	if GCD.time_left > 0:
@@ -64,6 +65,7 @@ func ability_2():
 	player.add_child(slash)
 	slash.caster = "Assassin"
 	slash.scale = Vector2(4.0, 4.0)
+	GlobalSoundManager.play_spinning_slash_sfx()
 
 func ability_3():
 	if GCD.time_left > 0:
@@ -72,6 +74,7 @@ func ability_3():
 	GCD.start()
 	player.speed = 500
 	dashDuration.start()
+	GlobalSoundManager.play_dash_sfx()
 
 func ability_4():
 	if GCD.time_left > 0:
@@ -79,6 +82,7 @@ func ability_4():
 	GCD.wait_time = 3
 	GCD.start()
 	player.global_position += player.velocity + player.velocity / 3
+	GlobalSoundManager.play_teleport_sfx()
 
 func _on_dash_duration_timeout() -> void:
 	player.speed = 250

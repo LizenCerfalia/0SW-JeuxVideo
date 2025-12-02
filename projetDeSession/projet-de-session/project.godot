@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 WorldState="*res://scripts/misc/world_state.gd"
 GlobalMusicManager="*res://scenes/misc/GlobalMusicManager.tscn"
+GlobalSoundManager="*res://scenes/misc/GlobalSoundManager.tscn"
 
 [display]
 

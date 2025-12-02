@@ -20,4 +20,5 @@ func _on_spread_delay_timeout() -> void:
 		if target.is_dead() == false:
 			target.handle_hurt(damage)
 	WorldState.mechanic = null
+	GlobalSoundManager.play_big_fireball_impact_sfx()
 	self.queue_free()

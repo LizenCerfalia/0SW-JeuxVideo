@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://chwxxfq5hefih"]
+[gd_scene load_steps=17 format=3 uid="uid://chwxxfq5hefih"]
 
 [ext_resource type="PackedScene" uid="uid://djkmqdmysykl4" path="res://scenes/enemies/boss_phase_2_head.tscn" id="1_bfehm"]
 [ext_resource type="Script" uid="uid://drlnksvst2ky" path="res://scripts/worlds/phase_2.gd" id="1_os7gi"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://g1qg1yei3o5w" path="res://scenes/player_characters/sorcerer.tscn" id="8_y3tni"]
 [ext_resource type="PackedScene" uid="uid://b4ul37cifj5u6" path="res://scenes/misc/GUI.tscn" id="9_3mw2b"]
 [ext_resource type="PackedScene" uid="uid://cdwqikcnyna5i" path="res://scenes/enemies/boss_phase_2_left_wheel.tscn" id="10_os7gi"]
+[ext_resource type="PackedScene" uid="uid://bqt88xwdmmrkv" path="res://scenes/misc/GameOver.tscn" id="11_4oe1o"]
+[ext_resource type="PackedScene" uid="uid://ri7icrtsif02" path="res://scenes/misc/win_screen.tscn" id="12_qcife"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubuui"]
 size = Vector2(20, 1090)
@@ -85,3 +87,7 @@ offset_right = 310.0
 offset_bottom = 74.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="GameOver" parent="." instance=ExtResource("11_4oe1o")]
+
+[node name="WinScreen" parent="." instance=ExtResource("12_qcife")]

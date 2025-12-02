@@ -52,6 +52,7 @@ func ability_1():
 	fireball.global_transform = fireballDirection.global_transform
 	fireball.caster = "Sorcerer"
 	fireball.scale = Vector2(2.0, 2.0)
+	GlobalSoundManager.play_light_fireball_sfx()
 	
 func ability_2():
 	if GCD.time_left > 0:
@@ -66,6 +67,7 @@ func ability_2():
 	fireball.global_transform = fireballDirection.global_transform
 	fireball.caster = "Sorcerer"
 	fireball.scale = Vector2(10.0, 10.0)
+	GlobalSoundManager.play_big_fireball_sfx()
 
 func ability_3():
 	if GCD.time_left > 0:
@@ -73,6 +75,7 @@ func ability_3():
 	GCD.wait_time = 3
 	GCD.start()
 	player.global_position += player.velocity + player.velocity / 3
+	GlobalSoundManager.play_teleport_sfx()
 
 func ability_4():
 	if GCD.time_left > 0:
@@ -81,3 +84,4 @@ func ability_4():
 	GCD.start()
 	
 	player.handle_hurt(-25)
+	GlobalSoundManager.play_heal_sfx()

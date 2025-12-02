@@ -66,6 +66,7 @@ func handle_death():
 	head.hp -= 2000
 	head.speed += 50
 	head.damage += 50
+	GlobalSoundManager.play_metal_impact_sfx()
 	queue_free()
 
 func _on_auto_attack_range_body_entered(body: Node2D) -> void:

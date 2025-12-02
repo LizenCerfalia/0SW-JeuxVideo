@@ -55,6 +55,7 @@ func ability_1():
 	fireball.global_transform = fireballDirection.global_transform
 	fireball.caster = "Templar"
 	fireball.scale = Vector2(2.0, 2.0)
+	GlobalSoundManager.play_light_fireball_sfx()
 	
 func ability_2():	
 	if GCD.time_left > 0:
@@ -62,6 +63,7 @@ func ability_2():
 	GCD.wait_time = 3
 	GCD.start()
 	player.global_position += player.velocity + player.velocity / 3
+	GlobalSoundManager.play_teleport_sfx()
 	
 func ability_3():
 	if GCD.time_left > 0:
@@ -70,7 +72,7 @@ func ability_3():
 	GCD.start()
 	HealDelay.start()
 	$GenericPlayer/HealRange/Sprite2D.visible = true
-	
+	GlobalSoundManager.play_heal_sfx()
 
 func ability_4():
 	if GCD.time_left > 0:
@@ -79,7 +81,7 @@ func ability_4():
 	GCD.start()
 	ResDelay.start()
 	$GenericPlayer/HealRange/Sprite2D.visible = true
-
+	GlobalSoundManager.play_ressurect_sfx()
 
 func _on_heal_range_body_entered(body: Node2D) -> void:
 	if (body.has_method("is_player")):

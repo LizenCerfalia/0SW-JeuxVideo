@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqt88xwdmmrkv"]
+
+[ext_resource type="Script" uid="uid://ci5l13gpayqxa" path="res://scripts/misc/game_over.gd" id="1_fpgl6"]
+
+[node name="GameOver" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_fpgl6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 696.0
+offset_top = 312.0
+offset_right = 1239.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="Restart" type="Button" parent="."]
+process_mode = 2
+offset_left = 824.0
+offset_top = 494.0
+offset_right = 1101.0
+offset_bottom = 608.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Restart"
+flat = true
+
+[node name="MainMenu" type="Button" parent="."]
+process_mode = 2
+offset_left = 755.0
+offset_top = 622.0
+offset_right = 1185.0
+offset_bottom = 736.0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_font_sizes/font_size = 77
+text = "Main menu"
+flat = true
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

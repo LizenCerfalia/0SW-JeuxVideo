@@ -21,6 +21,7 @@ func _on_explosion_delay_timeout() -> void:
 			target.handle_hurt(enemy.damage)
 		if (target.has_method("is_enemy")):
 			target.hp -= enemy.damage
+	GlobalSoundManager.play_big_fireball_impact_sfx()
 	self.queue_free()
 	
 func _on_explosion_body_entered(body: Node2D) -> void:

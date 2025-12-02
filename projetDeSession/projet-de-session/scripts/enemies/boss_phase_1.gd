@@ -20,7 +20,7 @@ var playerEnmity = [0, 0, 0, 0]
 var currentTarget
 var startEnrage = false
 
-var hp : int = 1000
+var hp : int = 45200
 const SPEED = 100.0
 var damage = 100
 
@@ -99,12 +99,14 @@ func lose_emnity(caster: String) -> void:
 func handle_death():
 	save_game()
 	GlobalMusicManager.PlayPhase2Music()
+	GlobalSoundManager.play_metal_impact_sfx()
 	get_tree().change_scene_to_file.call_deferred("res://scenes/worlds/phase_2.tscn")
 
 func _on_enrage_timeout() -> void:
 	for player in players:
 		player.handle_hurt(2000000)
 	$EnrageSprite.visible = false
+	GlobalSoundManager.play_big_fireball_impact_sfx()
 
 func _on_auto_attack_range_body_entered(body: Node2D) -> void:
 	if body.has_method("is_player") && body == currentTarget:

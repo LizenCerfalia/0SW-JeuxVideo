@@ -30,6 +30,8 @@ func is_enemy() -> bool:
 func _physics_process(delta: float) -> void:
 	if (hp < 0):
 		self.queue_free()
+		GlobalSoundManager.play_metal_impact_sfx()
+		get_node("../WinScreen").win_screen()
 	if enrage.time_left < 2 && !startEnrage:
 		startEnrage = true
 		$EnrageSprite.visible = true
@@ -79,6 +81,7 @@ func _on_enrage_timeout() -> void:
 	for player in players:
 		player.handle_hurt(2000000)
 	$EnrageSprite.visible = false
+	GlobalSoundManager.play_big_fireball_impact_sfx()
 
 func _on_auto_attack_range_body_entered(body: Node2D) -> void:
 	if body.has_method("is_player") && body == currentTarget:

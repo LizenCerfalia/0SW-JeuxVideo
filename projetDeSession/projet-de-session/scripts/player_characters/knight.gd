@@ -63,6 +63,7 @@ func ability_1():
 	slash.scale = Vector2(2.0, 1.0)
 	if stanceOn:
 		slash.damage /= 2
+	GlobalSoundManager.play_air_slash_sfx()
 	
 func ability_2():
 	if GCD.time_left > 0:
@@ -75,6 +76,7 @@ func ability_2():
 	slash.scale = Vector2(4.0, 4.0)
 	if stanceOn:
 		slash.damage /= 2
+	GlobalSoundManager.play_spinning_slash_sfx()
 
 func ability_3():
 	if GCD.time_left > 0:
@@ -85,6 +87,7 @@ func ability_3():
 	var potential_targets = player.potential_targets
 	for target in potential_targets:
 		target.handle_emnity("Knight", 10000)
+	GlobalSoundManager.play_ultimatum_sfx()
 
 func ability_4():
 	if GCD.time_left > 0:
@@ -98,3 +101,4 @@ func ability_4():
 	else:
 		stanceOn = true
 		$GenericPlayer/StanceIndicator.visible = true
+	GlobalSoundManager.play_stance_sfx()

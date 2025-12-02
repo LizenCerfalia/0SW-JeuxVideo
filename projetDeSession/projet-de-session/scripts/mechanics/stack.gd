@@ -25,5 +25,5 @@ func _on_stack_delay_timeout() -> void:
 		if target.is_dead() == false:
 			target.handle_hurt(damage / stacked_party_members)
 	WorldState.mechanic = null
-	print(stacked_party_members)
+	GlobalSoundManager.play_big_fireball_impact_sfx()
 	self.queue_free()

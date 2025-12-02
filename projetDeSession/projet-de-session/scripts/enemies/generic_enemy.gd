@@ -16,6 +16,7 @@ func is_enemy() -> bool:
 func _physics_process(delta: float) -> void:
 	if (hp < 0):
 		get_parent().queue_free()
+		GlobalSoundManager.play_metal_impact_sfx()
 	
 	get_target()
 	var direction = (currentTarget.global_position - global_position).normalized()

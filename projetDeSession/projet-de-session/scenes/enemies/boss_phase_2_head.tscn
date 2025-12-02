@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djkmqdmysykl4"]
+[gd_scene load_steps=16 format=3 uid="uid://djkmqdmysykl4"]
 
 [ext_resource type="Texture2D" uid="uid://cijbo0dstcogx" path="res://assets/enemy_assets/monster_truck_phase_2_head.png" id="1_5y4bs"]
 [ext_resource type="Script" uid="uid://pfdi5v84wric" path="res://scripts/enemies/boss_phase_2_head.gd" id="1_nsji5"]
@@ -56,6 +56,13 @@ size = Vector2(665.00037, 370.00018)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_upoc2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yngk8"]
+bg_color = Color(0.7852611, 0, 0.020440463, 0.7294118)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [node name="BossPhase2Head" type="CharacterBody2D" groups=["enemies"]]
 y_sort_enabled = true
 scale = Vector2(2, 2)
@@ -94,7 +101,7 @@ one_shot = true
 autostart = true
 
 [node name="MechanicTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 10.0
 autostart = true
 
 [node name="EnrageSprite" type="Sprite2D" parent="."]
@@ -127,6 +134,15 @@ visible = false
 position = Vector2(-1.5000029, 7)
 scale = Vector2(4.1354165, 3.6458335)
 texture = ExtResource("8_yngk8")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -60.000004
+offset_top = -35.333336
+offset_right = 180.0
+offset_bottom = -8.333336
+scale = Vector2(0.5, 0.3)
+theme_override_styles/fill = SubResource("StyleBoxFlat_yngk8")
+max_value = 6000.0
 
 [connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]
 [connection signal="timeout" from="AutoAttackDelay" to="." method="_on_auto_attack_delay_timeout"]

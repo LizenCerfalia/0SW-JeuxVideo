@@ -61,33 +61,43 @@ func update_controls(char_name: String, player_id: String, toggled_on: bool) -> 
 			button.flat = true
 
 func _on_templar_p_2_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Templar", "P2", toggled_on)
 
 func _on_assassin_p_2_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Assassin", "P2", toggled_on)
 
 func _on_knight_p_2_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Knight", "P2", toggled_on)
 
 func _on_sorcerer_p_2_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Sorcerer", "P2", toggled_on)
 
 func _on_templar_p_1_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Templar", "P1", toggled_on)
 
 func _on_assassin_p_1_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Assassin", "P1", toggled_on)
 
 func _on_knight_p_1_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Knight", "P1", toggled_on)
 	
 func _on_sorcerer_p_1_toggled(toggled_on: bool) -> void:
+	GlobalSoundManager.play_snap_sfx()
 	update_controls("Sorcerer", "P1", toggled_on)
 
 func _on_back_pressed() -> void:
+	GlobalSoundManager.play_snap_sfx()
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 
 func _on_start_pressed() -> void:
 	save_game()
 	GlobalMusicManager.PlayPhase1Music()
+	GlobalSoundManager.play_snap_sfx()
 	get_tree().change_scene_to_file("res://scenes/worlds/phase_1.tscn")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://ca20iiy4kyrhu"]
 
 [ext_resource type="AudioStream" uid="uid://c6wgdi2agd0n2" path="res://assets/sound_effect/banished-sound-95250.mp3" id="1_0qsht"]
-[ext_resource type="Script" uid="uid://c7tmvs3hiet20" path="res://scenes/misc/global_sound_manager.gd" id="1_oqrb8"]
+[ext_resource type="Script" uid="uid://c7tmvs3hiet20" path="res://scripts/misc/global_sound_manager.gd" id="1_oqrb8"]
 [ext_resource type="AudioStream" uid="uid://3vqe2kkk5k40" path="res://assets/sound_effect/enchanted-spell-casting-229208.mp3" id="2_oqrb8"]
 [ext_resource type="AudioStream" uid="uid://7t6kwp6yoifa" path="res://assets/sound_effect/fire-magic-5-378639.mp3" id="3_dfq87"]
 [ext_resource type="AudioStream" uid="uid://cshp17vqgj4vm" path="res://assets/sound_effect/fire-spell-impact-393921.mp3" id="4_edgwt"]

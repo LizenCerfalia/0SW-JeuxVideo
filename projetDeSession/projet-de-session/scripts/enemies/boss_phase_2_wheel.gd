@@ -6,7 +6,7 @@ extends CharacterBody2D
 var playerEnmity = [0, 0, 0, 0] # templar, assassin, knight, sorcerer, selon l'order de generation dans l'arbre
 var currentTarget
 
-var hp = 1000
+var hp = 2000
 var speed = 100
 var damage = 100
 
@@ -63,7 +63,7 @@ func lose_emnity(caster: String) -> void:
 			
 func handle_death():
 	head.animationPlayer.speed_scale += 0.50
-	head.hp -= 2000
+	head.hp -= 4000
 	head.speed += 50
 	head.damage += 50
 	GlobalSoundManager.play_metal_impact_sfx()

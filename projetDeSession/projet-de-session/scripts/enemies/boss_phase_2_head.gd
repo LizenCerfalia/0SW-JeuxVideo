@@ -17,7 +17,7 @@ var playerEnmity = [0, 0, 0, 0]
 var currentTarget
 var startEnrage = false
 
-var hp : int = 6000
+var hp : int = 10000
 var speed = 50.0
 var damage = 100
 
@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	if enrage.time_left < 2 && !startEnrage:
 		startEnrage = true
 		$EnrageSprite.visible = true
+	$ProgressBar.value = hp
 		
 	get_target()
 	var direction = (currentTarget.global_position - global_position).normalized()

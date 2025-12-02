@@ -30,6 +30,7 @@ y_sort_enabled = true
 script = ExtResource("1_os7gi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.7602391, 1.7602391, 1.7602391, 1)
 z_index = -1
 texture_repeat = 2
 position = Vector2(777, 457)

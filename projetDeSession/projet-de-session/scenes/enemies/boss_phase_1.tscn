@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cbnd8a3jw0e6p"]
+[gd_scene load_steps=26 format=3 uid="uid://cbnd8a3jw0e6p"]
 
 [ext_resource type="Script" uid="uid://8fk4bxigpqy5" path="res://scripts/enemies/boss_phase_1.gd" id="1_bmiqv"]
 [ext_resource type="Texture2D" uid="uid://bihp80n0mlvjd" path="res://assets/misc/assassin_highlight.png" id="2_4og3d"]
@@ -182,6 +182,13 @@ transitions = ["Start", "Drive", SubResource("AnimationNodeStateMachineTransitio
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmiqv"]
 size = Vector2(511.66693, 220.00014)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_127km"]
+bg_color = Color(0.7852611, 0, 0.020440463, 0.7294118)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [node name="BossPhase1" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_bmiqv")
@@ -193,6 +200,7 @@ hframes = 4
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.6666667, 12.666666)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_xq2sl")
@@ -243,6 +251,7 @@ texture = SubResource("CanvasTexture_bmiqv")
 scale = Vector2(0.19999999, 0.19999999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAttackRange"]
+visible = false
 position = Vector2(-3.3333335, 71.666664)
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_bmiqv")
@@ -258,6 +267,15 @@ autostart = true
 [node name="MechanicTimer" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -60.000004
+offset_top = -35.333336
+offset_right = 180.0
+offset_bottom = -8.333336
+scale = Vector2(0.5, 0.3)
+theme_override_styles/fill = SubResource("StyleBoxFlat_127km")
+max_value = 10000.0
 
 [connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]
 [connection signal="timeout" from="AutoAttackDelay" to="." method="_on_auto_attack_delay_timeout"]

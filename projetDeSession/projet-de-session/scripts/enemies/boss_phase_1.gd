@@ -20,7 +20,7 @@ var playerEnmity = [0, 0, 0, 0]
 var currentTarget
 var startEnrage = false
 
-var hp : int = 4500
+var hp : int = 6000
 const SPEED = 100.0
 var damage = 100
 

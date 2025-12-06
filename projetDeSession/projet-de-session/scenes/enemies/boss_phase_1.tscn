@@ -260,7 +260,7 @@ debug_color = Color(1, 0.0134694865, 0.041929327, 0.41960785)
 [node name="AutoAttackDelay" type="Timer" parent="."]
 
 [node name="Enrage" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 
@@ -275,7 +275,7 @@ offset_right = 180.0
 offset_bottom = -8.333336
 scale = Vector2(0.5, 0.3)
 theme_override_styles/fill = SubResource("StyleBoxFlat_127km")
-max_value = 10000.0
+max_value = 6000.0
 
 [connection signal="body_entered" from="AutoAttackRange" to="." method="_on_auto_attack_range_body_entered"]
 [connection signal="timeout" from="AutoAttackDelay" to="." method="_on_auto_attack_delay_timeout"]

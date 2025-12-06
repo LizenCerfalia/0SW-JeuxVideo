@@ -87,7 +87,7 @@ offset_top = 81.0
 offset_right = 1698.0
 offset_bottom = 544.0
 text = "The Hoods
-Against The Truck"
+Against the Truck"
 label_settings = SubResource("LabelSettings_nl8w3")
 horizontal_alignment = 1
 

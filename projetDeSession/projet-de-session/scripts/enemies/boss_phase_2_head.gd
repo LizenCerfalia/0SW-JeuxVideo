@@ -61,7 +61,7 @@ func handle_emnity(caster: String, emnity: int) -> void:
 		"Knight":
 			var knight = players[2].get_parent()
 			if (knight.has_method("stance_on") && knight.stance_on):
-				emnity *= 2
+				emnity *= 4
 			playerEnmity[2] += emnity
 		"Sorcerer":
 			playerEnmity[3] += emnity

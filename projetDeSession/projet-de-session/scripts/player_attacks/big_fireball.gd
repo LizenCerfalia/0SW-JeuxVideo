@@ -4,6 +4,9 @@ var damage : int = 350
 var speed : float = 300.0
 var caster : String = ""
 
+func _ready() -> void:
+	position += transform.x * 2
+
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 

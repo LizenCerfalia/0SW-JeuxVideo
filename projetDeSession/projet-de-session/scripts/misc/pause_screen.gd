@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 func _ready() -> void:
 	self.hide()
@@ -6,6 +6,7 @@ func _ready() -> void:
 func pause_the_game():
 	get_tree().paused = true
 	self.show()
+	$Continue.grab_focus()
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false

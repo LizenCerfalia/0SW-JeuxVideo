@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bp8dxq5jhhr0p"]
+[gd_scene load_steps=31 format=3 uid="uid://bp8dxq5jhhr0p"]
 
 [ext_resource type="Script" uid="uid://dlp4muthbn80w" path="res://scripts/menu/how_to_play.gd" id="1_ye78e"]
 [ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="2_wguod"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://06d7rrwhp53h" path="res://assets/GUI/abilities/big_fire_ball_ability.png" id="17_je8iw"]
 [ext_resource type="Texture2D" uid="uid://csqr7fa06lpdl" path="res://assets/GUI/abilities/healing_ability.png" id="19_qtlvu"]
 [ext_resource type="Texture2D" uid="uid://dfra1qfngmbvn" path="res://assets/GUI/abilities/ressurection_ability.png" id="20_x5k4i"]
+[ext_resource type="Texture2D" uid="uid://2amrweil71x8" path="res://assets/misc/ControlJoyPad.png" id="22_qtlvu"]
+[ext_resource type="Texture2D" uid="uid://due3nbyjud6cg" path="res://assets/misc/ControlKeyBoard.png" id="23_x5k4i"]
+[ext_resource type="Script" uid="uid://dxcsvrar5tq3p" path="res://scripts/menu/button.gd" id="24_x5k4i"]
 
 [sub_resource type="Animation" id="Animation_3rkf3"]
 length = 0.001
@@ -60,6 +63,12 @@ _data = {
 &"RESET": SubResource("Animation_3rkf3"),
 &"loop": SubResource("Animation_nl8w3")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vnnw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aq44c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycp7t"]
 
 [node name="HowToPlay" type="Control"]
 layout_mode = 3
@@ -438,15 +447,33 @@ Ressurecte les cibles et leur redonne 100 HP
  (only works if target is dead/
 fonctionne suelement si la cible est morte)"
 
+[node name="Page3" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlJoyPad" type="Sprite2D" parent="Page3"]
+position = Vector2(428.75006, 503.1875)
+scale = Vector2(0.51512223, 0.6036771)
+texture = ExtResource("22_qtlvu")
+
+[node name="ControlKeyBoard" type="Sprite2D" parent="Page3"]
+position = Vector2(1377.125, 497.25)
+scale = Vector2(0.36853835, 0.44506726)
+texture = ExtResource("23_x5k4i")
+
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
 offset_left = 61.0
 offset_top = 30.0
 offset_right = 247.0
 offset_bottom = 144.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8vnnw")
 text = "Back"
 flat = true
 
@@ -456,11 +483,14 @@ offset_left = 1545.0
 offset_top = 881.0
 offset_right = 1714.0
 offset_bottom = 995.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aq44c")
 text = "Next"
 flat = true
+script = ExtResource("24_x5k4i")
 
 [node name="Previous" type="Button" parent="."]
 layout_mode = 0
@@ -468,9 +498,11 @@ offset_left = 136.0
 offset_top = 884.0
 offset_right = 465.0
 offset_bottom = 998.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ycp7t")
 text = "Previous"
 flat = true
 

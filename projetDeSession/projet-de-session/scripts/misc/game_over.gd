@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var players = get_tree().get_nodes_in_group("players")
 
@@ -14,8 +14,12 @@ func _ready() -> void:
 	self.hide()
 
 func game_over():
-	get_tree().paused = true
-	self.show()
+	if get_tree().paused:
+		return 
+	else:
+		get_tree().paused = true
+		self.show()
+		$Restart.grab_focus()
 
 
 func _on_restart_pressed() -> void:

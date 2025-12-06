@@ -85,11 +85,14 @@ position = Vector2(956, 581)
 [node name="Spawner" parent="." instance=ExtResource("9_v60q7")]
 
 [node name="GameOver" parent="." instance=ExtResource("10_dbude")]
+z_index = 1
 
 [node name="PauseScreen" parent="." instance=ExtResource("11_dclbv")]
+z_index = 1
 
 [node name="NerdDataRAM" type="Label" parent="."]
 visible = false
+z_index = 1
 offset_left = 1066.0
 offset_top = 23.0
 offset_right = 1160.0
@@ -99,6 +102,7 @@ text = "RAM usage: "
 
 [node name="NerdDataFPS" type="Label" parent="."]
 visible = false
+z_index = 1
 offset_left = 792.0
 offset_top = 23.0
 offset_right = 878.0

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 func _ready() -> void:
 	self.hide()
@@ -6,6 +6,7 @@ func _ready() -> void:
 func win_screen():
 	get_tree().paused = true
 	self.show()
+	$Button.grab_focus()
 
 func _on_button_pressed() -> void:
 	get_tree().paused = false

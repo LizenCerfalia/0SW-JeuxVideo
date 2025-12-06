@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0ut30pdp01gb"]
+[gd_scene load_steps=9 format=3 uid="uid://d0ut30pdp01gb"]
 
 [ext_resource type="Script" uid="uid://yn03p70h6a4w" path="res://scripts/menu/options.gd" id="1_kixs7"]
 [ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="2_5ak6t"]
+[ext_resource type="Script" uid="uid://dxcsvrar5tq3p" path="res://scripts/menu/button.gd" id="3_ubx11"]
 
 [sub_resource type="Animation" id="Animation_3rkf3"]
 length = 0.001
@@ -42,6 +43,10 @@ _data = {
 &"loop": SubResource("Animation_nl8w3")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhv7b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knos3"]
+
 [node name="Options" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -67,9 +72,11 @@ offset_left = 54.0
 offset_top = 27.0
 offset_right = 240.0
 offset_bottom = 141.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mhv7b")
 text = "Back"
 flat = true
 
@@ -79,11 +86,14 @@ offset_left = 731.0
 offset_top = 750.0
 offset_right = 1237.0
 offset_bottom = 864.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_knos3")
 text = "Save changes"
 flat = true
+script = ExtResource("3_ubx11")
 
 [node name="BGM" type="HSlider" parent="."]
 layout_mode = 0

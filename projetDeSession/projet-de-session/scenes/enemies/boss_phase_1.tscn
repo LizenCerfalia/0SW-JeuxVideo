@@ -260,7 +260,7 @@ debug_color = Color(1, 0.0134694865, 0.041929327, 0.41960785)
 [node name="AutoAttackDelay" type="Timer" parent="."]
 
 [node name="Enrage" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 

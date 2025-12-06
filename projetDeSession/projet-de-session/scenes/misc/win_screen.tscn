@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://ri7icrtsif02"]
+[gd_scene load_steps=4 format=3 uid="uid://ri7icrtsif02"]
 
 [ext_resource type="Script" uid="uid://cixex57o4ytm4" path="res://scripts/misc/win_screen.gd" id="1_7jp3i"]
+[ext_resource type="Script" uid="uid://dxcsvrar5tq3p" path="res://scripts/menu/button.gd" id="2_1aaka"]
 
-[node name="WinScreen" type="CanvasLayer"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwuhn"]
+
+[node name="WinScreen" type="Control"]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_7jp3i")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 753.0
 offset_top = 378.0
 offset_right = 1136.0
@@ -18,14 +24,18 @@ text = "You win"
 
 [node name="Button" type="Button" parent="."]
 process_mode = 2
+layout_mode = 0
 offset_left = 729.0
 offset_top = 628.0
 offset_right = 1159.0
 offset_bottom = 742.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fwuhn")
 text = "Main menu"
 flat = true
+script = ExtResource("2_1aaka")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

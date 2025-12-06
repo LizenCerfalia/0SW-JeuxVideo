@@ -1,5 +1,10 @@
 extends Node2D
 
+var player_devices = {
+	"P1": 0, # Device 0
+	"P2": 1  # Device 1
+}
+
 @onready var player: GenericPlayer = $GenericPlayer
 @onready var GCD: Timer = $GCD
 @onready var slashDirection: Marker2D = $GenericPlayer/SlashDirection
@@ -27,24 +32,17 @@ func _physics_process(delta: float) -> void:
 		return
 	player.get_movement_input(delta)
 		
-	if controlled_by == "P1":
-		if Input.is_action_just_pressed("P1_Ability_1"):
+	if controlled_by == "P1" or controlled_by == "P2":
+		var prefix = controlled_by
+		var device_id = player_devices[controlled_by]
+		
+		if Input.is_action_just_pressed("%s_Ability_1" % prefix, device_id):
 			ability_1()
-		if Input.is_action_just_pressed("P1_Ability_2"):
+		if Input.is_action_just_pressed("%s_Ability_2" % prefix, device_id):
 			ability_2()
-		if Input.is_action_just_pressed("P1_Ability_3"):
+		if Input.is_action_just_pressed("%s_Ability_3" % prefix, device_id):
 			ability_3()
-		if Input.is_action_just_pressed("P1_Ability_4"):
-			ability_4()
-		return
-	if controlled_by == "P2":
-		if Input.is_action_just_pressed("P2_Ability_1"):
-			ability_1()
-		if Input.is_action_just_pressed("P2_Ability_2"):
-			ability_2()
-		if Input.is_action_just_pressed("P2_Ability_3"):
-			ability_3()
-		if Input.is_action_just_pressed("P2_Ability_4"):
+		if Input.is_action_just_pressed("%s_Ability_4" % prefix, device_id):
 			ability_4()
 		return
 		

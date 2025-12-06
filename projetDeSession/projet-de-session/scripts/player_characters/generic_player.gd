@@ -29,6 +29,11 @@ var controlled_by: String
 @onready var playback = animationTree.get("parameters/playback")
 @onready var GUI = get_parent().get_parent().get_node("GUI")
 
+var player_devices = {
+	"P1": 0, # Device 0
+	"P2": 1  # Device 1
+}
+
 
 func get_movement_input(delta: float):
 	match controlled_by:
@@ -42,15 +47,21 @@ func get_movement_input(delta: float):
 			pass
 	
 func player_controls(delta: float):
+	var dir = Vector2.ZERO
 	
-	var dir
-	if (controlled_by == "P1"):
-		dir = Input.get_vector("P1_Left", "P1_Right","P1_Up","P1_Down").normalized()
-		if (Input.is_action_just_pressed("P1_Target_Enemy")):
-			handle_tab_targeting()
-	else:
-		dir = Input.get_vector("P2_Left", "P2_Right","P2_Up","P2_Down").normalized()
-		if (Input.is_action_just_pressed("P2_Target_Enemy")):
+	if (controlled_by == "P1" or controlled_by == "P2"):
+		var prefix = controlled_by
+		var device_id = player_devices[controlled_by]
+		
+	
+		dir = Input.get_vector(
+			"%s_Left" % prefix, 
+			"%s_Right" % prefix,
+			"%s_Up" % prefix,
+			"%s_Down" % prefix
+		).normalized()
+		
+		if (Input.is_action_just_pressed("%s_Target_Enemy" % prefix, device_id)):
 			handle_tab_targeting()
 		
 	if (dir != Vector2.ZERO):

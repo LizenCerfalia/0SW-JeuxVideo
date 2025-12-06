@@ -1,11 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4apaplsmhwpw"]
+[gd_scene load_steps=21 format=3 uid="uid://b4apaplsmhwpw"]
 
 [ext_resource type="Script" uid="uid://dbjiut0aycjj3" path="res://scripts/menu/character_select.gd" id="1_f1rjr"]
 [ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="1_jdwp5"]
+[ext_resource type="Script" uid="uid://dxcsvrar5tq3p" path="res://scripts/menu/button.gd" id="3_i4i37"]
 [ext_resource type="Texture2D" uid="uid://c2uwprvvr32n5" path="res://assets/player_assets/templar_sprite.png" id="3_nbeft"]
 [ext_resource type="Texture2D" uid="uid://ccssg64e6pdap" path="res://assets/player_assets/assassin_sprite.png" id="4_i4i37"]
 [ext_resource type="Texture2D" uid="uid://br06y6b1472sa" path="res://assets/player_assets/knight_sprite.png" id="5_m7y3p"]
 [ext_resource type="Texture2D" uid="uid://jwe2odvb18hs" path="res://assets/player_assets/sorcerer_sprite.png" id="6_2mxrx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4i37"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7y3p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mxrx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aofas"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8f1j4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edg0r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_infpe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xshtt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmfmp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kc6fm"]
 
 [sub_resource type="Animation" id="Animation_3rkf3"]
 length = 0.001
@@ -69,12 +90,15 @@ offset_top = 730.0
 offset_right = 685.0
 offset_bottom = 844.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i4i37")
 toggle_mode = true
 text = "Templar"
 flat = true
+script = ExtResource("3_i4i37")
 
 [node name="AssassinP2" type="Button" parent="."]
 layout_mode = 0
@@ -82,9 +106,11 @@ offset_left = 683.0
 offset_top = 734.0
 offset_right = 1111.0
 offset_bottom = 848.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m7y3p")
 toggle_mode = true
 text = "Assassin"
 flat = true
@@ -95,9 +121,11 @@ offset_left = 1170.0
 offset_top = 730.0
 offset_right = 1472.0
 offset_bottom = 844.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2mxrx")
 toggle_mode = true
 text = "Knight"
 flat = true
@@ -108,9 +136,11 @@ offset_left = 1528.0
 offset_top = 728.0
 offset_right = 1852.0
 offset_bottom = 842.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aofas")
 toggle_mode = true
 text = "Sorcerer"
 flat = true
@@ -121,9 +151,11 @@ offset_left = 268.0
 offset_top = 643.0
 offset_right = 683.0
 offset_bottom = 757.0
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8f1j4")
 toggle_mode = true
 text = "Templar"
 flat = true
@@ -134,9 +166,11 @@ offset_left = 685.0
 offset_top = 639.0
 offset_right = 1113.0
 offset_bottom = 753.0
+theme_override_colors/font_focus_color = Color(0, 0, 0.9490196, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_edg0r")
 toggle_mode = true
 text = "Assassin"
 flat = true
@@ -147,9 +181,11 @@ offset_left = 1170.0
 offset_top = 640.0
 offset_right = 1472.0
 offset_bottom = 754.0
+theme_override_colors/font_focus_color = Color(0, 0, 0.9490196, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_infpe")
 toggle_mode = true
 text = "Knight"
 flat = true
@@ -160,9 +196,11 @@ offset_left = 1527.0
 offset_top = 638.0
 offset_right = 1851.0
 offset_bottom = 752.0
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xshtt")
 toggle_mode = true
 text = "Sorcerer"
 flat = true
@@ -173,9 +211,11 @@ offset_left = 54.0
 offset_top = 27.0
 offset_right = 223.0
 offset_bottom = 141.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pmfmp")
 text = "Back"
 flat = true
 
@@ -185,9 +225,11 @@ offset_left = 879.0
 offset_top = 885.0
 offset_right = 922.0
 offset_bottom = 999.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kc6fm")
 text = "Start"
 flat = true
 

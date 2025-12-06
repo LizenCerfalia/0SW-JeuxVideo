@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0nd3tepukibc"]
+[gd_scene load_steps=10 format=3 uid="uid://d0nd3tepukibc"]
 
 [ext_resource type="Script" uid="uid://dq43k21h3qfd0" path="res://scripts/menu/save_select.gd" id="1_l14ag"]
 [ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="1_up4pf"]
+[ext_resource type="Script" uid="uid://dxcsvrar5tq3p" path="res://scripts/menu/button.gd" id="3_f8wxv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l14ag"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8wxv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ak1ye"]
 
 [sub_resource type="Animation" id="Animation_3rkf3"]
 length = 0.001
@@ -64,12 +71,15 @@ offset_left = 429.0
 offset_top = 738.0
 offset_right = 844.0
 offset_bottom = 852.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l14ag")
 text = "Load
 "
 flat = true
+script = ExtResource("3_f8wxv")
 
 [node name="NewGame" type="Button" parent="."]
 layout_mode = 0
@@ -77,9 +87,11 @@ offset_left = 1041.0
 offset_top = 741.0
 offset_right = 1456.0
 offset_bottom = 855.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f8wxv")
 text = "New Game"
 flat = true
 
@@ -89,9 +101,11 @@ offset_left = 54.0
 offset_top = 27.0
 offset_right = 240.0
 offset_bottom = 141.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ak1ye")
 text = "Back"
 flat = true
 

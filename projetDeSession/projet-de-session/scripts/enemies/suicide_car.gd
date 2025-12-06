@@ -35,4 +35,3 @@ func _on_explosion_body_exited(body: Node2D) -> void:
 func _on_automatic_explosion_range_body_entered(body: Node2D) -> void:
 	if (body.has_method("is_player")):
 		start_explosion()
-	print("allo")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://jisv5a0160d6"]
+[gd_scene load_steps=12 format=3 uid="uid://jisv5a0160d6"]
 
 [ext_resource type="Script" uid="uid://bhfdn2oenwx32" path="res://scripts/menu/main_menu.gd" id="1_3rkf3"]
 [ext_resource type="Texture2D" uid="uid://vlsfi0moxghb" path="res://assets/world_assets/ezgif-8fc02c9f193ee8.png" id="1_nl8w3"]
+[ext_resource type="Script" uid="uid://dxcsvrar5tq3p" path="res://scripts/menu/button.gd" id="3_247la"]
 
 [sub_resource type="Animation" id="Animation_3rkf3"]
 length = 0.001
@@ -48,6 +49,14 @@ font_color = Color(0.7294118, 0, 0, 1)
 outline_size = 34
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_247la"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kiqgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hj162"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xn6kt"]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -88,12 +97,15 @@ offset_left = 334.0
 offset_top = 734.0
 offset_right = 749.0
 offset_bottom = 848.0
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_247la")
 text = "Start
 "
 flat = true
+script = ExtResource("3_247la")
 
 [node name="Options" type="Button" parent="."]
 layout_mode = 0
@@ -101,9 +113,11 @@ offset_left = 817.0
 offset_top = 729.0
 offset_right = 1119.0
 offset_bottom = 843.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kiqgm")
 text = "Options"
 flat = true
 
@@ -113,9 +127,11 @@ offset_left = 1313.0
 offset_top = 730.0
 offset_right = 1482.0
 offset_bottom = 844.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hj162")
 text = "Quit"
 flat = true
 
@@ -125,9 +141,11 @@ offset_left = 1835.0
 offset_top = 15.0
 offset_right = 1878.0
 offset_bottom = 129.0
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 23
 theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xn6kt")
 text = "?"
 flat = true
 

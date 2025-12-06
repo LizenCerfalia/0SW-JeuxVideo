@@ -91,13 +91,17 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="GameOver" parent="." instance=ExtResource("11_4oe1o")]
+z_index = 1
 
 [node name="WinScreen" parent="." instance=ExtResource("12_qcife")]
+z_index = 1
 
 [node name="PauseScreen" parent="." instance=ExtResource("13_qcife")]
+z_index = 1
 
 [node name="NerdDataRAM" type="Label" parent="."]
 visible = false
+z_index = 1
 offset_left = 1066.0
 offset_top = 23.0
 offset_right = 1160.0
@@ -107,6 +111,7 @@ text = "RAM usage: "
 
 [node name="NerdDataFPS" type="Label" parent="."]
 visible = false
+z_index = 1
 offset_left = 792.0
 offset_top = 23.0
 offset_right = 878.0
